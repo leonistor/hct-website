@@ -6,7 +6,12 @@
     "dev": "bunx --bun astro dev",
     "build": "bunx --bun astro build",
     "preview": "bunx --bun astro preview",
-    "astro": "bunx --bun astro"
+    "astro": "bunx --bun astro",
+    "format": "prettier --write .",
+    "lint": "prettier --check . && eslint .",
+    "types": "bunx pocketbase-typegen --env --out ./pocket/pocketbase-types.ts",
+    "updates:check": "ncu",
+    "updates:upgrade": "ncu --interactive"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.6",
@@ -17,6 +22,12 @@
     "tailwindcss": "^4.1.13"
   },
   "devDependencies": {
-    "@types/bun": "^1.2.23"
+    "@types/bun": "^1.2.23",
+    "eslint": "^9.37.0",
+    "eslint-plugin-astro": "^1.3.1",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "prettier-plugin-tailwindcss": "^0.6.14"
   }
 }

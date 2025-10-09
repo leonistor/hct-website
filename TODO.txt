@@ -1,10 +1,6 @@
 //SECTION - bun
-//TODO - gitignore
-//TODO - add types `bun add -d @types/bun`
-//TODO - test bun integration https://github.com/Zastinian/astro-bun, https://github.com/nurodev/astro-bun
-//TODO - update package.json scripts for `bunx --bun`
-//TODO - test dev,build,preview
 //TODO - prettier,eslint
+//TODO - npm update all
 //TODO - add alpine, integrate
 //!SECTION ------------------------------------------------
 
@@ -15,6 +11,7 @@
 //TODO - import db
 //TODO - superuser auth
 //TODO - setup .env
+//TODO - typegen
 //TODO - import folder
 //TODO - backup https://github.com/pocketbase/pocketbase/discussions/4254#backups
 //TODO - indexes
