@@ -1,3 +1,11 @@
+# pocketbase
+pocket/*
+!pocket/.gitkeep
+
+# backups
+backups/*
+!backups/.gitkeep
+
 # build output
 dist/
 # generated types

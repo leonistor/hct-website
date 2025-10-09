@@ -1,4 +1,5 @@
 //SECTION - bun
+//TODO - gitignore
 //TODO - add types `bun add -d @types/bun`
 //TODO - test bun integration https://github.com/Zastinian/astro-bun, https://github.com/nurodev/astro-bun
 //TODO - update package.json scripts for `bunx --bun`
@@ -8,6 +9,7 @@
 //!SECTION ------------------------------------------------
 
 //SECTION - pocketbase
+//TODO - .env
 //TODO - add pocketbase bin,sdk
 //TODO - mkdir/cp pocket,backup
 //TODO - import db
