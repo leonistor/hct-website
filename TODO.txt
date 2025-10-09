@@ -1,0 +1,66 @@
+//SECTION - bun
+//TODO - add types `bun add -d @types/bun`
+//TODO - test bun integration https://github.com/Zastinian/astro-bun, https://github.com/nurodev/astro-bun
+//TODO - update package.json scripts for `bunx --bun`
+//TODO - test dev,build,preview
+//TODO - prettier,eslint
+//TODO - add alpine, integrate
+//!SECTION ------------------------------------------------
+
+//SECTION - pocketbase
+//TODO - add pocketbase bin,sdk
+//TODO - mkdir/cp pocket,backup
+//TODO - import db
+//TODO - superuser auth
+//TODO - setup .env
+//TODO - import folder
+//TODO - backup https://github.com/pocketbase/pocketbase/discussions/4254#backups
+//TODO - indexes
+//TODO - more video mime types
+//!SECTION ------------------------------------------------
+
+//SECTION - dev
+//TODO - tasks runner
+//TODO - deploy scripts
+//TODO - bundle analyzer: https://sonda.dev/frameworks/astro.html
+//TODO - playwright tests
+//!SECTION ------------------------------------------------
+
+//SECTION - layout
+//TODO - layout
+//TODO - theme switch
+//TODO - page transitions
+//!SECTION ------------------------------------------------
+
+//SECTION - content
+//TODO config
+//TODO language select
+//!SECTION ------------------------------------------------
+
+//SECTION - blocks
+//TODO navigation desktop
+//TODO navigation mobile
+//TODO product card / grid / list
+//TODO markdown blog (noutati)
+//TODO partner card
+//TODO footer
+//!SECTION ------------------------------------------------
+
+//SECTION - features
+//TODO SEO
+//TODO contact backend
+//TODO search w/ pagefind: https://pagefind.app/docs/resources/
+//TODO svelte admin w/ preview
+//!SECTION ------------------------------------------------
+
+//SECTION - pages
+//TODO home
+//TODO lang de/en/it
+//TODO despre noi
+//TODO echipa
+//TODO clienti si proiecte
+//TODO categorii
+//TODO materiale
+//TODO servicii instalare / intretinere / consumabile
+//TODO contact
+//!SECTION ------------------------------------------------
