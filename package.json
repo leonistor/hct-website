@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "bunx --bun astro dev",
     "build": "bunx --bun astro build",
-    "preview": "bunx --bun astro preview",
+    "preview": "bun run ./dist/server/entry.mjs",
     "astro": "bunx --bun astro",
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",
@@ -14,9 +14,13 @@
     "updates:upgrade": "ncu --interactive"
   },
   "dependencies": {
+    "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/mdx": "^4.3.7",
+    "@hedystia/astro-bun": "^0.3.2",
     "@tailwindcss/vite": "^4.1.14",
+    "@types/alpinejs": "^3.13.11",
     "@types/canvas-confetti": "^1.9.0",
+    "alpinejs": "^3.15.0",
     "astro": "^5.14.3",
     "canvas-confetti": "^1.9.3",
     "tailwindcss": "^4.1.14"
