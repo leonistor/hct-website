@@ -1,0 +1,28 @@
+# https://taskfile.dev
+
+version: "3"
+
+output: prefixed
+
+tasks:
+  default:
+    cmd: task --list-all
+    prefix: help
+
+  pocket:
+    cmd: bun run pocket
+
+  astro:
+    cmd: bun run dev
+
+  dev:
+    deps: [pocket, astro]
+    interactive: true
+
+  # build:
+  #   cmd: bun run build
+  #   desc: build
+
+  # preview:
+  #   cmd: bun run preview
+  #   deps: [build]
