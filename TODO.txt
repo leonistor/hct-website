@@ -1,12 +1,4 @@
 //SECTION - pocketbase
-//TODO - .env
-//TODO - add pocketbase bin,sdk
-//TODO - mkdir/cp pocket,backup
-//TODO - import db
-//TODO - superuser auth
-//TODO - setup .env
-//TODO - typegen
-//TODO - import folder
 //TODO - backup https://github.com/pocketbase/pocketbase/discussions/4254#backups
 //TODO - indexes
 //TODO - more video mime types

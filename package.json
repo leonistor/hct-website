@@ -7,6 +7,9 @@
     "build": "bunx --bun astro build",
     "preview": "bun run ./dist/server/entry.mjs",
     "astro": "bunx --bun astro",
+    "pocket": "cd pocket && pocketbase serve",
+    "seed": "bun import_data/seed.ts",
+    "clean": "bun import_data/clean.ts",
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",
     "types": "bunx pocketbase-typegen --env --out ./pocket/pocketbase-types.ts",
@@ -16,13 +19,16 @@
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/mdx": "^4.3.7",
+    "@fadlee/pocketbase-bin": "^1.0.1",
     "@hedystia/astro-bun": "^0.3.2",
     "@tailwindcss/vite": "^4.1.14",
     "@types/alpinejs": "^3.13.11",
     "@types/canvas-confetti": "^1.9.0",
     "alpinejs": "^3.15.0",
     "astro": "^5.14.3",
+    "astro-loader-pocketbase": "^2.8.1",
     "canvas-confetti": "^1.9.3",
+    "pocketbase": "^0.26.2",
     "tailwindcss": "^4.1.14"
   },
   "devDependencies": {

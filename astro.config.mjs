@@ -5,7 +5,7 @@ import { defineConfig } from "astro/config"
 // https://github.com/Zastinian/astro-bun
 import bun from "@hedystia/astro-bun"
 
-import alpinejs from "@astrojs/alpinejs";
+import alpinejs from "@astrojs/alpinejs"
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,5 +24,5 @@ export default defineConfig({
     },
   },
 
-  integrations: [alpinejs()],
+  integrations: [alpinejs({ entrypoint: "./src/alpine.ts" })],
 })
