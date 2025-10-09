@@ -19,10 +19,9 @@ tasks:
     deps: [pocket, astro]
     interactive: true
 
-  # build:
-  #   cmd: bun run build
-  #   desc: build
-
-  # preview:
-  #   cmd: bun run preview
-  #   deps: [build]
+  build:
+    cmds:
+      - bun run pocket &
+      - defer: sh -c "kill $(lsof -ti :9090) 2>/dev/null" || true
+      - sleep 3
+      - bun run build
