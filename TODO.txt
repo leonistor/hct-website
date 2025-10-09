@@ -1,5 +1,4 @@
 //SECTION - bun
-//TODO - prettier,eslint
 //TODO - npm update all
 //TODO - add alpine, integrate
 //!SECTION ------------------------------------------------
