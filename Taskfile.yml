@@ -6,22 +6,41 @@ output: prefixed
 
 tasks:
   default:
-    cmd: task --list-all
+    cmd: task --list
     prefix: help
 
   pocket:
+    desc: run pocketbase
     cmd: bun run pocket
 
   astro:
+    desc: run astro dev
     cmd: bun run dev
 
   dev:
+    desc: run pocketbase and astro dev in parallel
     deps: [pocket, astro]
     interactive: true
 
   build:
+    desc: build astro with pocketbase running
     cmds:
       - bun run pocket &
-      - defer: sh -c "kill $(lsof -ti :9090) 2>/dev/null" || true
-      - sleep 3
+      # stop pocketbase after build
+      - defer: sh -c "kill $(lsof -ti :8090)"
+      - sleep 2
       - bun run build
+
+  import:
+    desc: "import a pocketbase backup archive: `task import -- archive-file.zip`"
+    preconditions:
+      # prettier-ignore
+      - sh: '[ ! -z {{.CLI_ARGS}} ]'
+        msg: "Need to provide the archive name as an argument"
+    cmds:
+      # stop pocketbase if running
+      - sh -c "kill $(lsof -ti :8090) 2>/dev/null || true"
+      - sleep 1
+      # - echo {{.CLI_ARGS}}
+      - rm -rf pocket/pb_data && mkdir pocket/pb_data
+      - unzip {{.CLI_ARGS}} -d pocket/pb_data

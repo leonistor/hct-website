@@ -5,13 +5,13 @@
 //!SECTION ------------------------------------------------
 
 //SECTION - dev
-//TODO - tasks runner
-//TODO - deploy scripts
+//TODO - backup, deploy scripts
 //TODO - bundle analyzer: https://sonda.dev/frameworks/astro.html
 //TODO - playwright tests
 //!SECTION ------------------------------------------------
 
 //SECTION - layout
+//TODO - font work sans
 //TODO - layout
 //TODO - theme switch
 //TODO - page transitions
