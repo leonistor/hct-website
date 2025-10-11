@@ -10,7 +10,18 @@
 //TODO - playwright tests
 //!SECTION ------------------------------------------------
 
+//SECTION - insp
+//TODO - 
+//TODO - 
+//TODO - 
+//TODO - 
+//TODO - 
+//!SECTION
+
 //SECTION - layout
+//TODO - layout grid: https://github.com/iaslfw/astro-layoutgrid
+//TODO - astro utils: https://forastro-docs.onrender.com/libraries/flow/
+//TODO - components from fulldev-ui: https://ui.full.dev/docs/
 //TODO - font work sans
 //TODO - layout
 //TODO - theme switch
@@ -18,12 +29,12 @@
 //!SECTION ------------------------------------------------
 
 //SECTION - content
-//TODO config
+//TODO content collections
 //TODO language select
 //!SECTION ------------------------------------------------
 
 //SECTION - blocks
-//TODO navigation desktop
+//TODO navigation desktop https://lexingtonthemes.com/tutorials/how-to-create-an-animated-navigation-with-javascript
 //TODO navigation mobile
 //TODO product card / grid / list
 //TODO markdown blog (noutati)
@@ -48,4 +59,13 @@
 //TODO materiale
 //TODO servicii instalare / intretinere / consumabile
 //TODO contact
+//!SECTION ------------------------------------------------
+
+//SECTION - astro
+//TODO - minifier: https://github.com/advanced-astro/min
+//TODO - 
+//TODO - 
+//TODO - 
+//TODO - 
+//TODO - 
 //!SECTION ------------------------------------------------
