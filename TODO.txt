@@ -21,7 +21,7 @@
 //SECTION - layout
 //TODO - layout grid: https://github.com/iaslfw/astro-layoutgrid
 //TODO - astro utils: https://forastro-docs.onrender.com/libraries/flow/
-//TODO - components from fulldev-ui: https://ui.full.dev/docs/
+//TODO - dark mode
 //TODO - font work sans
 //TODO - layout
 //TODO - theme switch
