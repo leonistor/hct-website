@@ -1,15 +1,13 @@
 ---
 import "../styles/global.css"
 
-import Button from "../components/Button.astro"
 import BaseLayout from "../layouts/BaseLayout.astro"
 ---
 
 <BaseLayout>
-  <div class="flex h-full flex-1 flex-col justify-evenly">
-    <Button>Tailwind Button in Astro!</Button>
-    <a href="/markdown-page" class="p-4 underline"
-      >Markdown is also supported...</a
-    >
+  <div
+    class="flex h-full flex-1 flex-col justify-evenly bg-gray-400 dark:bg-amber-400"
+  >
+    content
   </div>
 </BaseLayout>
