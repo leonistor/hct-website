@@ -9,7 +9,7 @@ import alpinejs from "@astrojs/alpinejs"
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: bun(),
+	adapter: bun(),
   output: "server",
   devToolbar: { enabled: false },
 
@@ -37,3 +37,4 @@ export default defineConfig({
 
   integrations: [alpinejs({ entrypoint: "./src/alpine.ts" })],
 })
+}
