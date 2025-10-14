@@ -1,11 +1,13 @@
 // @ts-check
 
 import tailwindcss from "@tailwindcss/vite"
-import { defineConfig, fontProviders } from "astro/config"
+import { defineConfig } from "astro/config"
 // https://github.com/Zastinian/astro-bun
 import bun from "@hedystia/astro-bun"
 
 import alpinejs from "@astrojs/alpinejs"
+
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,21 +23,10 @@ export default defineConfig({
     server: {
       host: "0.0.0.0",
       watch: {
-        ignored: ["pocket/**", "TODO.txt", "import_data/*"],
+        ignored: ["pocket/**", "*.txt", "import_data/*"],
       },
     },
   },
 
-  experimental: {
-    fonts: [
-      {
-        provider: fontProviders.google(),
-        name: "Work Sans",
-        weights: [100, 200, 300, 400, 500, 600, 700, 800, 900],
-        cssVariable: "--font-work-sans",
-      },
-    ],
-  },
-
-  integrations: [alpinejs({ entrypoint: "./src/alpine.ts" })],
+  integrations: [alpinejs({ entrypoint: "./src/alpine.ts" }), mdx()],
 })

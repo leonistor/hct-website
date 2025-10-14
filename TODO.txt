@@ -8,29 +8,19 @@
 //TODO - backup, deploy scripts
 //TODO - bundle analyzer: https://sonda.dev/frameworks/astro.html
 //TODO - playwright tests
+//TODO - generators https://github.com/plopjs/plop
 //!SECTION ------------------------------------------------
 
-//SECTION - insp
-//TODO - 
-//TODO - 
-//TODO - 
-//TODO - 
-//TODO - 
-//!SECTION
-
 //SECTION - layout
-//TODO - layout grid: https://github.com/iaslfw/astro-layoutgrid
 //TODO - astro utils: https://forastro-docs.onrender.com/libraries/flow/
-//TODO - dark mode
-//TODO - font work sans
 //TODO - layout
-//TODO - theme switch
 //TODO - page transitions
 //!SECTION ------------------------------------------------
 
 //SECTION - content
-//TODO content collections
-//TODO language select
+//TODO - content collections
+//TODO - pocketbase collection
+//TODO - language select
 //!SECTION ------------------------------------------------
 
 //SECTION - blocks

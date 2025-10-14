@@ -20,6 +20,7 @@
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/mdx": "^4.3.7",
     "@fadlee/pocketbase-bin": "^1.0.1",
+    "@fontsource-variable/work-sans": "^5.2.8",
     "@hedystia/astro-bun": "^0.3.2",
     "@tabler/icons": "^3",
     "@tailwindcss/forms": "^0.5",

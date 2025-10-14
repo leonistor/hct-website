@@ -7,6 +7,7 @@
         "@astrojs/alpinejs": "^0.4.9",
         "@astrojs/mdx": "^4.3.7",
         "@fadlee/pocketbase-bin": "^1.0.1",
+        "@fontsource-variable/work-sans": "^5.2.8",
         "@hedystia/astro-bun": "^0.3.2",
         "@tabler/icons": "^3",
         "@tailwindcss/forms": "^0.5",
@@ -142,6 +143,8 @@
     "@eslint/plugin-kit": ["@eslint/plugin-kit@0.4.0", "", { "dependencies": { "@eslint/core": "^0.16.0", "levn": "^0.4.1" } }, "sha512-sB5uyeq+dwCWyPi31B2gQlVlo+j5brPlWx4yZBrEaRo/nhdDE8Xke1gsGgtiBdaBTxuTkceLVuVt/pclrasb0A=="],
 
     "@fadlee/pocketbase-bin": ["@fadlee/pocketbase-bin@1.0.1", "", { "dependencies": { "adm-zip": "^0.5.16" }, "os": [ "linux", "win32", "darwin", ], "cpu": [ "x64", "arm64", ], "bin": { "pocketbase": "bin/runner.js" } }, "sha512-+T47Kbb9FwdV+Ik07g202EJ+JTUbQgtPp3HFzvbIsynRtsveE0KOIrcO/uu15eFhYmr9R0C5oTGfDmznEeaPdQ=="],
+
+    "@fontsource-variable/work-sans": ["@fontsource-variable/work-sans@5.2.8", "", {}, "sha512-8uWtTt0/B5NxGie9xUVD5y5Ch4Q+Hy7kFYKtUpwYbzSAgJEoaMxT8rMnfnK7zfAYSLC8GnGO1/tXrFtKIYYQVQ=="],
 
     "@hedystia/astro-bun": ["@hedystia/astro-bun@0.3.2", "", { "peerDependencies": { "astro": "^5.0.0" } }, "sha512-69ndaSObR/KkDS/rYGksacqo7ZXC7ELmdR7jICv4iGOZY14SernxCg6J6Ca7rcbQdm61vlIt2zI/0KPrK9ZlmQ=="],
 
