@@ -18,6 +18,7 @@
         "astro": "^5.14.4",
         "astro-layoutgrid": "^1.2.0",
         "astro-loader-pocketbase": "^2.8.1",
+        "phosphor-astro": "^2.1.0",
         "pocketbase": "^0.26.2",
         "tailwind-merge": "^3",
         "tailwind-variants": "^3",
@@ -911,6 +912,8 @@
     "path-exists": ["path-exists@4.0.0", "", {}, "sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w=="],
 
     "path-key": ["path-key@3.1.1", "", {}, "sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q=="],
+
+    "phosphor-astro": ["phosphor-astro@2.1.0", "", {}, "sha512-qyYUlxF8DbfHc+85DDGPL04ghNBwrVK75EsNsBfYOChiCeCRwAwfbHxj/qqPrrSFPMgh9cUyEvgKYjI/7bjCUA=="],
 
     "picocolors": ["picocolors@1.1.1", "", {}, "sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA=="],
 

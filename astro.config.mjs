@@ -9,6 +9,8 @@ import alpinejs from "@astrojs/alpinejs"
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://h-ct.ro",
+
   adapter: bun(),
   output: "server",
   // devToolbar: { enabled: false },
