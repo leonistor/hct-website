@@ -1,5 +1,20 @@
 ---
+import Button from "@/components/starwind/button"
 
+import AlertHexagon from "@tabler/icons/outline/alert-hexagon.svg"
 ---
 
-<nav>nav</nav>
+<nav class="flex flex-row gap-4 p-4">
+  <div>home</div>
+  <div>menu</div>
+  <Button size="icon-sm" id="themeToggle" variant="primary"
+    ><AlertHexagon /></Button
+  >
+</nav>
+
+<script>
+  const toggleBtn = document.getElementById("themeToggle")!
+  toggleBtn.addEventListener("click", () => {
+    document.documentElement.classList.toggle("dark")
+  })
+</script>

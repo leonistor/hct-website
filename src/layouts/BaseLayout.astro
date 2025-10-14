@@ -2,31 +2,77 @@
 import "@/styles/starwind.css"
 
 import { Font } from "astro:assets"
+import { ClientRouter } from "astro:transitions"
 
 import Navigation from "@/components/Navigation.astro"
+import Footer from "@/components/Footer.astro"
 
-const { content = { title: "HCT" } } = Astro.props
+interface Props {
+  title?: string
+}
+
+const { title } = Astro.props
 ---
 
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+
     <Font cssVariable="--font-work-sans" />
-
-    <title>{content.title}</title>
-
     <style>
       body {
         font-family: var(--font-work-sans);
       }
     </style>
+
+    <!-- Theme change setup. Run early to eliminate Flash of inAccurate coloR Theme (FART) -->
+    <script is:inline>
+      function initTheme() {
+        const colorTheme = localStorage.getItem("colorTheme")
+        if (!colorTheme) {
+          // if no color theme, default to dark as that's how the site is designed
+          // document.documentElement.classList.add("dark")
+          // localStorage.setItem("colorTheme", "dark")
+
+          // if no color theme yet, use the users browser preferences
+          if (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          ) {
+            document.documentElement.classList.add("dark")
+            localStorage.setItem("colorTheme", "dark")
+          } else {
+            document.documentElement.classList.remove("dark")
+            localStorage.setItem("colorTheme", "light")
+          }
+        } else {
+          // If there is, assign the theme based on the value in local storage
+          if (colorTheme === "dark") {
+            document.documentElement.classList.add("dark")
+          } else if (colorTheme === "light") {
+            document.documentElement.classList.remove("dark")
+          }
+        }
+      }
+
+      // runs on initial page load
+      initTheme()
+
+      // runs on view transitions navigation
+      document.addEventListener("astro:after-swap", initTheme)
+    </script>
+
+    <ClientRouter />
   </head>
-  <body>
+  <body class="">
     <div class="container mx-auto flex min-h-dvh flex-col">
       <Navigation />
-      <slot />
+      <main class="grow px-3 sm:px-0"><slot /></main>
+      <Footer />
     </div>
   </body>
 </html>
