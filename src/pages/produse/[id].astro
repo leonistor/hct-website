@@ -1,0 +1,60 @@
+---
+export const prerender = false
+
+import { Debug } from "astro:components"
+
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import { getEntry } from "astro:content"
+import { windowed } from "es-toolkit"
+
+import { pairs_to_descriere } from "@/lib/util"
+
+interface Props {
+  id: string
+}
+
+const { id } = Astro.params
+if (id === undefined) {
+  return Astro.redirect("/404")
+}
+const produs_record = await getEntry("produse", id)
+if (produs_record === undefined) {
+  return Astro.redirect("/404")
+}
+
+const {
+  nume,
+  descriere,
+  descriere_extra,
+  specificatii,
+  url_producator,
+  imagini,
+  videos,
+  promo,
+  parteneri_cod,
+  parteneri_nume,
+  categorii_slug,
+  categorii_nume,
+} = produs_record.data
+
+const raw_descriere_extra = descriere_extra?.split("\r\n")!
+const pairs = windowed(raw_descriere_extra, 2, 2)
+const xxx = pairs_to_descriere(pairs)
+---
+
+<BaseLayout>
+  <h1>Produs</h1>
+  <!-- <Debug {pairs} /> -->
+  <hr />
+  <article class="">
+    <section class="text-5xl tracking-tight font-semibold">{nume}</section>
+    <hr />
+    <section class="bg-accent text-accent-content p-2">
+      <div set:html={descriere} />
+    </section>
+    <hr />
+    <section class="" set:html={xxx} />
+    <hr />
+    <!-- <section class="" set:html={descriere_extra} /> -->
+  </article>
+</BaseLayout>

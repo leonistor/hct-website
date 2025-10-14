@@ -1,0 +1,21 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import { Debug } from "astro:components"
+
+import { getEntry, render } from "astro:content"
+
+const { id } = Astro.params
+if (id === undefined) {
+  return Astro.redirect("/404")
+}
+const categorie = await getEntry("categorii", id)
+if (categorie === undefined) {
+  return Astro.redirect("/404")
+}
+
+const { nume, descriere, icon } = categorie.data
+---
+
+<BaseLayout title={categorie.data.nume}>
+  <Debug {categorie} />
+</BaseLayout>

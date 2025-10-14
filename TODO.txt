@@ -14,7 +14,6 @@
 //SECTION - layout
 //TODO - astro utils: https://forastro-docs.onrender.com/libraries/flow/
 //TODO - layout
-//TODO - page transitions
 //!SECTION ------------------------------------------------
 
 //SECTION - content

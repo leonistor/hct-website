@@ -1,0 +1,19 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/components/starwind/alert"
+import Flame from "@tabler/icons/outline/flame.svg"
+---
+
+<BaseLayout title="Not found">
+  <Alert variant="error">
+    <AlertTitle><Flame />Not found!</AlertTitle>
+    <AlertDescription>
+      The page <strong>{Astro.url}</strong> is not found.
+    </AlertDescription>
+  </Alert>
+</BaseLayout>
