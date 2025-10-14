@@ -1,0 +1,11 @@
+---
+import type { CollectionEntry } from "astro:content"
+import BaseLayout from "./BaseLayout.astro"
+interface Props {
+  post: CollectionEntry<"blog">
+}
+
+const { post } = Astro.props
+---
+
+<BaseLayout title={post.data.title} />

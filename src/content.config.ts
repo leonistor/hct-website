@@ -39,9 +39,10 @@ const blog = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/blog" }),
   schema: z.object({
     title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
+    description: z.string().nullish(),
+    pubDate: z.date().nullish(),
+    tags: z.array(z.string()),
   }),
 })
 
-export const collections = { categorii, produse }
+export const collections = { categorii, produse, blog }
