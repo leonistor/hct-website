@@ -11,7 +11,7 @@ import alpinejs from "@astrojs/alpinejs"
 export default defineConfig({
   adapter: bun(),
   output: "server",
-  devToolbar: { enabled: false },
+  // devToolbar: { enabled: false },
 
   vite: {
     plugins: [tailwindcss()],

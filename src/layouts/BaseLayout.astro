@@ -3,6 +3,7 @@ import "@/styles/starwind.css"
 
 import { Font } from "astro:assets"
 import { ClientRouter } from "astro:transitions"
+import LayoutGrid from "astro-layoutgrid"
 
 import Navigation from "@/components/Navigation.astro"
 import Footer from "@/components/Footer.astro"
@@ -74,5 +75,6 @@ const { title } = Astro.props
       <main class="grow px-3 sm:px-0"><slot /></main>
       <Footer />
     </div>
+    <LayoutGrid />
   </body>
 </html>
