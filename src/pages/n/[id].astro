@@ -17,4 +17,8 @@ if (post === undefined) {
 const { Content } = await render(post)
 ---
 
-<BaseLayout title={post.data.title}><Content /></BaseLayout>
+<BaseLayout title={post.data.title}>
+  <div class="prose dark:prose-invert">
+    <Content />
+  </div>
+</BaseLayout>
