@@ -2,12 +2,15 @@
 export const prerender = false
 
 import { Debug } from "astro:components"
+import { For } from "@forastro/flow"
 
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { getEntry } from "astro:content"
-import { windowed } from "es-toolkit"
 
-import { pairs_to_descriere } from "@/lib/util"
+import { descriere_extra_to_html, specificatii_to_html } from "@/lib/util"
+import Separator from "@/components/starwind/separator"
+import { Image } from "astro:assets"
+import Checkbox from "@/components/starwind/checkbox"
 
 interface Props {
   id: string
@@ -29,6 +32,7 @@ const {
   specificatii,
   url_producator,
   imagini,
+  materiale,
   videos,
   promo,
   parteneri_cod,
@@ -37,24 +41,52 @@ const {
   categorii_nume,
 } = produs_record.data
 
-const raw_descriere_extra = descriere_extra?.split("\r\n")!
-const pairs = windowed(raw_descriere_extra, 2, 2)
-const xxx = pairs_to_descriere(pairs)
+const descriere_extra_html = descriere_extra_to_html(
+  descriere_extra,
+  "font-semibold mb-0.5",
+  "font-light mb-3",
+)
 ---
 
 <BaseLayout>
   <h1>Produs</h1>
-  <!-- <Debug {pairs} /> -->
-  <hr />
-  <article class="">
-    <section class="text-5xl tracking-tight font-semibold">{nume}</section>
-    <hr />
-    <section class="bg-accent text-accent-content p-2">
+  <Debug {materiale} />
+
+  <Separator />
+
+  <article class="mt-4 flex flex-col gap-2">
+    <!-- nume -->
+    <section class="text-4xl font-semibold tracking-tight">{nume}</section>
+
+    <!-- descriere -->
+    <section class="text-xl font-medium">
       <div set:html={descriere} />
     </section>
-    <hr />
-    <section class="" set:html={xxx} />
-    <hr />
-    <!-- <section class="" set:html={descriere_extra} /> -->
+
+    <!-- TODO: fns to components -->
+    <!-- descriere_extra -->
+    <section class="" set:html={descriere_extra_html} />
+
+    <!-- specificatii -->
+    <section class="" set:html={specificatii_to_html(specificatii)} />
+
+    <section>{url_producator}</section>
+    <section><Checkbox label="promo" checked={promo} /></section>
+    <section>{videos}</section>
+    <section>{parteneri_cod} - {parteneri_nume}</section>
+    <section>{categorii_slug}: {categorii_nume}</section>
+
+    <!-- imagini -->
+    <section class="flex flex-wrap gap-1">
+      {
+        imagini && (
+          <For of={imagini}>
+            {(img) => (
+              <img src={`${img}`} class="aspect-square w-48" alt={nume} />
+            )}
+          </For>
+        )
+      }
+    </section>
   </article>
 </BaseLayout>
