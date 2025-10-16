@@ -1,5 +1,4 @@
 ---
-import "@fontsource-variable/work-sans"
 import "@/styles/starwind.css"
 
 import { ClientRouter } from "astro:transitions"
@@ -22,12 +21,6 @@ const { title } = Astro.props
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <title>{title}</title>
-
-    <style>
-      body {
-        font-family: "Work Sans Variable", var(--font-sans);
-      }
-    </style>
 
     <!-- Theme change setup. Run early to eliminate Flash of inAccurate coloR Theme (FART) -->
     <script is:inline>
@@ -75,6 +68,7 @@ const { title } = Astro.props
 
     <ClientRouter />
   </head>
+
   <body class="">
     <div class="container mx-auto flex min-h-dvh flex-col">
       <Navigation />

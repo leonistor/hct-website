@@ -7,11 +7,24 @@ import BaseLayout from "@/layouts/BaseLayout.astro"
 <BaseLayout title="Elements">
   <h1>Elements</h1>
 
-  <h2>Typography</h2>
+  <h2>Font</h2>
+
+  <div class="text-xl">
+    <p class="font-thin">The quick brown fox [thin]</p>
+    <p class="font-extralight">The quick brown fox [extralight]</p>
+    <p class="font-light">The quick brown fox [light]</p>
+    <p class="font-normal">The quick brown fox [normal]</p>
+    <p class="font-medium">The quick brown fox [medium]</p>
+    <p class="font-semibold">The quick brown fox [semibold]</p>
+    <p class="font-bold">The quick brown fox [bold]</p>
+    <p class="font-extrabold">The quick brown fox [extrabold]</p>
+    <p class="font-black">The quick brown fox [black]</p>
+  </div>
 
   <div class="text-2xl">
     <For
       of={[
+        "thin",
         "extralight",
         "light",
         "normal",
@@ -25,7 +38,10 @@ import BaseLayout from "@/layouts/BaseLayout.astro"
       {
         (value, info) => (
           <div class={`font-${value}`}>
-            {value} Sphinx of black quartz, judge my vow. ăîșțâĂÎȘȚÂ
+            <span class="font-normal underline decoration-pink-600 underline-offset-4">
+              {value}
+            </span>{" "}
+            Sphinx of black quartz, judge my vow. ăîșțâĂÎȘȚÂ
           </div>
         )
       }
