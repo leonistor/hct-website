@@ -16,6 +16,8 @@ import DescriereExtra from "@/components/ui/produs/DescriereExtra.astro"
 import Specificatii from "@/components/ui/produs/Specificatii.astro"
 import { Image } from "astro:assets"
 
+import { LightGallery } from "astro-lightgallery"
+
 interface Props {
   id: string
 }
@@ -42,6 +44,8 @@ const {
   parteneri_cod,
   categorii_slug,
 } = produs_record.data
+
+const gallery_imgs = (imagini ?? []).map((img) => ({ src: img }))
 ---
 
 <BaseLayout>
@@ -99,6 +103,11 @@ const {
           </For>
         )
       }
+    </section>
+
+    <!-- gallery -->
+    <section>
+      <LightGallery layout={{ imgs: gallery_imgs }} />
     </section>
   </article>
 </BaseLayout>

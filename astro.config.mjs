@@ -16,12 +16,14 @@ export default defineConfig({
   adapter: bun(),
   output: "server",
   // devToolbar: { enabled: false },
+  server: {
+    host: "0.0.0.0",
+  },
 
   vite: {
     plugins: [tailwindcss()],
     clearScreen: false,
     server: {
-      host: "0.0.0.0",
       watch: {
         ignored: ["pocket/**", "*.txt", "TODO.md", "import_data/*"],
       },

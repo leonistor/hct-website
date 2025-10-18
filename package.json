@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "bunx --bun astro dev",
+    "dev": "bunx --bun astro dev --host",
     "build": "bunx --bun astro build",
     "preview": "bun run ./dist/server/entry.mjs",
     "astro": "bunx --bun astro",
@@ -33,6 +33,7 @@
     "alpinejs": "^3.15.0",
     "astro": "^5.14.4",
     "astro-layoutgrid": "^1.2.0",
+    "astro-lightgallery": "^2.0.1",
     "astro-loader-pocketbase": "^2.8.1",
     "embla-carousel": "^8.6.0",
     "es-toolkit": "^1.40.0",
