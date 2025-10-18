@@ -15,6 +15,7 @@ import PillMaterial from "@/components/ui/pills/PillMaterial.astro"
 import PillCategorie from "@/components/ui/pills/PillCategorie.astro"
 import PillURL from "@/components/ui/pills/PillURL.astro"
 import PillPartener from "@/components/ui/pills/PillPartener.astro"
+import DescriereExtra from "@/components/ui/produs/DescriereExtra.astro"
 
 interface Props {
   id: string
@@ -40,9 +41,7 @@ const {
   videos,
   promo,
   parteneri_cod,
-  parteneri_nume,
   categorii_slug,
-  categorii_nume,
 } = produs_record.data
 
 const descriere_extra_html = descriere_extra_to_html(
@@ -70,7 +69,10 @@ const descriere_extra_html = descriere_extra_to_html(
     </section>
 
     <!-- descriere_extra -->
-    <section class="line-clamp-6" set:html={descriere_extra_html} />
+    <!-- <section class="line-clamp-6" set:html={descriere_extra_html} /> -->
+    <section>
+      {descriere_extra && <DescriereExtra text={descriere_extra} />}
+    </section>
 
     <!-- specificatii -->
     <section
