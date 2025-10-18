@@ -16,6 +16,7 @@ import PillCategorie from "@/components/ui/pills/PillCategorie.astro"
 import PillURL from "@/components/ui/pills/PillURL.astro"
 import PillPartener from "@/components/ui/pills/PillPartener.astro"
 import DescriereExtra from "@/components/ui/produs/DescriereExtra.astro"
+import Specificatii from "@/components/ui/produs/Specificatii.astro"
 
 interface Props {
   id: string
@@ -75,10 +76,11 @@ const descriere_extra_html = descriere_extra_to_html(
     </section>
 
     <!-- specificatii -->
-    <section
-      class="line-clamp-6"
-      set:html={specificatii_to_html(specificatii)}
-    />
+    <section>
+      {specificatii && <Specificatii text={specificatii} />}
+    </section>
+
+    <!-- materiale -->
     <section class="flex flex-row gap-1">
       {
         materiale && (
