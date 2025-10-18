@@ -1,0 +1,21 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import { Debug } from "astro:components"
+
+import { getEntry } from "astro:content"
+
+const { cod } = Astro.params
+if (cod === undefined) {
+  return Astro.redirect("/404")
+}
+const partener = await getEntry("parteneri", cod)
+if (partener === undefined) {
+  return Astro.redirect("/404")
+}
+
+const { nume, descriere, logo, url } = partener.data
+---
+
+<BaseLayout title={nume}>
+  <Debug {partener} />
+</BaseLayout>

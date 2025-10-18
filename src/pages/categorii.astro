@@ -21,10 +21,9 @@ const allCategorii = await getCollection("categorii")
   <ItemGroup class="grid grid-cols-3 gap-4">
     {
       allCategorii.map((categ) => {
-        const { nume, icon, descriere } = categ.data
-        const id = String(categ.data.id)
+        const { nume, icon, descriere, slug } = categ.data
         return (
-          <Item variant="outline" as="a" href={`/c/${id}`}>
+          <Item variant="outline" as="a" href={`/c/${slug}`}>
             <ItemHeader />
             <ItemContent>
               <ItemTitle>{nume}</ItemTitle>

@@ -48,7 +48,6 @@ const parteneri = defineCollection({
     ...pocketOptions,
     idField: "cod",
     improveTypes: true,
-    // contentFields: "icon",
   }),
 })
 
