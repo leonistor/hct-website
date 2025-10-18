@@ -82,7 +82,8 @@ const descriere_extra_html = descriere_extra_to_html(
         imagini && (
           <For of={imagini}>
             {(img) => (
-              <img src={`${img}`} class="aspect-square w-48" alt={nume} />
+              <Image src={`${img}?thumb=200x200f`} alt={nume} inferSize />
+              // <img src={`${img}`} class="aspect-square w-48" alt={nume} />
             )}
           </For>
         )
