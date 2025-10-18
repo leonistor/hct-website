@@ -7,7 +7,7 @@ import bun from "@hedystia/astro-bun"
 
 import alpinejs from "@astrojs/alpinejs"
 
-import mdx from "@astrojs/mdx";
+import mdx from "@astrojs/mdx"
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,7 +23,7 @@ export default defineConfig({
     server: {
       host: "0.0.0.0",
       watch: {
-        ignored: ["pocket/**", "*.txt", "import_data/*"],
+        ignored: ["pocket/**", "*.txt", "TODO.md", "import_data/*"],
       },
     },
   },

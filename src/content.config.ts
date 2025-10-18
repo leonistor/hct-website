@@ -18,7 +18,7 @@ const pocketOptions: Omit<PocketBaseLoaderOptions, "collectionName"> = {
 
 const categorii = defineCollection({
   loader: pocketbaseLoader({
-    collectionName: "v_categorii",
+    collectionName: "categorii",
     ...pocketOptions,
     idField: "slug",
     improveTypes: true,

@@ -18,6 +18,7 @@
 
 navigation desktop https://lexingtonthemes.com/tutorials/how-to-create-an-animated-navigation-with-javascript
 
+[ ] logo, contract on scroll
 [ ] navigation mobile
 [ ] product card / grid / list
 [ ] markdown blog (noutati)
