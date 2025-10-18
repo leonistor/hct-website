@@ -1,0 +1,20 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    ".astro": true,
+    "dist": true,
+    "node_modules": true,
+    ".prettierignore": true,
+    ".gitignore": true,
+    "tsconfig.json": true,
+    ".prettierrc.json": true,
+    "eslint.config.js": true,
+    "src/env.d.ts": true,
+    "import_data": true
+  },
+  "explorerExclude.backup": {}
+}

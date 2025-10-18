@@ -4,7 +4,7 @@ export function stripTags(text: string): string {
   return text.replace(/(<([^>]+)>)/gi, "")
 }
 
-// TODO: - better https://www.hyperui.dev/components/application/details-list?codeType=html&isRtl=false&previewWidth=340px#component-1
+// TODO better https://www.hyperui.dev/components/application/details-list?codeType=html&isRtl=false&previewWidth=340px#component-1
 export function descriere_extra_to_html(
   descriere_extra: string | undefined,
   dt_class = "",
