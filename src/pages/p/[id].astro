@@ -1,22 +1,20 @@
 ---
 export const prerender = false
 
-import { Debug } from "astro:components"
 import { For } from "@forastro/flow"
 
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { getEntry } from "astro:content"
 
-import { descriere_extra_to_html, specificatii_to_html } from "@/lib/util"
-import Separator from "@/components/starwind/separator"
-import { Image } from "astro:assets"
 import Checkbox from "@/components/starwind/checkbox"
-import PillMaterial from "@/components/ui/pills/PillMaterial.astro"
+import Separator from "@/components/starwind/separator"
 import PillCategorie from "@/components/ui/pills/PillCategorie.astro"
-import PillURL from "@/components/ui/pills/PillURL.astro"
+import PillMaterial from "@/components/ui/pills/PillMaterial.astro"
 import PillPartener from "@/components/ui/pills/PillPartener.astro"
+import PillURL from "@/components/ui/pills/PillURL.astro"
 import DescriereExtra from "@/components/ui/produs/DescriereExtra.astro"
 import Specificatii from "@/components/ui/produs/Specificatii.astro"
+import { Image } from "astro:assets"
 
 interface Props {
   id: string
@@ -44,14 +42,6 @@ const {
   parteneri_cod,
   categorii_slug,
 } = produs_record.data
-
-const descriere_extra_html = descriere_extra_to_html(
-  descriere_extra,
-  "font-semibold mb-0.5",
-  "font-light mb-3",
-)
-
-// TODO fns to components
 ---
 
 <BaseLayout>
