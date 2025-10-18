@@ -16,6 +16,14 @@ const pocketOptions: Omit<PocketBaseLoaderOptions, "collectionName"> = {
 
 /* pocketbase */
 
+const produse = defineCollection({
+  loader: pocketbaseLoader({
+    collectionName: "v_produse",
+    ...pocketOptions,
+    improveTypes: true,
+  }),
+})
+
 const categorii = defineCollection({
   loader: pocketbaseLoader({
     collectionName: "categorii",
@@ -23,14 +31,6 @@ const categorii = defineCollection({
     idField: "slug",
     improveTypes: true,
     contentFields: "icon",
-  }),
-})
-
-const produse = defineCollection({
-  loader: pocketbaseLoader({
-    collectionName: "v_produse",
-    ...pocketOptions,
-    improveTypes: true,
   }),
 })
 
@@ -42,9 +42,19 @@ const materiale = defineCollection({
   }),
 })
 
-const linii_si_produse = defineCollection({
+const parteneri = defineCollection({
   loader: pocketbaseLoader({
-    collectionName: "v_linii_si_produse",
+    collectionName: "v_parteneri",
+    ...pocketOptions,
+    idField: "cod",
+    improveTypes: true,
+    // contentFields: "icon",
+  }),
+})
+
+const linii_produse = defineCollection({
+  loader: pocketbaseLoader({
+    collectionName: "linii_produse",
     ...pocketOptions,
     improveTypes: true,
   }),
@@ -64,8 +74,9 @@ const blog = defineCollection({
 
 export const collections = {
   categorii,
+  parteneri,
   produse,
   blog,
   materiale,
-  linii_si_produse,
+  linii_produse,
 }

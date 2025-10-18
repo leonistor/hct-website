@@ -11,9 +11,10 @@ import { descriere_extra_to_html, specificatii_to_html } from "@/lib/util"
 import Separator from "@/components/starwind/separator"
 import { Image } from "astro:assets"
 import Checkbox from "@/components/starwind/checkbox"
-import PillMaterial from "@/components/ui/PillMaterial.astro"
-import PillCategorie from "@/components/ui/PillCategorie.astro"
-import PillURL from "@/components/ui/PillURL.astro"
+import PillMaterial from "@/components/ui/pills/PillMaterial.astro"
+import PillCategorie from "@/components/ui/pills/PillCategorie.astro"
+import PillURL from "@/components/ui/pills/PillURL.astro"
+import PillPartener from "@/components/ui/pills/PillPartener.astro"
 
 interface Props {
   id: string
@@ -55,7 +56,7 @@ const descriere_extra_html = descriere_extra_to_html(
 
 <BaseLayout>
   <h1>Produs</h1>
-  <Debug {materiale} />
+  <!-- <Debug {materiale} /> -->
 
   <Separator />
 
@@ -89,13 +90,8 @@ const descriere_extra_html = descriere_extra_to_html(
     <section><PillURL url={url_producator ?? ""} /></section>
     <section><Checkbox label="promo" checked={promo} /></section>
     <section>{videos}</section>
-    <section>{parteneri_cod} - {parteneri_nume}</section>
-    <section>
-      <p>
-        {categorii_slug}: {categorii_nume}
-      </p>
-      <PillCategorie slug={String(categorii_slug)} />
-    </section>
+    <section><PillPartener cod={parteneri_cod} /></section>
+    <section><PillCategorie slug={String(categorii_slug)} /></section>
 
     <!-- imagini -->
     <section class="flex flex-wrap gap-1">

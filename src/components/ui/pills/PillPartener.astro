@@ -1,0 +1,20 @@
+---
+import { getEntry } from "astro:content"
+
+interface Props {
+  cod: string
+}
+
+const { cod } = Astro.props
+
+const partener = await getEntry("parteneri", cod)
+if (partener === undefined) {
+  return Astro.redirect("/404")
+}
+const { nume } = partener.data
+---
+
+<span
+  class="bg-warning text-warning-foreground inline-flex items-center justify-center gap-1 rounded-full px-3 py-1"
+  ><a class="text-sm whitespace-nowrap" href={`/parteneri/${cod}`}> {nume}</a>
+</span>
