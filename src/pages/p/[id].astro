@@ -12,6 +12,8 @@ import Separator from "@/components/starwind/separator"
 import { Image } from "astro:assets"
 import Checkbox from "@/components/starwind/checkbox"
 import PillMaterial from "@/components/ui/PillMaterial.astro"
+import PillCategorie from "@/components/ui/PillCategorie.astro"
+import PillURL from "@/components/ui/PillURL.astro"
 
 interface Props {
   id: string
@@ -83,11 +85,16 @@ const descriere_extra_html = descriere_extra_to_html(
       }
     </section>
 
-    <section>{url_producator}</section>
+    <section><PillURL url={url_producator ?? ""} /></section>
     <section><Checkbox label="promo" checked={promo} /></section>
     <section>{videos}</section>
     <section>{parteneri_cod} - {parteneri_nume}</section>
-    <section>{categorii_slug}: {categorii_nume}</section>
+    <section>
+      <p>
+        {categorii_slug}: {categorii_nume}
+      </p>
+      <PillCategorie slug={String(categorii_slug)} />
+    </section>
 
     <!-- imagini -->
     <section class="flex flex-wrap gap-1">

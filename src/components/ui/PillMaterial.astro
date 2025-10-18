@@ -14,8 +14,8 @@ if (material === undefined) {
 const { denumire, icon, slug } = material.data
 ---
 
+<!-- <div class="" set:html={icon} /> -->
 <span
   class="bg-info text-info-foreground inline-flex items-center justify-center gap-1 rounded-full px-3 py-1"
-  ><div class="" set:html={icon} />
-  <a class="text-sm whitespace-nowrap" href={`/m/${slug}`}> {denumire}</a>
+  ><a class="text-sm whitespace-nowrap" href={`/m/${slug}`}> {denumire}</a>
 </span>

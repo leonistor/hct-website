@@ -20,6 +20,7 @@ const categorii = defineCollection({
   loader: pocketbaseLoader({
     collectionName: "v_categorii",
     ...pocketOptions,
+    idField: "slug",
     improveTypes: true,
     contentFields: "icon",
   }),

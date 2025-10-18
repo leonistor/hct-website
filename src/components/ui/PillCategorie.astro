@@ -2,20 +2,22 @@
 import { getEntry } from "astro:content"
 
 interface Props {
-  id: string
+  slug: string
 }
 
-const { id } = Astro.props
+const { slug } = Astro.props
 
-const categorie = await getEntry("categorii", id)
+const categorie = await getEntry("categorii", slug)
 if (categorie === undefined) {
   return Astro.redirect("/404")
 }
-const { nume, descriere, icon, slug } = categorie.data
+const { nume, descriere, icon } = categorie.data
 ---
 
+<!-- <div class="" set:html={icon} /> -->
 <span
   class="bg-success text-success-foreground inline-flex items-center justify-center gap-1 rounded-full px-3 py-1"
-  ><div class="" set:html={icon} />
-  <a class="text-sm whitespace-nowrap" href={`/m/${slug}`}> {nume}</a>
+  ><a class="text-sm whitespace-nowrap" href={`/c/${slug}`} title={descriere}
+    >{nume}</a
+  >
 </span>
