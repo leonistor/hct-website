@@ -33,6 +33,22 @@ const produse = defineCollection({
   }),
 })
 
+const materiale = defineCollection({
+  loader: pocketbaseLoader({
+    collectionName: "v_materiale",
+    ...pocketOptions,
+    improveTypes: true,
+  }),
+})
+
+const linii_si_produse = defineCollection({
+  loader: pocketbaseLoader({
+    collectionName: "v_linii_si_produse",
+    ...pocketOptions,
+    improveTypes: true,
+  }),
+})
+
 /* mdx */
 
 const blog = defineCollection({
@@ -45,4 +61,10 @@ const blog = defineCollection({
   }),
 })
 
-export const collections = { categorii, produse, blog }
+export const collections = {
+  categorii,
+  produse,
+  blog,
+  materiale,
+  linii_si_produse,
+}

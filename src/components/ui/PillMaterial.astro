@@ -1,0 +1,21 @@
+---
+import { getEntry } from "astro:content"
+
+interface Props {
+  id: string
+}
+
+const { id } = Astro.props
+
+const material = await getEntry("materiale", id)
+if (material === undefined) {
+  return Astro.redirect("/404")
+}
+const { denumire, icon, slug } = material.data
+---
+
+<span
+  class="bg-info text-info-foreground inline-flex items-center justify-center gap-1 rounded-full px-3 py-1"
+  ><div class="" set:html={icon} />
+  <a class="text-sm whitespace-nowrap" href={`/m/${slug}`}> {denumire}</a>
+</span>
