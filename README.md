@@ -7,4 +7,5 @@
 
 ## dev
 
-API test: `xh -A bearer -a "<TOKEN>" :8090/api/collections/v_categorii/records?fields=slug | fx '.items[].slug' | less`
+- API test: `xh -A bearer -a "<TOKEN>" :8090/api/collections/v_categorii/records?fields=slug | fx '.items[].slug' | less`
+- lightbox alt: https://github.com/biati-digital/glightbox, https://github.com/feimosi/baguetteBox.js, https://photoswipe.com/getting-started/
