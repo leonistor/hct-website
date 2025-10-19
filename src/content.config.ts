@@ -59,6 +59,28 @@ const linii_produse = defineCollection({
   }),
 })
 
+// for prods grid
+const lista_produse = defineCollection({
+  loader: pocketbaseLoader({
+    collectionName: "v_produse",
+    ...pocketOptions,
+    improveTypes: true,
+    fields: [
+      "id",
+      "nume",
+      "descriere",
+      "imagini",
+      "promo",
+      "parteneri_cod",
+      "parteneri_nume",
+      "categorii_slug",
+      "categorii_nume",
+      "created",
+      "updated",
+    ],
+  }),
+})
+
 /* mdx */
 
 const blog = defineCollection({
@@ -78,4 +100,5 @@ export const collections = {
   blog,
   materiale,
   linii_produse,
+  lista_produse,
 }

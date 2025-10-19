@@ -1,0 +1,15 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import { Debug } from "astro:components"
+
+import { getCollection } from "astro:content"
+
+const allProds = (await getCollection("lista_produse")).map((elem) => elem.data)
+
+const prod = allProds[0]
+---
+
+<BaseLayout title="scratchpad">
+  <Debug {prod} />
+  Total: {allProds.length}
+</BaseLayout>
