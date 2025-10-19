@@ -2,23 +2,24 @@
 import BaseLayout from "@/layouts/BaseLayout.astro"
 
 import { getEntry, render } from "astro:content"
-// 1. Get the slug from the incoming server request
+
+import Heading1 from "@/components/ui/typography/Heading1.astro"
+
 const { id } = Astro.params
 if (id === undefined) {
   return Astro.redirect("/404")
 }
-// 2. Query for the entry directly using the request slug
+
 const post = await getEntry("blog", id)
-// 3. Redirect if the entry does not exist
 if (post === undefined) {
   return Astro.redirect("/404")
 }
-// 4. Render the entry to HTML in the template
+
 const { Content } = await render(post)
 ---
 
 <BaseLayout title={post.data.title}>
   <div class="prose dark:prose-invert">
-    <Content />
+    <Content components={{ h1: Heading1 }} />
   </div>
 </BaseLayout>
