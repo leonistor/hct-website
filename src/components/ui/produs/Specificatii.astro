@@ -2,27 +2,23 @@
 import { stripTags } from "@/lib/util"
 import { For } from "@forastro/flow"
 
-import {
-  Item,
-  ItemContent,
-  ItemTitle,
-  ItemDescription,
-} from "@/components/starwind/item"
-
 interface Props {
   text: string
 }
 
 const { text } = Astro.props
+const has_pairs = text.includes("\r\n")
 
-const pairs = text
-  .split("\r\n")
-  .map(stripTags)
-  .map((e) => e.split(":"))
-  .map((pair) => ({
-    dt: stripTags(pair[0]),
-    dd: stripTags(pair[1]),
-  }))
+const pairs = has_pairs
+  ? text
+      .split("\r\n")
+      .map(stripTags)
+      .map((e) => e.split(":"))
+      .map((pair) => ({
+        dt: stripTags(pair[0]),
+        dd: stripTags(pair[1]),
+      }))
+  : [{ dt: "", dd: text }]
 ---
 
 <dl class="divide-accent divide-y">

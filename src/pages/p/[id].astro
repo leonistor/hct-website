@@ -66,12 +66,20 @@ const gallery_imgs = (imagini ?? []).map((img) => ({ src: img }))
     <!-- descriere_extra -->
     <!-- <section class="line-clamp-6" set:html={descriere_extra_html} /> -->
     <section>
-      {descriere_extra && <DescriereExtra text={descriere_extra} />}
+      {
+        descriere_extra && descriere_extra !== "" && (
+          <DescriereExtra text={descriere_extra} />
+        )
+      }
     </section>
 
     <!-- specificatii -->
     <section>
-      {specificatii && <Specificatii text={specificatii} />}
+      {
+        specificatii && specificatii != "" && (
+          <Specificatii text={specificatii} />
+        )
+      }
     </section>
 
     <!-- materiale -->
@@ -92,7 +100,7 @@ const gallery_imgs = (imagini ?? []).map((img) => ({ src: img }))
     <section><PillCategorie slug={String(categorii_slug)} /></section>
 
     <!-- imagini -->
-    <section class="flex flex-wrap gap-1">
+    <!-- <section class="flex flex-wrap gap-1">
       {
         imagini && (
           <For of={imagini}>
@@ -103,7 +111,7 @@ const gallery_imgs = (imagini ?? []).map((img) => ({ src: img }))
           </For>
         )
       }
-    </section>
+    </section> -->
 
     <!-- gallery -->
     <section>

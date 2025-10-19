@@ -1,0 +1,52 @@
+---
+interface Props {
+  prod: {
+    id: string
+    collectionId: string
+    collectionName: string
+    nume: string
+    descriere?: string | undefined
+    imagini?: string[] | undefined
+    promo: boolean
+    created: Date
+    updated: Date
+    parteneri_cod: string
+    categorii_slug?: unknown | undefined
+  }
+}
+
+const { prod } = Astro.props
+
+/**
+ *
+ *
+ * TODO: produs imagine principala extra column
+ *
+ *
+ */
+---
+
+<a href={`/p/${prod.id}`} class="group block overflow-hidden">
+  <div class="relative h-[350px] sm:h-[450px]">
+    <img
+      src={prod.imagini![0]}
+      alt=""
+      class="absolute inset-0 h-full w-full object-cover opacity-100 duration-500 group-hover:scale-105"
+    />
+  </div>
+
+  <div class="relative pt-3">
+    <h3
+      class="font-headings text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4"
+    >
+      {prod.nume}
+    </h3>
+    <p class="line-clamp-3 font-light">{prod.descriere}</p>
+
+    <div class="mt-1.5 flex items-center justify-between text-gray-900">
+      <p class="tracking-wide">{prod.parteneri_cod}</p>
+
+      <p class="text-xs tracking-wide uppercase">6 Colors</p>
+    </div>
+  </div>
+</a>
