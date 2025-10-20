@@ -1,4 +1,6 @@
 ---
+import PillPartener from "@/components/ui/pills/PillPartener.astro"
+
 interface Props {
   prod: {
     id: string
@@ -17,17 +19,11 @@ interface Props {
 
 const { prod } = Astro.props
 
-/**
- *
- *
- * TODO: produs imagine principala extra column
- *
- *
- */
+// TODO: badge partener
 ---
 
 <a href={`/p/${prod.id}`} class="group block overflow-hidden">
-  <div class="relative h-[350px] sm:h-[450px]">
+  <div class="relative h-[300px] sm:h-[350px]">
     <img
       src={prod.imagini![0]}
       alt=""
@@ -41,10 +37,11 @@ const { prod } = Astro.props
     >
       {prod.nume}
     </h3>
-    <p class="line-clamp-3 font-light">{prod.descriere}</p>
+    <!-- <p class="line-clamp-3 font-light">{prod.descriere}</p> -->
 
-    <div class="mt-1.5 flex items-center justify-between text-gray-900">
-      <p class="tracking-wide">{prod.parteneri_cod}</p>
+    <div class="mt-1.5 flex items-center justify-start text-gray-900">
+      <!-- <p class="tracking-wide">{prod.parteneri_cod}</p> -->
+      <!-- <p><PillPartener cod={prod.parteneri_cod} /></p> -->
 
       <p class="text-xs tracking-wide uppercase">6 Colors</p>
     </div>

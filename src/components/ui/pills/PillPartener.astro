@@ -14,7 +14,11 @@ if (partener === undefined) {
 const { nume } = partener.data
 ---
 
-<span
-  class="bg-warning text-warning-foreground inline-flex items-center justify-center gap-1 rounded-full px-3 py-1"
-  ><a class="text-sm whitespace-nowrap" href={`/parteneri/${cod}`}> {nume}</a>
-</span>
+<!-- <div --><!-- class="bg-warning text-warning-foreground inline-flex items-center justify-center gap-1 rounded-full px-3 py-1" --><!-- > -->
+<a
+  class="bg-warning text-warning-foreground rounded-full px-3 py-1 text-sm whitespace-nowrap"
+  href={`/parteneri/${cod}`}
+>
+  {nume}</a
+>
+<!-- </div> -->
