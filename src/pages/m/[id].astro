@@ -1,0 +1,22 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import { Debug } from "astro:components"
+
+import { getEntry, render } from "astro:content"
+
+const { id } = Astro.params
+if (id === undefined) {
+  return Astro.redirect("/404")
+}
+const material = await getEntry("materiale", id)
+if (material === undefined) {
+  return Astro.redirect("/404")
+}
+
+const { denumire, icon, imagine } = material.data
+---
+
+<!-- ACHTUNG!!! id--slug -->
+<BaseLayout title={`Materiale: ${denumire}`}>
+  <Debug {material} />
+</BaseLayout>

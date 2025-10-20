@@ -38,6 +38,7 @@ const materiale = defineCollection({
   loader: pocketbaseLoader({
     collectionName: "v_materiale",
     ...pocketOptions,
+    idField: "slug",
     improveTypes: true,
   }),
 })
