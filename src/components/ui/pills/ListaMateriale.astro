@@ -1,0 +1,26 @@
+---
+import type { HTMLAttributes } from "astro/types"
+
+import { getCollection } from "astro:content"
+
+interface Props extends HTMLAttributes<"div"> {
+  lista: string[]
+}
+
+const { lista, ...attrs } = Astro.props
+
+const materialeAll = await getCollection("materiale")
+const materiale = materialeAll.filter((m) => lista.includes(m.data.id))
+---
+
+<div {...attrs}>
+  {
+    materiale.map((m) => (
+      <span class="bg-info text-info-foreground inline-flex items-center justify-center gap-1 rounded-full px-3 py-1">
+        <a class="text-sm whitespace-nowrap" href={`/m/${m.data.slug}`}>
+          {m.data.denumire}
+        </a>
+      </span>
+    ))
+  }
+</div>

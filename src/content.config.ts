@@ -4,6 +4,17 @@ import { glob } from "astro/loaders"
 import { pocketbaseLoader } from "astro-loader-pocketbase"
 import type { PocketBaseLoaderOptions } from "astro-loader-pocketbase"
 
+import PocketBase from "pocketbase"
+import { type TypedPocketBase } from "pocket/pocketbase-types"
+// init pocketbase
+const pb = new PocketBase(process.env.PB_TYPEGEN_URL!) as TypedPocketBase
+const auth = await pb
+  .collection("_superusers")
+  .authWithPassword(
+    process.env.POCKET_SUPERUSER_EMAIL!,
+    process.env.POCKET_SUPERUSER_PASS!,
+  )
+
 const pocketOptions: Omit<PocketBaseLoaderOptions, "collectionName"> = {
   url: import.meta.env.PB_TYPEGEN_URL,
   updatedField: "updated",
@@ -23,6 +34,15 @@ const produse = defineCollection({
     improveTypes: true,
   }),
 })
+
+// const v_produse = defineCollection({
+//   loader: async () => {
+//     const prods = await pb
+//       .collection("v_produse")
+//       .getFullList({ expand: "materiale" })
+//   },
+//   // schema: /* ... */
+// })
 
 const categorii = defineCollection({
   loader: pocketbaseLoader({

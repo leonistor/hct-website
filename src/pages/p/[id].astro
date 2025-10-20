@@ -17,6 +17,7 @@ import Specificatii from "@/components/ui/produs/Specificatii.astro"
 import { Image } from "astro:assets"
 
 import { LightGallery } from "astro-lightgallery"
+import ListaMateriale from "@/components/ui/pills/ListaMateriale.astro"
 
 interface Props {
   id: string
@@ -89,9 +90,7 @@ const gallery_imgs = (imagini ?? []).map((img) => ({ src: img }))
     <section class="flex flex-row gap-1">
       {
         materiale && (
-          <For of={materiale}>
-            {(material) => <PillMaterial id={material} />}
-          </For>
+          <ListaMateriale lista={materiale} class="flex flex-row gap-2" />
         )
       }
     </section>
