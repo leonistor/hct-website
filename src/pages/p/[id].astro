@@ -1,23 +1,19 @@
 ---
 export const prerender = false
 
-import { For } from "@forastro/flow"
-
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { getEntry } from "astro:content"
 
 import Checkbox from "@/components/starwind/checkbox"
 import Separator from "@/components/starwind/separator"
 import PillCategorie from "@/components/ui/pills/PillCategorie.astro"
-import PillMaterial from "@/components/ui/pills/PillMaterial.astro"
 import PillPartener from "@/components/ui/pills/PillPartener.astro"
 import PillURL from "@/components/ui/pills/PillURL.astro"
 import DescriereExtra from "@/components/ui/produs/DescriereExtra.astro"
 import Specificatii from "@/components/ui/produs/Specificatii.astro"
-import { Image } from "astro:assets"
 
-import { LightGallery } from "astro-lightgallery"
 import ListaMateriale from "@/components/ui/pills/ListaMateriale.astro"
+import { LightGallery } from "astro-lightgallery"
 
 interface Props {
   id: string
@@ -50,6 +46,7 @@ const gallery_imgs = (imagini ?? []).map((img) => ({ src: img }))
 
 // TODO: produs imagine principala extra column
 // TODO: single image
+// TODO: descriere_extra --> types (dd, rich text)
 ---
 
 <BaseLayout>

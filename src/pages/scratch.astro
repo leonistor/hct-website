@@ -6,12 +6,9 @@ import { Debug } from "astro:components"
 import { getCollection } from "astro:content"
 
 const allProds = (await getCollection("lista_produse")).map((elem) => elem.data)
-
-const prod = allProds.find((p) => p.id === "92ouomaojl7kckj")
 ---
 
 <BaseLayout title="scratchpad">
-  <!-- <Debug {prod} /> -->
   Total: {allProds.length}
   <section class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
     {allProds.map((prod) => <CardProdus {prod} />)}
