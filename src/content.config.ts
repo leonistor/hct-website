@@ -1,105 +1,67 @@
 import { defineCollection, z } from "astro:content"
 import { glob } from "astro/loaders"
 
-import { pocketbaseLoader } from "astro-loader-pocketbase"
-import type { PocketBaseLoaderOptions } from "astro-loader-pocketbase"
-
-import PocketBase from "pocketbase"
-import { type TypedPocketBase } from "pocket/pocketbase-types"
-// init pocketbase
-const pb = new PocketBase(process.env.PB_TYPEGEN_URL!) as TypedPocketBase
-const auth = await pb
-  .collection("_superusers")
-  .authWithPassword(
-    process.env.POCKET_SUPERUSER_EMAIL!,
-    process.env.POCKET_SUPERUSER_PASS!,
-  )
-
-const pocketOptions: Omit<PocketBaseLoaderOptions, "collectionName"> = {
-  url: import.meta.env.PB_TYPEGEN_URL,
-  updatedField: "updated",
-  superuserCredentials: {
-    // impersonateToken: import.meta.env.PB_TYPEGEN_TOKEN,
-    email: import.meta.env.POCKET_SUPERUSER_EMAIL,
-    password: import.meta.env.POCKET_SUPERUSER_PASS,
-  },
-}
-
-/* pocketbase */
-
-const produse = defineCollection({
-  loader: pocketbaseLoader({
-    collectionName: "v_produse",
-    ...pocketOptions,
-    improveTypes: true,
-  }),
-})
-
-// const v_produse = defineCollection({
-//   loader: async () => {
-//     const prods = await pb
-//       .collection("v_produse")
-//       .getFullList({ expand: "materiale" })
-//   },
-//   // schema: /* ... */
+// const produse = defineCollection({
+//   loader: pbLoader({
+//     collection: "produse",
+//     expand: "materiale,categorie,partener",
+//     // schema:
+//   }),
 // })
 
-const categorii = defineCollection({
-  loader: pocketbaseLoader({
-    collectionName: "categorii",
-    ...pocketOptions,
-    idField: "slug",
-    improveTypes: true,
-    contentFields: "icon",
-  }),
-})
+// // const produse = defineCollection({
+// //   loader: pocketbaseLoader({
+// //     collectionName: "v_produse",
+// //     ...pocketOptions,
+// //     improveTypes: true,
+// //   }),
+// // })
 
-const materiale = defineCollection({
-  loader: pocketbaseLoader({
-    collectionName: "v_materiale",
-    ...pocketOptions,
-    idField: "slug",
-    improveTypes: true,
-  }),
-})
+// // const _produse = defineCollection({
+// //   loader: async () => {
+// //     const prods = await pb
+// //       .collection("v_produse")
+// //       .getFullList({ expand: "materiale" })
+// //   },
+// //   // schema: /* ... */
+// // })
 
-const parteneri = defineCollection({
-  loader: pocketbaseLoader({
-    collectionName: "v_parteneri",
-    ...pocketOptions,
-    idField: "cod",
-    improveTypes: true,
-  }),
-})
+// const categorii = defineCollection({
+//   loader: pocketbaseLoader({
+//     collectionName: "categorii",
+//     ...pocketOptions,
+//     idField: "slug",
+//     improveTypes: true,
+//     contentFields: "icon",
+//   }),
+// })
 
-const linii_produse = defineCollection({
-  loader: pocketbaseLoader({
-    collectionName: "linii_produse",
-    ...pocketOptions,
-    improveTypes: true,
-  }),
-})
+// const materiale = defineCollection({
+//   loader: pocketbaseLoader({
+//     collectionName: "materiale",
+//     ...pocketOptions,
+//     idField: "slug",
+//     improveTypes: true,
+//   }),
+// })
 
-// for prods grid
-const lista_produse = defineCollection({
-  loader: pocketbaseLoader({
-    collectionName: "v_produse",
-    ...pocketOptions,
-    improveTypes: true,
-    fields: [
-      "id",
-      "nume",
-      "descriere",
-      "imagini",
-      "promo",
-      "parteneri_cod",
-      "categorii_slug",
-      "materiale",
-      "created",
-      "updated",
-    ],
-  }),
-})
+// const parteneri = defineCollection({
+//   loader: pocketbaseLoader({
+//     collectionName: "parteneri",
+//     ...pocketOptions,
+//     idField: "cod",
+//     improveTypes: true,
+//   }),
+// })
+
+// // for prods grid
+// const lista_produse = defineCollection({
+//   loader: pocketbaseLoader({
+//     collectionName: "produse",
+//     ...pocketOptions,
+//     improveTypes: true,
+//   }),
+// })
 
 /* mdx */
 
@@ -114,11 +76,10 @@ const blog = defineCollection({
 })
 
 export const collections = {
-  categorii,
-  parteneri,
-  produse,
+  // categorii,
+  // parteneri,
+  // produse,
   blog,
-  materiale,
-  linii_produse,
-  lista_produse,
+  // materiale,
+  // lista_produse,
 }

@@ -2,7 +2,7 @@ import {
   type ParteneriRecord,
   type ProduseRecord,
   type TypedPocketBase,
-} from "pocket/pocketbase-types"
+} from "pocket/_pocketbase-types"
 import PocketBase from "pocketbase"
 
 import fs from "node:fs"

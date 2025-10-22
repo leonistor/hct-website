@@ -1,4 +1,4 @@
-import { type TypedPocketBase } from "pocket/pocketbase-types"
+import { type TypedPocketBase } from "pocket/_pocketbase-types"
 import PocketBase from "pocketbase"
 
 import { parseArgs } from "node:util"
