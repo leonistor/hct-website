@@ -4,12 +4,11 @@ import { glob } from "astro/loaders"
 import { pocketbaseLoader } from "astro-loader-pocketbase"
 import type { PocketBaseLoaderOptions } from "astro-loader-pocketbase"
 
-import { TypedPocketBase } from "@tigawanna/typed-pocketbase"
-import { type Schema } from "@/lib/pb-types"
+// import { TypedPocketBase } from "@tigawanna/typed-pocketbase"
+// import { type Schema } from "@/lib/pb-types"
+import PocketBase from "pocketbase"
 
-export const pb = new TypedPocketBase<Schema>(
-  process.env.PUBLIC_ASTRO_POCKETBASE_URL,
-)
+export const pb = new PocketBase(process.env.PUBLIC_ASTRO_POCKETBASE_URL)
 
 // const auth = await pb
 //   .collection("_superusers")

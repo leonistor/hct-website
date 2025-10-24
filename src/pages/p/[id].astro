@@ -2,7 +2,7 @@
 export const prerender = false
 
 import BaseLayout from "@/layouts/BaseLayout.astro"
-import { getEntry } from "astro:content"
+import { Image } from "astro:assets"
 
 import Checkbox from "@/components/starwind/checkbox"
 import Separator from "@/components/starwind/separator"
@@ -14,9 +14,10 @@ import Specificatii from "@/components/ui/produs/Specificatii.astro"
 
 import ListaMateriale from "@/components/ui/pills/ListaMateriale.astro"
 import { LightGallery } from "astro-lightgallery"
-import { ProduseResponseZodSchema } from "@/lib/pb-zod"
 import { pb } from "@/content.config"
 import { Debug } from "astro/components"
+import type { Produs } from "@/lib/pbtypes"
+import { For } from "@forastro/flow"
 
 interface Props {
   id: string
@@ -26,8 +27,9 @@ const { id } = Astro.params
 if (id === undefined) {
   return Astro.redirect("/404")
 }
-// const produs_record = await getEntry("produse", id)
-const produs_record = await pb.from("produse").getOne(id)
+const produs_record = await pb
+  .collection("produse")
+  .getOne<Produs>(id, { expand: "partener,categorie,materiale" })
 
 if (produs_record === undefined) {
   return Astro.redirect("/404")
@@ -37,17 +39,28 @@ const {
   nume,
   descriere,
   descriere_extra,
+  descriere_extra_tip,
   specificatii,
   url_producator,
   imagini,
-  materiale,
+  index_imagine_principala,
+  variante,
   videos,
   promo,
-  // parteneri_cod,
-  // categorii_slug,
+  expand,
 } = produs_record
 
-// const gallery_imgs = (imagini ?? []).map((img) => ({ src: img }))
+const { materiale, categorie, partener } = expand
+
+const imgs = imagini.map(
+  (img) =>
+    // `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${id}/${img}?thumb=200x200f`,
+    `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${id}/${img}`,
+)
+const gallery_imgs = imgs.map((img) => ({ src: img }))
+
+const imagine_produs = imagini[index_imagine_principala]
+const src_prinicpala = `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${id}/${imagine_produs}?thumb=200x200f`
 
 // TODO: produs imagine principala extra column
 // TODO: single image
@@ -56,20 +69,15 @@ const {
 
 <BaseLayout>
   <h1>Produs</h1>
-  <Debug {produs_record} />
+  <!-- <Debug {imgs} /> -->
 
   <Separator />
-  <!-- 
   <article class="mt-4 flex flex-col gap-2">
-
     <section class="text-4xl font-semibold tracking-tight">{nume}</section>
-
 
     <section class="text-xl font-medium">
       <div set:html={descriere} />
     </section>
-
-
 
     <section>
       {
@@ -79,7 +87,6 @@ const {
       }
     </section>
 
-
     <section>
       {
         specificatii && specificatii != "" && (
@@ -87,7 +94,6 @@ const {
         )
       }
     </section>
-
 
     <section class="flex flex-row gap-1">
       {
@@ -100,27 +106,13 @@ const {
     <section><PillURL url={url_producator ?? ""} /></section>
     <section><Checkbox label="promo" checked={promo} /></section>
     <section>{videos}</section>
-    <section><PillPartener cod={parteneri_cod} /></section>
-    <section><PillCategorie slug={String(categorii_slug)} /></section>
-
-
-    <section class="flex flex-wrap gap-1">
-      {
-        imagini && (
-          <For of={imagini}>
-            {(img) => (
-              <Image src={`${img}?thumb=200x200f`} alt={nume} inferSize />
-              // <img src={`${img}`} class="aspect-square w-48" alt={nume} />
-            )}
-          </For>
-        )
-      }
+    <section><PillPartener cod={partener.cod} /></section>
+    <section><PillCategorie slug={String(categorie.slug)} /></section>
+    <section class="p-4">
+      <Image src={src_prinicpala} inferSize alt={nume} />
     </section>
-
-
     <section>
       <LightGallery layout={{ imgs: gallery_imgs }} />
     </section>
   </article>
- -->
 </BaseLayout>
