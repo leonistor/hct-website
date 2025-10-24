@@ -14,6 +14,9 @@ import Specificatii from "@/components/ui/produs/Specificatii.astro"
 
 import ListaMateriale from "@/components/ui/pills/ListaMateriale.astro"
 import { LightGallery } from "astro-lightgallery"
+import { ProduseResponseZodSchema } from "@/lib/pb-zod"
+import { pb } from "@/content.config"
+import { Debug } from "astro/components"
 
 interface Props {
   id: string
@@ -23,7 +26,9 @@ const { id } = Astro.params
 if (id === undefined) {
   return Astro.redirect("/404")
 }
-const produs_record = await getEntry("produse", id)
+// const produs_record = await getEntry("produse", id)
+const produs_record = await pb.from("produse").getOne(id)
+
 if (produs_record === undefined) {
   return Astro.redirect("/404")
 }
@@ -38,11 +43,11 @@ const {
   materiale,
   videos,
   promo,
-  parteneri_cod,
-  categorii_slug,
-} = produs_record.data
+  // parteneri_cod,
+  // categorii_slug,
+} = produs_record
 
-const gallery_imgs = (imagini ?? []).map((img) => ({ src: img }))
+// const gallery_imgs = (imagini ?? []).map((img) => ({ src: img }))
 
 // TODO: produs imagine principala extra column
 // TODO: single image
@@ -51,21 +56,21 @@ const gallery_imgs = (imagini ?? []).map((img) => ({ src: img }))
 
 <BaseLayout>
   <h1>Produs</h1>
-  <!-- <Debug {materiale} /> -->
+  <Debug {produs_record} />
 
   <Separator />
-
+  <!-- 
   <article class="mt-4 flex flex-col gap-2">
-    <!-- nume -->
+
     <section class="text-4xl font-semibold tracking-tight">{nume}</section>
 
-    <!-- descriere -->
+
     <section class="text-xl font-medium">
       <div set:html={descriere} />
     </section>
 
-    <!-- descriere_extra -->
-    <!-- <section class="line-clamp-6" set:html={descriere_extra_html} /> -->
+
+
     <section>
       {
         descriere_extra && descriere_extra !== "" && (
@@ -74,7 +79,7 @@ const gallery_imgs = (imagini ?? []).map((img) => ({ src: img }))
       }
     </section>
 
-    <!-- specificatii -->
+
     <section>
       {
         specificatii && specificatii != "" && (
@@ -83,7 +88,7 @@ const gallery_imgs = (imagini ?? []).map((img) => ({ src: img }))
       }
     </section>
 
-    <!-- materiale -->
+
     <section class="flex flex-row gap-1">
       {
         materiale && (
@@ -98,8 +103,8 @@ const gallery_imgs = (imagini ?? []).map((img) => ({ src: img }))
     <section><PillPartener cod={parteneri_cod} /></section>
     <section><PillCategorie slug={String(categorii_slug)} /></section>
 
-    <!-- imagini -->
-    <!-- <section class="flex flex-wrap gap-1">
+
+    <section class="flex flex-wrap gap-1">
       {
         imagini && (
           <For of={imagini}>
@@ -110,11 +115,12 @@ const gallery_imgs = (imagini ?? []).map((img) => ({ src: img }))
           </For>
         )
       }
-    </section> -->
+    </section>
 
-    <!-- gallery -->
+
     <section>
       <LightGallery layout={{ imgs: gallery_imgs }} />
     </section>
   </article>
+ -->
 </BaseLayout>

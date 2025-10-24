@@ -5,7 +5,7 @@ import { Debug } from "astro:components"
 
 import { getCollection } from "astro:content"
 
-const allProds = (await getCollection("lista_produse")).map((elem) => elem.data)
+const allProds = (await getCollection("produse")).map((elem) => elem.data)
 ---
 
 <BaseLayout title="scratchpad">
