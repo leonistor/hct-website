@@ -18,8 +18,18 @@ const { categorii, parteneri, materiale } = Astro.props
 const filter_parteneri = parteneri
   ?.map((partener) => `partener = "${partener}"`)
   .join(" || ")
+const filter_categorii = categorii
+  ?.map((categ) => `categorie = "${categ}"`)
+  .join(" || ")
+// TODO: filter materiale is array!
+// const filter_materiale = materiale
+//   ?.map((categ) => `categorie = "${categ}"`)
+//   .join(" || ")
 
-const filters = "" + (filter_parteneri ? `(${filter_parteneri})` : "")
+const filters =
+  "" +
+  (filter_parteneri ? `(${filter_parteneri})` : "") +
+  (filter_categorii ? `(${filter_categorii})` : "")
 
 const produse = await pb.collection("produse").getFullList<Produs>({
   filter: filters,
