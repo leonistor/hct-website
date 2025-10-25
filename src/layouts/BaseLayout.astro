@@ -3,6 +3,7 @@ import "@/styles/starwind.css"
 
 import { ClientRouter } from "astro:transitions"
 import LayoutGrid from "astro-layoutgrid"
+import { ThemeScript } from "astro-theme-toggle"
 
 import Navigation from "@/components/Navigation.astro"
 import Footer from "@/components/Footer.astro"
@@ -22,31 +23,11 @@ const { title } = Astro.props
 
     <title>{title}</title>
 
-    <script is:inline>
-      const theme = (() => {
-        const localStorageTheme = localStorage?.getItem("theme") ?? ""
-        if (["dark", "light"].includes(localStorageTheme)) {
-          return localStorageTheme
-        }
-        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          return "dark"
-        }
-        return "light"
-      })()
-
-      if (theme === "light") {
-        document.documentElement.classList.remove("dark")
-      } else {
-        document.documentElement.classList.add("dark")
-      }
-
-      window.localStorage.setItem("theme", theme)
-    </script>
-
+    <ThemeScript />
     <ClientRouter />
   </head>
 
-  <body class="">
+  <body class="dark">
     <div class="container mx-auto flex min-h-dvh flex-col">
       <Navigation />
       <main class="grow px-3 sm:px-0"><slot /></main>

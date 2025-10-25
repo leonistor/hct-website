@@ -22,6 +22,7 @@
         "astro-layoutgrid": "^1.2.0",
         "astro-lightgallery": "^2.0.1",
         "astro-loader-pocketbase": "^2.8.1",
+        "astro-theme-toggle": "^0.7.0",
         "embla-carousel": "^8.6.0",
         "es-toolkit": "^1.40.0",
         "phosphor-astro": "^2.1.0",
@@ -429,6 +430,8 @@
     "astro-lightgallery": ["astro-lightgallery@2.0.1", "", { "dependencies": { "lightgallery": "^2.9.0-beta.1" } }, "sha512-4yR/NvBrp5UHDfGutmwuJdL4wgFh8gKK3V5G772+I+g+k3yGTT5/nzJL1cTJHT0txxPLu6S9FMacoCl68vx2vw=="],
 
     "astro-loader-pocketbase": ["astro-loader-pocketbase@2.8.1", "", { "peerDependencies": { "astro": "^5.10.0" } }, "sha512-B018u+m8zXDAHq0D77LIHEKeMxs9S6p6mEqWy8IKIhouJb29bIJ66zOYiEFqEjz2IfXqcaYxdTzDl2eaPkyPoA=="],
+
+    "astro-theme-toggle": ["astro-theme-toggle@0.7.0", "", {}, "sha512-HKZdtAWh8/IFvMS9yctF+ou51iFNtVaAjpa7Uw4dQMn591WWgFru7f4vmZwQUTttenSto01FjucPG9snDuBRhg=="],
 
     "astro-themes": ["astro-themes@0.2.7", "", { "peerDependencies": { "astro": "*" } }, "sha512-HJAQx0QRCMd3Jn4nzYSYAYC1PwGjCVz0DPX7/+8kMZ3/ut2MWgVDSc4k9WTzlcp1ftBfjnqxZhf/vYlu0aJ8ag=="],
 
