@@ -1,0 +1,52 @@
+---
+export const prerender = false
+
+import { pb } from "@/content.config"
+import { Debug } from "astro/components"
+import type { Produs } from "@/lib/pbtypes"
+import { For } from "@forastro/flow"
+import { undefined } from "astro:schema"
+
+interface Props {
+  categorii?: string[]
+  parteneri?: string[]
+  materiale?: string[]
+}
+
+const { categorii, parteneri, materiale } = Astro.props
+
+const filter_parteneri = parteneri
+  ?.map((partener) => `partener = "${partener}"`)
+  .join(" || ")
+
+const filters = "" + (filter_parteneri ? `(${filter_parteneri})` : "")
+
+const produse = await pb.collection("produse").getFullList<Produs>({
+  filter: filters,
+  expand: "partener,categorie,materiale",
+})
+// TODO: map to processed imagine principala, fields
+---
+
+<Debug {filters} />
+<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  {
+    produse.map((prod) => (
+      <li class="bg-muted">
+        <a href={`/p/${prod.id}`} class="group block overflow-hidden">
+          <img
+            src={`${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${prod.id}/${prod.imagini[prod.index_imagine_principala]}?thumb=200x200f`}
+            alt=""
+            class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
+          />
+
+          <div class="relative px-1 pt-2">
+            <h3 class="font-headings text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4">
+              {prod.nume}
+            </h3>
+          </div>
+        </a>
+      </li>
+    ))
+  }
+</ul>
