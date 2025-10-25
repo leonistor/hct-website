@@ -64,7 +64,6 @@ const src_prinicpala = `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/pro
 
 // TODO: produs imagine principala extra column
 // TODO: single image
-// TODO: descriere_extra --> types (dd, rich text)
 ---
 
 <BaseLayout>
@@ -82,7 +81,7 @@ const src_prinicpala = `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/pro
     <section>
       {
         descriere_extra && descriere_extra !== "" && (
-          <DescriereExtra text={descriere_extra} />
+          <DescriereExtra text={descriere_extra} tip={descriere_extra_tip} />
         )
       }
     </section>

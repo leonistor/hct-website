@@ -15,7 +15,7 @@ const allProds = (await getCollection("produse")).map((elem) => elem.data)
     {
       allProds.map(
         (prod) => (
-          <li class="">
+          <li class="bg-muted">
             <a href={`/p/${prod.id}`} class="group block overflow-hidden">
               <img
                 src={prod.imagini![0]}
@@ -23,7 +23,7 @@ const allProds = (await getCollection("produse")).map((elem) => elem.data)
                 class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
               />
 
-              <div class="relative pt-3">
+              <div class="relative px-1 pt-2">
                 <h3 class="font-headings text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4">
                   {prod.nume}
                 </h3>

@@ -27,7 +27,7 @@ const pairs = has_pairs
       (elem) => (
         <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
           <dt class="font-semibold">{elem.dt}</dt>
-          <dd class="font-light sm:col-span-2">{elem.dd}</dd>
+          <dd class="font-light sm:col-span-2" set:html={elem.dd} />
         </div>
       )
     }

@@ -5,30 +5,44 @@ import { windowed } from "es-toolkit"
 
 interface Props {
   text: string
+  tip?: string
 }
 
-const { text } = Astro.props
+const { text, tip = "features" } = Astro.props
 
+const has_pairs = text.includes("\r\n")
 const raw_pairs = text.split("\r\n")!
-const pairs = windowed(raw_pairs, 2, 2).map((pair) => ({
+
+const features_pairs = windowed(raw_pairs, 2, 2).map((pair) => ({
   dt: stripTags(pair[0]),
   dd: stripTags(pair[1]),
 }))
-
-const has_pairs = text.includes("\r\n")
+const bullets_pairs = raw_pairs.map(stripTags)
 ---
 
 <dl class="divide-accent divide-y">
   {
-    has_pairs && (
-      <For of={pairs}>
+    tip === "features" && (
+      <For of={features_pairs}>
         {(elem) => (
           <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
             <dt class="font-semibold">{elem.dt}</dt>
-            <dd class="font-light sm:col-span-2">{elem.dd}</dd>
+            <dd class="font-light sm:col-span-2" set:html={elem.dd} />
           </div>
         )}
       </For>
+    )
+  }
+  {
+    tip === "bullets" && (
+      <ul class="list-disc space-y-2 pl-4">
+        <For of={bullets_pairs}>{(elem) => <li>{elem}</li>}</For>
+      </ul>
+    )
+  }
+  {
+    tip === "richtext" && (
+      <div class="prose dark:prose-invert max-w-none" set:html={text} />
     )
   }
   {!has_pairs && <div class="font-light">{text}</div>}
