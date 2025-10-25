@@ -35,7 +35,9 @@ const produse = await pb.collection("produse").getFullList<Produs>({
   filter: filters,
   expand: "partener,categorie,materiale",
 })
-// TODO: map to processed imagine principala, fields
+// TODO: map to processed imagine principala
+// TODO: only used fields
+// TODO: ?thumb=400x400f
 ---
 
 <Debug {filters} />
@@ -45,7 +47,7 @@ const produse = await pb.collection("produse").getFullList<Produs>({
       <li class="bg-muted">
         <a href={`/p/${prod.id}`} class="group block overflow-hidden">
           <img
-            src={`${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${prod.id}/${prod.imagini[prod.index_imagine_principala]}?thumb=200x200f`}
+            src={`${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${prod.id}/${prod.imagini[prod.index_imagine_principala]}`}
             alt=""
             class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
           />
