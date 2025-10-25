@@ -14,7 +14,7 @@ interface Props {
 const { title } = Astro.props
 ---
 
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -22,48 +22,25 @@ const { title } = Astro.props
 
     <title>{title}</title>
 
-    <!-- Theme change setup. Run early to eliminate Flash of inAccurate coloR Theme (FART) -->
     <script is:inline>
-      function initTheme() {
-        const colorTheme = localStorage.getItem("colorTheme")
-        if (!colorTheme) {
-          // if no color theme, default to dark as that's how the site is designed
-          // document.documentElement.classList.add("dark")
-          // localStorage.setItem("colorTheme", "dark")
-
-          // if no color theme yet, use the users browser preferences
-          if (
-            window.matchMedia &&
-            window.matchMedia("(prefers-color-scheme: dark)").matches
-          ) {
-            document.documentElement.classList.add("dark")
-            localStorage.setItem("colorTheme", "dark")
-          } else {
-            document.documentElement.classList.remove("dark")
-            localStorage.setItem("colorTheme", "light")
-          }
-        } else {
-          // If there is, assign the theme based on the value in local storage
-          if (colorTheme === "dark") {
-            document.documentElement.classList.add("dark")
-          } else if (colorTheme === "light") {
-            document.documentElement.classList.remove("dark")
-          }
+      const theme = (() => {
+        const localStorageTheme = localStorage?.getItem("theme") ?? ""
+        if (["dark", "light"].includes(localStorageTheme)) {
+          return localStorageTheme
         }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark"
+        }
+        return "light"
+      })()
+
+      if (theme === "light") {
+        document.documentElement.classList.remove("dark")
+      } else {
+        document.documentElement.classList.add("dark")
       }
 
-      // runs on initial page load
-      initTheme()
-
-      // runs on view transitions navigation
-      document.addEventListener("astro:after-swap", () => {
-        initTheme()
-        document
-          .getElementById("themeToggle")
-          .addEventListener("click", () =>
-            document.documentElement.classList.toggle("dark"),
-          )
-      })
+      window.localStorage.setItem("theme", theme)
     </script>
 
     <ClientRouter />

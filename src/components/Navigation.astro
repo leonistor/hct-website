@@ -55,10 +55,18 @@ import Button from "@/components/starwind/button"
 </style>
 
 <script is:inline>
-  console.log("test")
+  const handleToggleClick = () => {
+    const html = document.documentElement
+    const isDark = html.classList.contains("dark")
+    localStorage.setItem("theme", isDark ? "light" : "dark")
+    if (isDark) {
+      document.documentElement.classList.remove("dark")
+    } else {
+      document.documentElement.classList.add("dark")
+    }
+  }
+
   document
     .getElementById("themeToggle")
-    .addEventListener("click", () =>
-      document.documentElement.classList.toggle("dark"),
-    )
+    ?.addEventListener("click", handleToggleClick)
 </script>
