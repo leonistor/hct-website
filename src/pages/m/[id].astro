@@ -1,4 +1,5 @@
 ---
+import GridProduse from "@/components/ui/produs/GridProduse.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { Debug } from "astro:components"
 
@@ -18,5 +19,6 @@ const { denumire, icon, imagine } = material.data
 
 <!-- ACHTUNG!!! id--slug -->
 <BaseLayout title={`Materiale: ${denumire}`}>
-  <Debug {material} />
+  <h1 class="text-3xl">Material: {denumire}</h1>
+  <GridProduse materiale={[material.data.id]} />
 </BaseLayout>

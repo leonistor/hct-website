@@ -21,15 +21,15 @@ const filter_parteneri = parteneri
 const filter_categorii = categorii
   ?.map((categ) => `categorie = "${categ}"`)
   .join(" || ")
-// TODO: filter materiale is array!
-// const filter_materiale = materiale
-//   ?.map((categ) => `categorie = "${categ}"`)
-//   .join(" || ")
+const filter_materiale = materiale
+  ?.map((mater) => `materiale ~ '${mater}'`)
+  .join(" && ")
 
 const filters =
   "" +
   (filter_parteneri ? `(${filter_parteneri})` : "") +
-  (filter_categorii ? `(${filter_categorii})` : "")
+  (filter_categorii ? `(${filter_categorii})` : "") +
+  (filter_materiale ? `(${filter_materiale})` : "")
 
 const produse = await pb.collection("produse").getFullList<Produs>({
   filter: filters,

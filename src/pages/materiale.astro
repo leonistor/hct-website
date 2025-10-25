@@ -1,0 +1,40 @@
+---
+import {
+  Item,
+  ItemContent,
+  ItemTitle,
+  ItemDescription,
+  ItemHeader,
+  ItemGroup,
+  ItemActions,
+} from "@/components/starwind/item"
+
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import { getCollection } from "astro:content"
+
+const allCategorii = await getCollection("materiale")
+---
+
+<BaseLayout>
+  <h3>Materiale</h3>
+
+  <ItemGroup class="grid grid-cols-3 gap-4">
+    {
+      allCategorii.map((categ) => {
+        const { denumire, icon, descriere, slug } = categ.data
+        return (
+          <Item variant="outline" as="a" href={`/m/${slug}`}>
+            <ItemHeader />
+            <ItemContent>
+              <ItemTitle>{denumire}</ItemTitle>
+              <ItemDescription>{descriere}</ItemDescription>
+            </ItemContent>
+            <ItemActions>
+              <Fragment set:html={icon} class="aspect-square" />
+            </ItemActions>
+          </Item>
+        )
+      })
+    }
+  </ItemGroup>
+</BaseLayout>
