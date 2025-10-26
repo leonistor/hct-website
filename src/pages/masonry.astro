@@ -31,6 +31,7 @@ const filters =
 const produse = await pb.collection("produse").getFullList<Produs>({
   filter: filters,
   expand: "partener,categorie,materiale",
+  requestKey: null,
 })
 
 // https://www.usecue.com/blog/isotope-in-just-60-lines/
