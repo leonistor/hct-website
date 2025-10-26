@@ -36,6 +36,11 @@ const produse = await pb.collection("produse").getFullList<Produs>({
   filter: filters,
   expand: "partener,categorie,materiale",
 })
+
+// https://www.usecue.com/blog/isotope-in-just-60-lines/
+import { getCollection } from "astro:content"
+
+const allParteneri = await getCollection("parteneri")
 ---
 
 <BaseLayout title="Masonry layout with filter and sort">
@@ -44,9 +49,16 @@ const produse = await pb.collection("produse").getFullList<Produs>({
       <h3 class="mt-2 text-xl font-semibold">Filter</h3>
       <div class="button-group">
         <button class="button is-checked" data-filter="*">show all</button>
-        <button class="button" data-filter={`.partener-${"panizzolo"}`}
+        {
+          allParteneri.map((partener) => (
+            <button class="" data-filter={`.partener-${partener.data.cod}`}>
+              {partener.data.nume}
+            </button>
+          ))
+        }
+        <!-- <button class="button" data-filter={`.partener-${"panizzolo"}`}
           >panizzolo</button
-        >
+        > -->
       </div>
       <h3 class="mt-2 text-2xl font-semibold">Sort</h3>
       <div class="button-group">
