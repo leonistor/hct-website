@@ -2,10 +2,21 @@
 import { For } from "@forastro/flow"
 
 import BaseLayout from "@/layouts/BaseLayout.astro"
+
+import IconSquare from "phosphor-astro/Square.astro"
+import IconCheckSquare from "phosphor-astro/CheckSquare.astro"
+import IconSelection from "phosphor-astro/Selection.astro"
+import IconList from "phosphor-astro/List.astro"
 ---
 
 <BaseLayout title="Elements">
   <article class="prose dark:prose-invert lg:prose-lg">
+    <section class="flex flex-wrap gap-2">
+      <IconSquare class="size-6" />
+      <IconCheckSquare class="size-6" />
+      <IconSelection class="size-6" />
+      <IconList class="size-6" />
+    </section>
     <h1>Heading 1</h1>
     <h2>Heading 2</h2>
     <h3>Heading 3</h3>
