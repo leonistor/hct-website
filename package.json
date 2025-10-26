@@ -8,7 +8,7 @@
     "preview": "bun run ./dist/server/entry.mjs",
     "astro": "bunx --bun astro",
     "pocket": "cd pocket && pocketbase serve",
-    "types": "bun run genpbtypes.js",
+    "types": "echo 'visit 'https://transform.tools/json-to-typescript'",
     "seed": "bun import_data/seed.ts",
     "clean": "bun import_data/clean.ts",
     "format": "prettier --write .",

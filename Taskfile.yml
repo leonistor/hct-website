@@ -30,6 +30,8 @@ tasks:
       - defer: sh -c "kill $(lsof -ti :8090)"
       - sleep 2
       - bun run build
+      - sleep 2
+      - echo "Done!"
 
   import:
     desc: "import a pocketbase backup archive: `task import -- archive-file.zip`"
