@@ -1,5 +1,27 @@
 ---
+import { conf } from "@/config/site"
+import Logo from "@/assets/logo-hct.svg"
+import IconWhatsapp from "phosphor-astro/WhatsappLogo.astro"
 
+const year = new Date().getFullYear()
 ---
 
-<footer>footer</footer>
+<footer class="bg-muted/50 py-8">
+  <div class="mx-auto px-4 xl:px-0">
+    <div
+      class="grid gap-y-9 sm:justify-center sm:text-center md:px-4 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-x-12 lg:gap-y-0 lg:px-8 lg:text-left"
+    >
+      <div class="text-muted-foreground text-sm font-light">
+        <time>&copy;{year}</time>
+        {conf.title}.
+      </div>
+      <figure class="sm:justify-self-center">
+        <Logo class="size-10 opacity-55" />
+      </figure>
+      <div class="flex flex-wrap items-center gap-4 sm:justify-center lg:justify-self-end">
+        <a href="/contact" class="text-muted-foreground text-sm font-light">Contact</a>
+        <IconWhatsapp class="fill-muted-foreground size-6" />
+      </div>
+    </div>
+  </div>
+</footer>

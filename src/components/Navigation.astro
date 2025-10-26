@@ -2,12 +2,22 @@
 import { Toggle } from "astro-theme-toggle"
 ---
 
-<nav class="flex flex-row gap-4 p-4">
-  <a href="/">home</a>
-  <a href="/news">news</a>
-  <a href="/demo">demo</a>
-  <a href="/produse/">produse</a>
-  <a href="/masonry/" data-astro-reload>masonry</a>
+<nav class="gap-4p-4 bg-muted/50 flex w-full flex-row px-2 py-4">
+  <!-- logo -->
+  <div class="logo">
+    <span>Hațegan Consulting & Trading</span>
+  </div>
+  <!-- main menu -->
+  <div class="menu">
+    <a href="/">home</a>
+    <a href="/news">news</a>
+    <a href="/demo">demo</a>
+    <a href="/produse/">produse</a>
+    <a href="/masonry/" data-astro-reload>masonry</a>
+  </div>
 
-  <Toggle style="width: 20px; height: 20px;" />
+  <!-- rigth items -->
+  <div class="right">
+    <Toggle style="width: 20px; height: 20px;" />
+  </div>
 </nav>
