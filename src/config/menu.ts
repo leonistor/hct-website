@@ -2,71 +2,57 @@ interface MenuItem {
   href: string
   label: string
   description?: string
-  type?: 'simple' | 'icon' | 'description'
-  icon?: string
-  submenu?: boolean
   items?: MenuItem[]
 }
 
 export const navigationLinks: Partial<MenuItem>[] = [
   {
-    label: 'Companie',
-    submenu: true,
-    type: 'simple',
+    label: "Companie",
     items: [
       {
-        href: '/despre',
-        label: 'Despre noi',
+        href: "/despre",
+        label: "Despre noi",
       },
       {
-        href: '/parteneri',
-        label: 'Parteneri',
+        href: "/parteneri",
+        label: "Parteneri",
       },
       {
-        href: '/clienti',
-        label: 'Clienți și proiecte',
+        href: "/clienti",
+        label: "Clienți și proiecte",
       },
     ],
   },
   {
-    label: 'Produse',
-    submenu: true,
-    type: 'description',
+    label: "Produse",
     items: [
       {
-        href: '/categorii',
-        label: 'Categorii',
+        href: "/categorii",
+        label: "Categorii",
         description:
-          'Echipamente pentru tăiere, dezmembrare tocare, mărunțire și granulare. Prese de balotat și compactoare. Dezmembrare vehicule și motoare. Recuperare, stocare și analiză fluide. Sisteme de sortare',
+          "Echipamente pentru tăiere, dezmembrare tocare, mărunțire și granulare. Prese de balotat și compactoare. Dezmembrare vehicule și motoare. Recuperare, stocare și analiză fluide. Sisteme de sortare",
       },
       {
-        href: '/materiale',
-        label: 'Materiale',
+        href: "/materiale",
+        label: "Materiale",
         description:
-          'Reciclarea metalelor, aluminiului, cablurilor. Vehicule scoase din uz, Motoare, DEEE, Hidrapulper. Deșeuri solide urbane. Conserve. Metale mixte.',
+          "Reciclarea metalelor, aluminiului, cablurilor. Vehicule scoase din uz, Motoare, DEEE, Hidrapulper. Deșeuri solide urbane. Conserve. Metale mixte.",
       },
       {
-        href: '/lista',
-        label: 'Toate produsele - Tabel',
-        description: 'Toate produsele sub forma de tabel',
-      },
-      {
-        href: '/grid',
-        label: 'Toate produsele - Grid',
-        description: 'Toate produsele sub forma de grid',
+        href: "/produse",
+        label: "Toate produsele",
+        description: "Selecție produse după partener, categorie, materiale.",
       },
     ],
   },
   {
-    label: 'Servicii',
-    submenu: true,
-    type: 'simple',
+    label: "Servicii",
     items: [
-      { label: 'Instalare și montaj', href: '/servicii-instalare' },
-      { label: 'Întreținere și recondiționare', href: '/servicii-intretinere' },
-      { label: 'Consumabile', href: '/consumabile' },
+      { label: "Instalare și montaj", href: "/servicii-instalare" },
+      { label: "Întreținere și recondiționare", href: "/servicii-intretinere" },
+      { label: "Consumabile", href: "/consumabile" },
     ],
   },
-  { href: '/blog', label: 'Noutăți' },
-  { href: '/contact', label: 'Contact' },
+  { href: "/noutati", label: "Noutăți" },
+  { href: "/contact", label: "Contact" },
 ]

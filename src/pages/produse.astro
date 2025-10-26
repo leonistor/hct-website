@@ -1,37 +1,178 @@
 ---
-import CardProdus from "@/components/ui/produs/CardProdus.astro"
-import BaseLayout from "@/layouts/BaseLayout.astro"
-import { Debug } from "astro:components"
-
+export const prerender = false
 import { getCollection } from "astro:content"
 
-const allProds = (await getCollection("produse")).map((elem) => elem.data)
+import { pb } from "@/content.config"
+import { Debug } from "astro/components"
+import type { Produs } from "@/lib/pbtypes"
+import { For } from "@forastro/flow"
+import GridProduse from "@/components/ui/produs/GridProduse.astro"
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import IconList from "phosphor-astro/List.astro"
+
+interface Props {
+  categorii?: string[]
+  parteneri?: string[]
+  materiale?: string[]
+}
+
+const { categorii, parteneri, materiale } = Astro.props
+
+const filter_parteneri = parteneri?.map((partener) => `partener = "${partener}"`).join(" || ")
+const filter_categorii = categorii?.map((categ) => `categorie = "${categ}"`).join(" || ")
+const filter_materiale = materiale?.map((mater) => `materiale ~ '${mater}'`).join(" && ")
+
+const filters =
+  "" +
+  (filter_parteneri ? `(${filter_parteneri})` : "") +
+  (filter_categorii ? `(${filter_categorii})` : "") +
+  (filter_materiale ? `(${filter_materiale})` : "")
+
+const produse = await pb.collection("produse").getFullList<Produs>({
+  filter: filters,
+  expand: "partener,categorie,materiale",
+  requestKey: null,
+})
+
+// https://www.usecue.com/blog/isotope-in-just-60-lines/
+const allParteneri = await getCollection("parteneri")
+const allCategorii = await getCollection("categorii")
 ---
 
-<BaseLayout title="scratchpad">
-  Total: {allProds.length}
+<BaseLayout title="Toate produsele">
+  <article class="">
+    <!-- filter -->
+    <section class="mb-4 space-y-3">
+      <!-- parteneri -->
+      <div class="flex flex-row items-center gap-x-3">
+        <button class="button is-checked font-medium" data-filter="*">Parteneri</button>
+        {
+          allParteneri.map((partener) => (
+            <button class="font-light" data-filter={`.partener-${partener.data.cod}`}>
+              {partener.data.nume}
+            </button>
+          ))
+        }
+      </div>
+      <!-- categorii -->
+      <div class="flex flex-wrap items-center gap-x-3">
+        <button class="button is-checked font-medium" data-filter="*">Categorii</button>
+        {
+          allCategorii.map((categ) => (
+            <button class="font-light" data-filter={`.categ-${categ.data.slug}`}>
+              {categ.data.nume}
+            </button>
+          ))
+        }
+      </div>
 
-  <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    {
-      allProds.map(
-        (prod) => (
-          <li class="bg-muted">
-            <a href={`/p/${prod.id}`} class="group block overflow-hidden">
-              <img
-                src={prod.imagini![0]}
-                alt=""
-                class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
-              />
+      <!--  -->
+      <!-- sort -->
+      <!-- <div class="button-group">
+        <button class="button is-checked" data-sortby="order">original order</button>
+        <button class="button" data-sortby="nume">nume</button>
+      </div> -->
+    </section>
+    <!-- za grid -->
+    <section class="">
+      <ul id="isotope" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          produse.map((prod) => (
+            <li
+              class:list={["bg-muted", `partener-${prod.expand.partener.cod}`, `categ-${prod.expand.categorie.slug}`]}
+            >
+              <a href={`/p/${prod.id}`} class="group block overflow-hidden">
+                <img
+                  src={`${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${prod.id}/${prod.imagini[prod.index_imagine_principala]}`}
+                  alt=""
+                  class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
+                />
 
-              <div class="relative px-1 pt-2">
-                <h3 class="font-headings text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4">
-                  {prod.nume}
-                </h3>
-              </div>
-            </a>
-          </li>
-        ) /* - */,
-      )
-    }
-  </ul>
+                <div class="nume relative px-1 pt-2">
+                  <h3 class="font-headings text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4">
+                    {prod.nume}
+                  </h3>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </article>
 </BaseLayout>
+
+<style>
+  .is-checked {
+    text-decoration: underline;
+    text-decoration-color: var(--color-pink-500);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+</style>
+
+<script lang="js" is:inline>
+  var els = document.querySelectorAll("#isotope > *")
+  var container = els[0].parentElement
+  var filters = document.querySelectorAll("[data-filter], [data-sortby]")
+  function applyFilter(filter) {
+    els.forEach(function (el) {
+      if (el.matches(filter)) {
+        el.style.display = "block"
+      } else {
+        el.style.display = "none"
+      }
+    })
+  }
+  function applySort(sortby) {
+    if (sortby === "order") {
+      els = Array.from(els).sort(function (a, b) {
+        return parseInt(a.dataset.order) - parseInt(b.dataset.order)
+      })
+    } else if (sortby === "number") {
+      els = Array.from(els).sort(function (a, b) {
+        return parseInt(a.querySelector(".number").textContent) - parseInt(b.querySelector(".number").textContent)
+      })
+    } else if (sortby === "weight") {
+      els = Array.from(els).sort(function (a, b) {
+        return parseFloat(a.querySelector(".weight").textContent) - parseFloat(b.querySelector(".weight").textContent)
+      })
+    } else {
+      els = Array.from(els).sort(function (a, b) {
+        return a.querySelector("." + sortby).textContent.localeCompare(b.querySelector("." + sortby).textContent)
+      })
+    }
+    container.append(...els)
+  }
+  function updateActiveButton(el) {
+    filters.forEach(function (f) {
+      if ((el.dataset.filter && f.dataset.filter) || (el.dataset.sortby && f.dataset.sortby)) {
+        if (f === el) {
+          f.classList.add("is-checked")
+        } else {
+          f.classList.remove("is-checked")
+        }
+      }
+    })
+  }
+  let isotopeNum = 0
+  els.forEach(function (el) {
+    el.style.viewTransitionName = "isotopeNum-" + isotopeNum++
+    el.dataset.order = isotopeNum
+  })
+  filters.forEach(function (f) {
+    f.addEventListener("click", function () {
+      if (!document.startViewTransition) {
+        updateActiveButton(f)
+        if (f.dataset.filter) applyFilter(f.dataset.filter)
+        else applySort(f.dataset.sortby)
+      } else {
+        document.startViewTransition(() => {
+          updateActiveButton(f)
+          if (f.dataset.filter) applyFilter(f.dataset.filter)
+          else applySort(f.dataset.sortby)
+        })
+      }
+    })
+  })
+</script>
