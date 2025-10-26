@@ -41,9 +41,9 @@ const allCategorii = await getCollection("categorii")
 <BaseLayout title="Masonry layout with filter and sort">
   <article class="">
     <!-- filter -->
-    <section class="mb-4 space-y-2">
+    <section class="mb-4 space-y-3">
       <!-- parteneri -->
-      <div class="flex flex-row items-center gap-3">
+      <div class="flex flex-row items-center gap-x-3">
         <button class="button is-checked font-medium" data-filter="*">Parteneri</button>
         {
           allParteneri.map((partener) => (
@@ -52,20 +52,34 @@ const allCategorii = await getCollection("categorii")
             </button>
           ))
         }
-        <!-- categorii -->
       </div>
+      <!-- categorii -->
+      <div class="flex flex-wrap items-center gap-x-3">
+        <button class="button is-checked font-medium" data-filter="*">Categorii</button>
+        {
+          allCategorii.map((categ) => (
+            <button class="font-light" data-filter={`.categ-${categ.data.slug}`}>
+              {categ.data.nume}
+            </button>
+          ))
+        }
+      </div>
+
+      <!--  -->
       <!-- sort -->
-      <div class="button-group">
+      <!-- <div class="button-group">
         <button class="button is-checked" data-sortby="order">original order</button>
         <button class="button" data-sortby="nume">nume</button>
-      </div>
+      </div> -->
     </section>
     <!-- za grid -->
     <section class="">
       <ul id="isotope" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {
           produse.map((prod) => (
-            <li class:list={["bg-muted", `partener-${prod.expand.partener.cod}`]}>
+            <li
+              class:list={["bg-muted", `partener-${prod.expand.partener.cod}`, `categ-${prod.expand.categorie.slug}`]}
+            >
               <a href={`/p/${prod.id}`} class="group block overflow-hidden">
                 <img
                   src={`${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${prod.id}/${prod.imagini[prod.index_imagine_principala]}`}
