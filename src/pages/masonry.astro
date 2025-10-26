@@ -56,16 +56,14 @@ const allParteneri = await getCollection("parteneri")
             </button>
           ))
         }
-        <!-- <button class="button" data-filter={`.partener-${"panizzolo"}`}
-          >panizzolo</button
-        > -->
       </div>
       <h3 class="mt-2 text-2xl font-semibold">Sort</h3>
+
       <div class="button-group">
         <button class="button is-checked" data-sortby="order"
           >original order</button
         >
-        <button class="button" data-sortby="name">name</button>
+        <button class="button" data-sortby="nume">nume</button>
       </div>
     </section>
     <section class="">
@@ -83,7 +81,7 @@ const allParteneri = await getCollection("parteneri")
                   class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
                 />
 
-                <div class="relative px-1 pt-2">
+                <div class="nume relative px-1 pt-2">
                   <h3 class="font-headings text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4">
                     {prod.nume}
                   </h3>
