@@ -40,7 +40,7 @@ const produse = await pb.collection("produse").getFullList<Produs>({
 // TODO: ?thumb=400x400f
 ---
 
-<Debug {filters} />
+<!-- <Debug {filters} /> -->
 <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
   {
     produse.map((prod) => (
