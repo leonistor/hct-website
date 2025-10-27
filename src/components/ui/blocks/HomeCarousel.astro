@@ -1,0 +1,68 @@
+---
+import { Card, CardContent } from "@/components/starwind/card"
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/starwind/carousel"
+
+import { pb } from "@/content.config"
+import { Debug } from "astro/components"
+import type { Produs } from "@/lib/pbtypes"
+
+const promos = (
+  await pb.collection("produse").getFullList<Produs>({
+    filter: "promo=true",
+    fields: "id,nume,imagini,index_imagine_principala",
+    requestKey: null,
+  })
+).map((prod) => {
+  const imagine_principala = prod.imagini[prod.index_imagine_principala]
+  const url_imagine =
+    `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${prod.id}/` + `${imagine_principala}`
+  return { url_imagine, ...prod }
+})
+---
+
+<Carousel
+  id="carousel-autoplay"
+  autoInit={false}
+  opts={{ align: "start" }}
+  class="mx-auto w-full max-w-xs sm:max-w-none"
+>
+  <CarouselContent>
+    {
+      Array.from({ length: 5 }).map((_, index) => (
+        <CarouselItem>
+          <div class="aspect-square p-1">
+            <Card>
+              <CardContent class="flex aspect-square items-center justify-center p-6">
+                <span class="text-4xl font-semibold">{index + 1}</span>
+              </CardContent>
+            </Card>
+          </div>
+        </CarouselItem>
+      ))
+    }
+  </CarouselContent>
+  <CarouselPrevious />
+  <CarouselNext />
+</Carousel>
+
+<script>
+  import Autoplay from "embla-carousel-autoplay"
+
+  import { initCarousel } from "@/components/starwind/carousel"
+
+  function initAutoplayCarousel() {
+    const carouselElement = document.getElementById("carousel-autoplay")
+    if (!carouselElement) return
+    initCarousel(carouselElement, {
+      plugins: [
+        Autoplay({
+          delay: 8000,
+        }),
+      ],
+    })
+  }
+
+  initAutoplayCarousel()
+
+  document.addEventListener("astro:after-swap", initAutoplayCarousel)
+</script>

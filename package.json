@@ -37,6 +37,7 @@
     "astro-loader-pocketbase": "^2.8.1",
     "astro-theme-toggle": "^0.7.0",
     "embla-carousel": "^8.6.0",
+    "embla-carousel-autoplay": "^8.6.0",
     "es-toolkit": "^1.40.0",
     "phosphor-astro": "^2.1.0",
     "pocketbase": "^0.21.5",
