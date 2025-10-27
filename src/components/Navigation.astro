@@ -1,6 +1,7 @@
 ---
 import Logo from "@/assets/logo-hct.svg"
 import { Toggle } from "astro-theme-toggle"
+import ChevronDown from "@tabler/icons/outline/chevron-down.svg"
 
 import { navigationLinks } from "@/config/menu"
 import Button from "./starwind/button"
@@ -12,6 +13,7 @@ import {
   DropdownLabel,
   DropdownSeparator,
 } from "@/components/starwind/dropdown"
+import LangSelect from "./ui/blocks/LangSelect.astro"
 ---
 
 <nav class="bg-muted/50 w-full">
@@ -32,6 +34,7 @@ import {
                     <DropdownTrigger asChild>
                       <Button size="sm" variant="ghost">
                         {item.label}
+                        <ChevronDown class="size-4 opacity-50" />
                       </Button>
                     </DropdownTrigger>
                     <DropdownContent class="min-w-[300px]">
@@ -55,9 +58,14 @@ import {
       </nav>
 
       <div class="flex items-center gap-4">
-        <div class="sm:flex sm:gap-4">
-          <Toggle style="width: 20px; height: 20px;" />
+        <!-- TODO: align middle -->
+        <div class="sm:flex sm:gap-1">
+          <Button variant="ghost">
+            <Toggle style="width: 20px; height: 20px;" />
+          </Button>
+          <LangSelect />
         </div>
+
         <!-- TODO: hamburger, mobile nav -->
         <button class="block rounded-sm bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden">
           <span class="sr-only">Toggle menu</span>

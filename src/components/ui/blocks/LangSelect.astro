@@ -1,0 +1,25 @@
+---
+import { Button } from "@/components/starwind/button"
+
+import { Dropdown, DropdownTrigger, DropdownContent, DropdownItem } from "@/components/starwind/dropdown"
+---
+
+<Dropdown>
+  <DropdownTrigger asChild>
+    <Button variant="outline">RO</Button>
+  </DropdownTrigger>
+  <DropdownContent align="end">
+    <DropdownItem as="a" href="/en">EN</DropdownItem>
+    <DropdownItem as="a" href="/de">DE</DropdownItem>
+    <DropdownItem as="a" href="/it">IT</DropdownItem>
+  </DropdownContent>
+</Dropdown>
+
+<script is:inline>
+  //   document.addEventListener("astro:after-swap", () => {
+  //     const langSelect = document.getElementById("selectLang")
+  //     langSelect.addEventListener("starwind-select:change", (event) => {
+  //       console.log("Selected value:", event.detail.value)
+  //     })
+  //   })
+</script>
