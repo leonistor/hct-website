@@ -1,9 +1,75 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro"
+import { Button } from "@/components/starwind/button"
+import IconArrowRight from "phosphor-astro/ArrowRight.astro"
 
-const { href } = Astro.url
+const features = [
+  {
+    category: "Marketing and Sales",
+    title: "Collect and enrich leads your way",
+    details:
+      "Take control over how and when to follow up with your leads. Store and reference leads in multiple tables and, from there, automatically send them personalized emails.",
+    tutorialLink: "#",
+  },
+  {
+    category: "Project Management",
+    title: "Streamline your workflows effortlessly",
+    details:
+      "Organize tasks, deadlines, and team collaboration in one place. Use customizable boards to manage projects efficiently and automate routine updates.",
+    tutorialLink: "#",
+  },
+  {
+    category: "Customer Support",
+    title: "Deliver seamless customer experiences",
+    details:
+      "Track and resolve customer queries faster with an integrated ticketing system. Set priorities, automate follow-ups, and enhance satisfaction with personalized responses.",
+    tutorialLink: "#",
+  },
+  {
+    category: "Team Collaboration",
+    title: "Stay connected with your team",
+    details:
+      "Simplify communication and align team efforts with shared boards and real-time updates. Enable transparent goal tracking and instant feedback for better results.",
+    tutorialLink: "#",
+  },
+  {
+    category: "Product Development",
+    title: "Accelerate innovation with ease",
+    details:
+      "Bring your product ideas to life by managing prototypes, feedback, and iterations in one place. Collaborate with your team to refine features and release with confidence.",
+    tutorialLink: "#",
+  },
+]
 ---
 
 <BaseLayout>
-  <h1>Pagina {href}</h1>
+  <div class="flex min-h-screen items-center justify-center">
+    <div class="w-full max-w-(--breakpoint-lg) px-6 py-10">
+      <h2
+        class="text-4xl font-semibold tracking-[-0.03em] text-pretty sm:mx-auto sm:max-w-xl sm:text-center md:text-[2.75rem] md:leading-[1.2]"
+      >
+        Strengthen Your Strategy
+      </h2>
+      <p class="text-muted-foreground mt-2 text-lg sm:text-center sm:text-xl">
+        Enhance your strategy with intelligent tools designed for success.
+      </p>
+      <div class="mx-auto mt-8 w-full space-y-20 md:mt-16">
+        {
+          features.map((feature) => (
+            <div class="flex flex-col items-center gap-x-12 gap-y-6 md:flex-row md:even:flex-row-reverse">
+              <div class="bg-muted border-border/50 aspect-[4/3] w-full basis-1/2 rounded-xl border" />
+              <div class="shrink-0 basis-1/2">
+                <span class="text-muted-foreground text-sm font-medium uppercase">{feature.category}</span>
+                <h4 class="my-3 text-2xl font-semibold tracking-tight">{feature.title}</h4>
+                <p class="text-muted-foreground">{feature.details}</p>
+                <Button size="lg" class="mt-6 gap-3 rounded-full">
+                  Learn More <IconArrowRight />
+                </Button>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
 </BaseLayout>

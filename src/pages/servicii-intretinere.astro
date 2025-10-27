@@ -1,9 +1,82 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro"
 
+import { Button } from "@/components/starwind/button"
+import IconArrowRight from "phosphor-astro/ArrowRight.astro"
+
 const { href } = Astro.url
 ---
 
 <BaseLayout>
-  <h1>Pagina {href}</h1>
+  <div class="flex min-h-screen items-center justify-center">
+    <div class="mx-auto w-full max-w-(--breakpoint-lg) px-6 py-12">
+      <h2 class="text-3xl leading-10 font-semibold tracking-tight sm:text-4xl md:text-[40px] md:leading-13">
+        Design and Engage: <br />
+        Build Smarter Spaces and Strategies
+      </h2>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-3">
+        {/* Card 1 */}
+        <div class="bg-muted col-span-1 rounded-xl p-6 md:col-span-2 lg:col-span-1">
+          {/* Media 1 Mobile */}
+          <div class="bg-background mb-6 aspect-video w-full rounded-xl md:hidden"></div>
+
+          <span class="text-xl font-semibold tracking-tight"> Plan Smarter </span>
+
+          <ul class="mt-6 space-y-4">
+            <li>
+              <div class="flex items-start gap-3">
+                <p class="-mt-0.5">
+                  Design your space with drag-and-drop simplicity—create grids, lists, or galleries in seconds.
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-start gap-3">
+                <!-- <Blocks class="shrink-0" /> -->
+                <p class="-mt-0.5">Embed polls, quizzes, or forms to keep your audience engaged.</p>
+              </div>
+            </li>
+          </ul>
+
+          <Button class="mt-8 w-full">
+            Build your strategy <IconArrowRight />
+          </Button>
+        </div>
+        {/* Media 1 Desktop */}
+        <div class="bg-muted col-span-1 hidden rounded-xl md:col-span-3 md:block lg:col-span-2"></div>
+
+        {/* Media 2 Desktop */}
+        <div class="bg-muted col-span-1 hidden rounded-xl md:col-span-3 md:block lg:col-span-2"></div>
+
+        {/* Card 2 */}
+        <div class="bg-muted col-span-1 rounded-xl p-6 md:col-span-2 lg:col-span-1">
+          {/* Media 2 Mobile */}
+          <div class="bg-background mb-6 aspect-video w-full rounded-xl md:hidden"></div>
+
+          <span class="text-xl font-semibold tracking-tight"> Plan Smarter </span>
+
+          <ul class="mt-6 space-y-4">
+            <li>
+              <div class="flex items-start gap-3">
+                <!-- <Settings2 class="shrink-0" /> -->
+                <p class="-mt-0.5">
+                  Design your space with drag-and-drop simplicity—create grids, lists, or galleries in seconds.
+                </p>
+              </div>
+            </li>
+            <li>
+              <div class="flex items-start gap-3">
+                <!-- <Blocks class="shrink-0" /> -->
+                <p class="-mt-0.5">Embed polls, quizzes, or forms to keep your audience engaged.</p>
+              </div>
+            </li>
+          </ul>
+
+          <Button class="mt-8 w-full">
+            Build your strategy <IconArrowRight />
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
 </BaseLayout>
