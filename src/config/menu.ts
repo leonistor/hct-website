@@ -21,6 +21,10 @@ export const navigationLinks: Partial<MenuItem>[] = [
         href: "/clienti",
         label: "Clienți și proiecte",
       },
+      {
+        href: "/echipa",
+        label: "Echipa",
+      },
     ],
   },
   {
