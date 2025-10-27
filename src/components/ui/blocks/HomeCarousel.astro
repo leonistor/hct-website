@@ -26,11 +26,11 @@ const promos = (
   opts={{ align: "start" }}
   class="mx-auto w-full max-w-xs sm:max-w-none"
 >
-  <CarouselContent>
+  <CarouselContent class="h-full">
     {
       promos.map((prod) => (
         <CarouselItem>
-          <div class="bg-muted aspect-square">
+          <div class="aspect-square">
             <a href={`/p/${prod.id}`} class="group block overflow-hidden">
               <img
                 src={`${prod.url_imagine}`}
@@ -64,7 +64,7 @@ const promos = (
     initCarousel(carouselElement, {
       plugins: [
         Autoplay({
-          delay: 8000,
+          delay: 12000,
         }),
       ],
     })
