@@ -15,15 +15,9 @@ interface Props {
 
 const { categorii, parteneri, materiale } = Astro.props
 
-const filter_parteneri = parteneri
-  ?.map((partener) => `partener = "${partener}"`)
-  .join(" || ")
-const filter_categorii = categorii
-  ?.map((categ) => `categorie = "${categ}"`)
-  .join(" || ")
-const filter_materiale = materiale
-  ?.map((mater) => `materiale ~ '${mater}'`)
-  .join(" && ")
+const filter_parteneri = parteneri?.map((partener) => `partener = "${partener}"`).join(" || ")
+const filter_categorii = categorii?.map((categ) => `categorie = "${categ}"`).join(" || ")
+const filter_materiale = materiale?.map((mater) => `materiale ~ '${mater}'`).join(" && ")
 
 const filters =
   "" +
@@ -31,13 +25,18 @@ const filters =
   (filter_categorii ? `(${filter_categorii})` : "") +
   (filter_materiale ? `(${filter_materiale})` : "")
 
-const produse = await pb.collection("produse").getFullList<Produs>({
-  filter: filters,
-  expand: "partener,categorie,materiale",
+const produse = (
+  await pb.collection("produse").getFullList<Produs>({
+    filter: filters,
+    expand: "partener,categorie,materiale",
+    requestKey: null,
+  })
+).map((prod) => {
+  const imagine_principala = prod.imagini[prod.index_imagine_principala]
+  const url_imagine =
+    `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${prod.id}/` + `${imagine_principala}`
+  return { url_imagine, ...prod }
 })
-// TODO: map to processed imagine principala
-// TODO: only used fields
-// TODO: ?thumb=400x400f
 ---
 
 <!-- <Debug {filters} /> -->
@@ -47,7 +46,7 @@ const produse = await pb.collection("produse").getFullList<Produs>({
       <li class="bg-muted">
         <a href={`/p/${prod.id}`} class="group block overflow-hidden">
           <img
-            src={`${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${prod.id}/${prod.imagini[prod.index_imagine_principala]}`}
+            src={`${prod.url_imagine}`}
             alt=""
             class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
           />

@@ -28,10 +28,17 @@ const filters =
   (filter_categorii ? `(${filter_categorii})` : "") +
   (filter_materiale ? `(${filter_materiale})` : "")
 
-const produse = await pb.collection("produse").getFullList<Produs>({
-  filter: filters,
-  expand: "partener,categorie,materiale",
-  requestKey: null,
+const produse = (
+  await pb.collection("produse").getFullList<Produs>({
+    filter: filters,
+    expand: "partener,categorie,materiale",
+    requestKey: null,
+  })
+).map((prod) => {
+  const imagine_principala = prod.imagini[prod.index_imagine_principala]
+  const url_imagine =
+    `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${prod.id}/` + `${imagine_principala}`
+  return { url_imagine, ...prod }
 })
 
 // https://www.usecue.com/blog/isotope-in-just-60-lines/
@@ -83,7 +90,7 @@ const allCategorii = await getCollection("categorii")
             >
               <a href={`/p/${prod.id}`} class="group block overflow-hidden">
                 <img
-                  src={`${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${prod.id}/${prod.imagini[prod.index_imagine_principala]}`}
+                  src={`${prod.url_imagine}`}
                   alt=""
                   class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
                 />
