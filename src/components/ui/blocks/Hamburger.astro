@@ -1,0 +1,32 @@
+---
+import Button from "@/components/starwind/button"
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/starwind/sheet"
+import IconList from "phosphor-astro/List.astro"
+---
+
+<Sheet>
+  <SheetTrigger asChild>
+    <Button variant="outline" class="rounded-none"><IconList class="size-12" /></Button>
+  </SheetTrigger>
+  <SheetContent>
+    <SheetHeader>
+      <SheetTitle>Sheet Title</SheetTitle>
+      <SheetDescription>Sheet description</SheetDescription>
+    </SheetHeader>
+    <div class="grid gap-4 px-4">content here</div>
+    <SheetFooter>
+      <SheetClose asChild>
+        <Button type="submit">Footer</Button>
+      </SheetClose>
+    </SheetFooter>
+  </SheetContent>
+</Sheet>
