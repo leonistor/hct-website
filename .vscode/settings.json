@@ -8,7 +8,7 @@
     ".astro": true,
     "dist": true,
     "node_modules": true,
-    ".prettierignore": true,
+    ".prettierignore": false,
     ".gitignore": true,
     "tsconfig.json": true,
     ".prettierrc.json": true,
