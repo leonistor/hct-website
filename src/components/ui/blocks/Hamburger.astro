@@ -16,12 +16,14 @@ import { Item, ItemContent, ItemTitle, ItemDescription, ItemActions, ItemGroup }
 import { Toggle } from "astro-theme-toggle"
 import LangSelect from "@/components/ui/blocks/LangSelect.astro"
 import IconList from "phosphor-astro/List.astro"
+import IconOutdent from "phosphor-astro/TextOutdent.astro"
+import IconArticle from "@tabler/icons/outline/article.svg"
 import { navigationLinks } from "@/config/menu"
 ---
 
 <Sheet>
   <SheetTrigger asChild>
-    <Button variant="outline" class="rounded-none"><IconList class="" /></Button>
+    <Button variant="ghost" size="icon-lg" class="rounded-none"><IconArticle width={30} height={30} /></Button>
   </SheetTrigger>
   <SheetContent>
     <SheetHeader>

@@ -27,7 +27,9 @@ const { id } = Astro.params
 if (id === undefined) {
   return Astro.redirect("/404")
 }
-const produs_record = await pb.collection("produse").getOne<Produs>(id, { expand: "partener,categorie,materiale" })
+const produs_record = await pb
+  .collection("produse")
+  .getOne<Produs>(id, { expand: "partener,categorie,materiale", requestKey: null })
 
 if (produs_record === undefined) {
   return Astro.redirect("/404")
@@ -59,19 +61,15 @@ const gallery_imgs = imgs.map((img) => ({ src: img }))
 
 const imagine_produs = imagini[index_imagine_principala]
 const src_prinicpala = `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${id}/${imagine_produs}?thumb=200x200f`
-
-// TODO: produs imagine principala extra column
-// TODO: single image
 ---
 
 <BaseLayout>
-  <h1>Produs</h1>
-  <!-- <Debug {imgs} /> -->
+  <div class="prose dark:prose-invert prose-lg my-6">
+    <h1>{nume}</h1>
+  </div>
 
   <Separator />
   <article class="mt-4 flex flex-col gap-2">
-    <section class="text-4xl font-semibold tracking-tight">{nume}</section>
-
     <section class="text-xl font-medium">
       <div set:html={descriere} />
     </section>
@@ -80,7 +78,7 @@ const src_prinicpala = `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/pro
       {descriere_extra && descriere_extra !== "" && <DescriereExtra text={descriere_extra} tip={descriere_extra_tip} />}
     </section>
 
-    <section>
+    <section class="">
       {specificatii && specificatii != "" && <Specificatii text={specificatii} />}
     </section>
 

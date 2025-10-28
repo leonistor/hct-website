@@ -19,6 +19,8 @@ const { denumire, icon, imagine } = material.data
 
 <!-- ACHTUNG!!! id--slug -->
 <BaseLayout title={`Materiale: ${denumire}`}>
-  <h1 class="text-3xl">Material: {denumire}</h1>
+  <div class="prose dark:prose-invert prose-lg my-6">
+    <h1>{denumire}</h1>
+  </div>
   <GridProduse materiale={[material.data.id]} />
 </BaseLayout>

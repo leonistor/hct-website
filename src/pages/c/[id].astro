@@ -19,6 +19,8 @@ const { nume, descriere, icon } = categorie.data
 
 <!-- ACHTUNG!!! id--slug -->
 <BaseLayout title={categorie.data.nume}>
-  <h1 class="text-3xl">Categorie: {nume}</h1>
+  <div class="prose dark:prose-invert prose-lg my-6">
+    <h1>{nume}</h1>
+  </div>
   <GridProduse categorii={[categorie.data.id]} />
 </BaseLayout>
