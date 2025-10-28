@@ -6,16 +6,17 @@ const allPosts = await getCollection("blog")
 ---
 
 <BaseLayout title="Noutati">
-  <p>news list</p>
-  <ul>
-    {
-      allPosts.map((post) => (
-        <li>
+  <div class="prose dark:prose-invert my-6">
+    <h1>Noutăți</h1>
+
+    <ul>
+      {
+        allPosts.map((post) => (
           <li>
             <a href={`/n/${post.id}/`}>{post.data.title}</a>
           </li>
-        </li>
-      ))
-    }
-  </ul>
+        ))
+      }
+    </ul>
+  </div>
 </BaseLayout>
