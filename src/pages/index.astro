@@ -1,20 +1,52 @@
 ---
+import { getCollection } from "astro:content"
+
 import HeroHome from "@/components/ui/blocks/heroes/HeroHome.astro"
 import HeroParteneri from "@/components/ui/blocks/heroes/HeroParteneri.astro"
 import HeroPromos from "@/components/ui/blocks/heroes/HeroPromos.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
+import PillCategorie from "@/components/ui/pills/PillCategorie.astro"
+import PillMaterial from "@/components/ui/pills/PillMaterial.astro"
+import PillPartener from "@/components/ui/pills/PillPartener.astro"
+import Button from "@/components/starwind/button"
+import IconArrowRight from "phosphor-astro/ArrowRight.astro"
+
+const allCategorii = await getCollection("categorii")
+const allMateriale = await getCollection("materiale")
+const allParteneri = await getCollection("parteneri")
 ---
 
 <BaseLayout>
   <HeroHome />
   <HeroPromos />
   <HeroParteneri />
-  <div class="flex h-full flex-1 flex-col justify-evenly gap-6">
-    <a href="/categorii/">Categorii</a>
-    <a href="/parteneri/">Parteneri</a>
-    <a href="/materiale/">Materiale</a>
-    <a href="/p/92ouomaojl7kckj">Exemplu produs descriere "features"</a>
-    <a href="/p/9k5g59pjc1wqean">Exemplu produs descriere "bullets"</a>
-    <a href="/p/qquhd2l1xdgb9z0">Exemplu produs descriere "richtext"</a>
-  </div>
+
+  <article class="my-6 space-y-4">
+    <p class="mt-8 text-lg">Categorii</p>
+    <section class="flex flex-wrap gap-2">
+      {allCategorii.map((categ) => <PillCategorie slug={categ.data.slug!} />)}
+    </section>
+    <p class="mt-8 text-lg">Materiale</p>
+    <section class="flex flex-wrap gap-2">
+      {allMateriale.map((mater) => <PillMaterial id={mater.data.slug!} />)}
+    </section>
+    <p class="mt-8 text-lg">Parteneri</p>
+    <section class="flex flex-wrap gap-2">
+      {allParteneri.map((part) => <PillPartener cod={part.data.cod!} />)}
+    </section>
+    <p class="mt-8 text-lg">Tipuri descrieri produs</p>
+    <section class="flex flex-wrap gap-2">
+      {
+        [
+          { href: "/p/92ouomaojl7kckj", descriere: "features" },
+          { href: "/p/9k5g59pjc1wqean", descriere: "bullets" },
+          { href: "/p/qquhd2l1xdgb9z0", descriere: "richtext" },
+        ].map((item) => (
+          <Button size="md" href={item.href} class="rounded-none text-base">
+            {item.descriere} <IconArrowRight class="h-5! w-5!" />
+          </Button>
+        ))
+      }
+    </section>
+  </article>
 </BaseLayout>

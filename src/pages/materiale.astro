@@ -12,7 +12,7 @@ import {
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { getCollection } from "astro:content"
 
-const allCategorii = await getCollection("materiale")
+const allMateriale = await getCollection("materiale")
 ---
 
 <BaseLayout>
@@ -22,7 +22,7 @@ const allCategorii = await getCollection("materiale")
 
   <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {
-      allCategorii.map((categ) => {
+      allMateriale.map((categ) => {
         const { denumire, icon, imagine, descriere, slug } = categ.data
         return (
           <li class="bg-muted">
