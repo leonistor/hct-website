@@ -64,8 +64,20 @@ const src_prinicpala = `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/pro
 ---
 
 <BaseLayout>
-  <div class="prose dark:prose-invert prose-lg my-6">
-    <h1>{nume}</h1>
+  <div class="debug grid gap-2 sm:grid-cols-12 sm:gap-4">
+    <!-- nume+ -->
+    <div class="sm:col-span-7">
+      <div class="prose dark:prose-invert my-6">
+        <h1 class="">{nume}</h1>
+      </div>
+      <div class=""></div>
+      <div class="space-x-2"><PillPartener cod={partener.cod} /><PillCategorie slug={String(categorie.slug)} /></div>
+    </div>
+    <!-- poza -->
+    <div class="sm:col-span-5">
+      <!-- TODO: view transition hero -->
+      <Image src={src_prinicpala} inferSize alt={nume} />
+    </div>
   </div>
 
   <Separator />
@@ -89,12 +101,9 @@ const src_prinicpala = `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/pro
     <section><PillURL url={url_producator ?? ""} /></section>
     <section><Checkbox label="promo" checked={promo} /></section>
     <section>{videos}</section>
-    <section><PillPartener cod={partener.cod} /></section>
-    <section><PillCategorie slug={String(categorie.slug)} /></section>
-    <section class="p-4">
-      <!-- TODO: view transition hero -->
-      <Image src={src_prinicpala} inferSize alt={nume} />
-    </section>
+    <section></section>
+    <section></section>
+    <section class="p-4"></section>
     <section>
       <LightGallery layout={{ imgs: gallery_imgs }} />
     </section>

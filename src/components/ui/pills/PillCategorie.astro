@@ -14,10 +14,8 @@ if (categorie === undefined) {
 const { nume, descriere, icon } = categorie.data
 ---
 
-<!-- <div class="" set:html={icon} /> -->
-<span
-  class="bg-success text-success-foreground inline-flex items-center justify-center gap-1 rounded-full px-3 py-1"
-  ><a class="text-sm whitespace-nowrap" href={`/c/${slug}`} title={descriere}
-    >{nume}</a
-  >
-</span>
+<a
+  class="bg-success text-success-foreground rounded-full px-3 py-1 text-sm whitespace-nowrap"
+  href={`/c/${slug}`}
+  title={descriere}>{nume}</a
+>
