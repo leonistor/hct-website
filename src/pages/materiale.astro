@@ -16,25 +16,33 @@ const allCategorii = await getCollection("materiale")
 ---
 
 <BaseLayout>
-  <h3>Materiale</h3>
+  <div class="prose dark:prose-invert prose-lg my-6">
+    <h1>Materiale</h1>
+  </div>
 
-  <ItemGroup class="grid grid-cols-3 gap-4">
+  <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {
       allCategorii.map((categ) => {
-        const { denumire, icon, descriere, slug } = categ.data
+        const { denumire, icon, imagine, descriere, slug } = categ.data
         return (
-          <Item variant="outline" as="a" href={`/m/${slug}`}>
-            <ItemHeader />
-            <ItemContent>
-              <ItemTitle>{denumire}</ItemTitle>
-              <ItemDescription>{descriere}</ItemDescription>
-            </ItemContent>
-            <ItemActions>
-              <Fragment set:html={icon} class="aspect-square" />
-            </ItemActions>
-          </Item>
+          <li class="bg-muted">
+            <a href={`/m/${slug}`} class="group block overflow-hidden">
+              <img
+                src={`${imagine}`}
+                alt=""
+                class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
+              />
+
+              <div class="px-1 pt-2">
+                <h3 class="font-headings text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4">
+                  {denumire}
+                </h3>
+                {descriere && <p>{descriere}</p>}
+              </div>
+            </a>
+          </li>
         )
       })
     }
-  </ItemGroup>
+  </ul>
 </BaseLayout>
