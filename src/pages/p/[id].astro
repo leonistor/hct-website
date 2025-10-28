@@ -60,52 +60,41 @@ const imgs = imagini.map(
 const gallery_imgs = imgs.map((img) => ({ src: img }))
 
 const imagine_produs = imagini[index_imagine_principala]
-const src_prinicpala = `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${id}/${imagine_produs}?thumb=200x200f`
+const src_prinicpala = `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${id}/${imagine_produs}`
 ---
 
 <BaseLayout>
-  <div class="debug grid gap-2 sm:grid-cols-12 sm:gap-4">
+  <div class="grid gap-2 sm:grid-cols-12 sm:gap-4">
     <!-- nume+ -->
-    <div class="sm:col-span-7">
+    <div class="space-y-4 sm:col-span-7">
       <div class="prose dark:prose-invert my-6">
         <h1 class="">{nume}</h1>
       </div>
-      <div class=""></div>
-      <div class="space-x-2"><PillPartener cod={partener.cod} /><PillCategorie slug={String(categorie.slug)} /></div>
+      <div class="text-xl font-medium"><div set:html={descriere} /></div>
+      <div class="flex flex-wrap gap-2">
+        <PillPartener cod={partener.cod} /><PillCategorie slug={String(categorie.slug)} />
+      </div>
+      <div class="">
+        {materiale && <ListaMateriale lista={materiale} class="flex flex-row gap-2" />}
+      </div>
     </div>
     <!-- poza -->
     <div class="sm:col-span-5">
       <!-- TODO: view transition hero -->
-      <Image src={src_prinicpala} inferSize alt={nume} />
+      <Image src={src_prinicpala} inferSize layout="constrained" alt={nume} />
     </div>
   </div>
 
   <Separator />
-  <article class="mt-4 flex flex-col gap-2">
-    <section class="text-xl font-medium">
-      <div set:html={descriere} />
-    </section>
 
+  <article class="mt-4 flex flex-col gap-2">
     <section>
       {descriere_extra && descriere_extra !== "" && <DescriereExtra text={descriere_extra} tip={descriere_extra_tip} />}
     </section>
-
     <section class="">
       {specificatii && specificatii != "" && <Specificatii text={specificatii} />}
     </section>
-
-    <section class="flex flex-row gap-1">
-      {materiale && <ListaMateriale lista={materiale} class="flex flex-row gap-2" />}
-    </section>
-
+    <section><LightGallery layout={{ imgs: gallery_imgs }} /></section>
     <section><PillURL url={url_producator ?? ""} /></section>
-    <section><Checkbox label="promo" checked={promo} /></section>
-    <section>{videos}</section>
-    <section></section>
-    <section></section>
-    <section class="p-4"></section>
-    <section>
-      <LightGallery layout={{ imgs: gallery_imgs }} />
-    </section>
   </article>
 </BaseLayout>
