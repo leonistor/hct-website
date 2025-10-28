@@ -1,0 +1,32 @@
+---
+import { Image } from "astro:assets"
+import { getCollection } from "astro:content"
+
+const allParteneri = await getCollection("parteneri")
+---
+
+<div class="prose prose-xl dark:prose-invert mt-4 sm:mt-12">
+  <h2>Parteneri</h2>
+  <p></p>
+</div>
+
+<div class="grid w-full gap-2 sm:grid-cols-3 sm:gap-4">
+  {
+    allParteneri.map((partener) => {
+      const { cod, nume, descriere, logo, url } = partener.data
+
+      return (
+        <a class="divide bg-muted flex min-h-40 flex-col gap-2 p-2 sm:p-4" href={`/partener/${cod}`}>
+          <div class="">
+            <Image src={logo ?? ""} class="mx-auto" inferSize width="300" alt={nume} />
+          </div>
+          <div class="px-2">
+            {/* <p class="text-lg font-semibold">{nume}</p> */}
+            <p class="text-center">{descriere}</p>
+            <div class="grow" />
+          </div>
+        </a>
+      )
+    })
+  }
+</div>

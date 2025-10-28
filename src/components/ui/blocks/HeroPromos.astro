@@ -1,0 +1,45 @@
+---
+import { pb } from "@/content.config"
+import { Debug } from "astro/components"
+import type { Produs } from "@/lib/pbtypes"
+
+const produse_promo = (
+  await pb.collection("produse").getFullList<Produs>({
+    filter: "promo=true",
+    fields: "id,nume,imagini,index_imagine_principala",
+    requestKey: null,
+  })
+).map((prod) => {
+  const imagine_principala = prod.imagini[prod.index_imagine_principala]
+  const url_imagine =
+    `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${prod.id}/` + `${imagine_principala}`
+  return { url_imagine, ...prod }
+})
+---
+
+<div class="prose prose-xl dark:prose-invert">
+  <h2>Produse promovate</h2>
+  <p></p>
+</div>
+
+<ul class="grid gap-4 sm:grid-cols-3 lg:grid-cols-4">
+  {
+    produse_promo.map((prod) => (
+      <li class="bg-muted">
+        <a href={`/p/${prod.id}`} class="group block overflow-hidden">
+          <img
+            src={`${prod.url_imagine}`}
+            alt=""
+            class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
+          />
+
+          <div class="relative px-1 pt-2">
+            <h3 class="font-headings text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4">
+              {prod.nume}
+            </h3>
+          </div>
+        </a>
+      </li>
+    ))
+  }
+</ul>

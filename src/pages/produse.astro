@@ -52,10 +52,16 @@ const allCategorii = await getCollection("categorii")
     <section class="mb-4 space-y-3">
       <!-- parteneri -->
       <div class="flex flex-row items-center gap-x-3">
-        <button class="button is-checked font-medium" data-filter="*">Parteneri</button>
+        <button
+          class="button is-checked font-medium hover:underline hover:decoration-pink-500 hover:decoration-2 hover:underline-offset-4"
+          data-filter="*">Parteneri</button
+        >
         {
           allParteneri.map((partener) => (
-            <button class="font-light" data-filter={`.partener-${partener.data.cod}`}>
+            <button
+              class="font-light hover:underline hover:decoration-pink-500 hover:decoration-2 hover:underline-offset-4"
+              data-filter={`.partener-${partener.data.cod}`}
+            >
               {partener.data.nume}
             </button>
           ))
@@ -63,10 +69,16 @@ const allCategorii = await getCollection("categorii")
       </div>
       <!-- categorii -->
       <div class="flex flex-wrap items-center gap-x-3">
-        <button class="button is-checked font-medium" data-filter="*">Categorii</button>
+        <button
+          class="button is-checked font-medium hover:underline hover:decoration-pink-500 hover:decoration-2 hover:underline-offset-4"
+          data-filter="*">Categorii</button
+        >
         {
           allCategorii.map((categ) => (
-            <button class="font-light" data-filter={`.categ-${categ.data.slug}`}>
+            <button
+              class="font-light hover:underline hover:decoration-pink-500 hover:decoration-2 hover:underline-offset-4"
+              data-filter={`.categ-${categ.data.slug}`}
+            >
               {categ.data.nume}
             </button>
           ))
@@ -112,6 +124,13 @@ const allCategorii = await getCollection("categorii")
 <style>
   .is-checked {
     text-decoration: underline;
+    text-decoration-color: var(--color-pink-500);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  .filter-hover {
+    text-decoration-line: underline;
     text-decoration-color: var(--color-pink-500);
     text-decoration-thickness: 2px;
     text-underline-offset: 4px;

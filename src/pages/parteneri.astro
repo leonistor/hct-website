@@ -1,10 +1,5 @@
 ---
-import {
-  Item,
-  ItemContent,
-  ItemGroup,
-  ItemHeader,
-} from "@/components/starwind/item"
+import { Item, ItemContent, ItemGroup, ItemHeader } from "@/components/starwind/item"
 
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { Image } from "astro:assets"
@@ -14,25 +9,28 @@ const allParteneri = await getCollection("parteneri")
 ---
 
 <BaseLayout>
-  <h3>Parteneri</h3>
+  <div class="prose dark:prose-invert prose-lg my-6">
+    <h1>Parteneri</h1>
+  </div>
 
-  <ItemGroup class="grid grid-cols-3 gap-4">
+  <div class="grid gap-2 sm:grid-cols-3 sm:gap-4">
     {
       allParteneri.map((partener) => {
         const { cod, nume, descriere, logo, url } = partener.data
 
         return (
-          <Item variant="outline" as="a" href={`/partener/${cod}`}>
-            <ItemHeader>
-              <Image src={logo ?? ""} inferSize width="300" alt={nume} />
-            </ItemHeader>
-            <ItemContent class="">
-              <p class="text-lg font-semibold">{nume}</p>
-              <p class="x">{descriere}</p>
-            </ItemContent>
-          </Item>
+          <a class="divide bg-muted flex min-h-40 flex-col gap-2 p-2 sm:p-4" href={`/partener/${cod}`}>
+            <div class="">
+              <Image src={logo ?? ""} class="mx-auto" inferSize width="300" alt={nume} />
+            </div>
+            <div class="px-2">
+              {/* <p class="text-lg font-semibold">{nume}</p> */}
+              <p class="text-center">{descriere}</p>
+              <div class="grow" />
+            </div>
+          </a>
         )
       })
     }
-  </ItemGroup>
+  </div>
 </BaseLayout>

@@ -200,7 +200,10 @@
   }
 
   .debug {
-    outline: 2px solid red;
+    outline: 2px dotted var(--color-error);
+    :where(& > :not(:last-child)) {
+      outline: 2px dotted var(--color-error);
+    }
   }
 
   button {
