@@ -1,14 +1,4 @@
 ---
-import {
-  Item,
-  ItemContent,
-  ItemTitle,
-  ItemDescription,
-  ItemHeader,
-  ItemGroup,
-  ItemActions,
-} from "@/components/starwind/item"
-
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { getCollection } from "astro:content"
 
@@ -16,25 +6,33 @@ const allCategorii = await getCollection("categorii")
 ---
 
 <BaseLayout>
-  <h3>Categorii</h3>
+  <div class="prose dark:prose-invert prose-lg my-6">
+    <h1>Categorii</h1>
+  </div>
 
-  <ItemGroup class="grid grid-cols-3 gap-4">
+  <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {
       allCategorii.map((categ) => {
-        const { nume, icon, descriere, slug } = categ.data
+        const { nume, icon, descriere, imagine, slug } = categ.data
         return (
-          <Item variant="outline" as="a" href={`/c/${slug}`}>
-            <ItemHeader />
-            <ItemContent>
-              <ItemTitle>{nume}</ItemTitle>
-              <ItemDescription>{descriere}</ItemDescription>
-            </ItemContent>
-            <ItemActions>
-              <Fragment set:html={icon} class="aspect-square" />
-            </ItemActions>
-          </Item>
+          <li class="bg-muted">
+            <a href={`/c/${slug}`} class="group block overflow-hidden">
+              <img
+                src={`${imagine}`}
+                alt=""
+                class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
+              />
+
+              <div class="px-1 pt-2">
+                <h3 class="font-headings text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4">
+                  {nume}
+                </h3>
+                {descriere && <p>{descriere}</p>}
+              </div>
+            </a>
+          </li>
         )
       })
     }
-  </ItemGroup>
+  </ul>
 </BaseLayout>

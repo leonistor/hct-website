@@ -19,9 +19,15 @@ const allParteneri = await getCollection("parteneri")
         const { cod, nume, descriere, logo, url } = partener.data
 
         return (
-          <a class="divide bg-muted flex min-h-40 flex-col gap-2 p-2 sm:p-4" href={`/partener/${cod}`}>
+          <a class="group bg-muted flex min-h-40 flex-col gap-2 p-2 sm:p-4" href={`/partener/${cod}`}>
             <div class="">
-              <Image src={logo ?? ""} class="mx-auto" inferSize width="300" alt={nume} />
+              <Image
+                src={logo ?? ""}
+                class="mx-auto transition duration-500 group-hover:scale-105"
+                inferSize
+                width="300"
+                alt={nume}
+              />
             </div>
             <div class="px-2">
               {/* <p class="text-lg font-semibold">{nume}</p> */}
