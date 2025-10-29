@@ -2,10 +2,14 @@
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { getCollection } from "astro:content"
 
-const allCategorii = await getCollection("categorii")
+const allCategorii = (await getCollection("categorii")).map((categ) => {
+  const imagine_url = categ.data.imagine?.replace("http://127.0.0.1:8090", "/pocket")
+  return { imagine_url, ...categ }
+})
 ---
 
 <BaseLayout>
+  <!-- TODO: imagine si descriere -->
   <div class="prose dark:prose-invert prose-lg my-6">
     <h1>Categorii</h1>
   </div>
@@ -18,7 +22,7 @@ const allCategorii = await getCollection("categorii")
           <li class="bg-muted">
             <a href={`/c/${slug}`} class="group block overflow-hidden">
               <img
-                src={`${imagine}`}
+                src={`${categ.imagine_url}`}
                 alt=""
                 class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
               />

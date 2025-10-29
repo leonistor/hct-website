@@ -2,7 +2,10 @@
 import { Image } from "astro:assets"
 import { getCollection } from "astro:content"
 
-const allParteneri = await getCollection("parteneri")
+const allParteneri = (await getCollection("parteneri")).map((part) => {
+  const img_logo = part.data.logo?.replace("http://127.0.0.1:8090", "/pocket")
+  return { img_logo, ...part }
+})
 ---
 
 <div class="prose prose-xl dark:prose-invert mt-4 sm:mt-12">
@@ -18,10 +21,9 @@ const allParteneri = await getCollection("parteneri")
       return (
         <a class="group bg-muted flex min-h-40 flex-col gap-2 p-2 sm:p-4" href={`/partener/${cod}`}>
           <div class="">
-            <Image
-              src={logo ?? ""}
+            <img
+              src={partener.img_logo}
               class="mx-auto transition duration-500 group-hover:scale-105"
-              inferSize
               width="300"
               alt={nume}
             />

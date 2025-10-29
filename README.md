@@ -14,3 +14,14 @@
 
 - https://basis.zhengyishen.com/docs/components/carousel/
 - https://orbitui-docs.vercel.app/getting-started/installation/
+
+## prod deploy caddy
+
+```
+hct.vitrina.promo {
+	handle_path /pocket/* {
+		reverse_proxy localhost:8090
+	}
+	reverse_proxy localhost:4321
+}
+```
