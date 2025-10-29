@@ -91,7 +91,44 @@ const src_prinicpala = `/pocket/api/files/produse/${id}/${imagine_produs}`
     <section class="">
       {specificatii && specificatii != "" && <Specificatii text={specificatii} />}
     </section>
-    <section><LightGallery layout={{ imgs: gallery_imgs }} /></section>
+    <!-- <section><LightGallery layout={{ imgs: gallery_imgs }} /></section> -->
+    <section>
+      <div id="gallery" class="container mx-auto grid grid-cols-2 gap-2 px-2 pb-2 md:grid-cols-3">
+        {
+          gallery_imgs.map((imagine) => (
+            <a href={imagine.src} target="_blank" class="">
+              <img
+                src={imagine.src}
+                alt={"altText"}
+                height={350}
+                class={"aspect-[3/2] w-full object-cover transition duration-300 ease-in-out"}
+              />
+            </a>
+          ))
+        }
+      </div>
+    </section>
     <section><PillURL url={url_producator ?? ""} /></section>
   </article>
 </BaseLayout>
+
+<script>
+  import PhotoSwipeLightbox from "photoswipe/lightbox"
+  import "photoswipe/style.css"
+
+  let lightbox: PhotoSwipeLightbox
+
+  document.addEventListener("astro:page-load", () => {
+    lightbox = new PhotoSwipeLightbox({
+      gallery: "#gallery",
+      children: "a",
+      pswpModule: () => import("photoswipe"),
+    })
+
+    lightbox.init()
+  })
+
+  document.addEventListener("astro:before-swap", () => {
+    lightbox.destroy()
+  })
+</script>
