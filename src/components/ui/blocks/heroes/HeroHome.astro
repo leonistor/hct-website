@@ -3,6 +3,7 @@ import Button from "@/components/starwind/button"
 import { conf } from "@/config/site"
 import { Image } from "astro:assets"
 import IconArrowRight from "phosphor-astro/ArrowRight.astro"
+import ilustratie from "src/assets/illustratii/home-illustration.png"
 
 import Illustration1 from "src/assets/illustratii/11_Sisteme-reciclare-metal_2.png"
 import HomeCarousel from "@/components/ui/blocks/HomeCarousel.astro"
@@ -11,7 +12,7 @@ import HomeCarousel from "@/components/ui/blocks/HomeCarousel.astro"
 <!-- https://www.shadcnui-blocks.com/blocks/categories/hero -->
 <div class="flex items-center justify-center">
   <div class="mx-auto grid w-full max-w-(--breakpoint-xl) gap-12 px-6 py-12 lg:grid-cols-12">
-    <div class="sm:col-span-8">
+    <div class="sm:col-span-6">
       <h1
         class="mt-6 max-w-[17ch] text-4xl leading-[1.2]! font-semibold tracking-tight md:text-5xl lg:text-[2.75rem] xl:text-[3.25rem]"
       >
@@ -26,7 +27,8 @@ import HomeCarousel from "@/components/ui/blocks/HomeCarousel.astro"
         </Button>
       </div>
     </div>
-    <div class="bg-muted aspect-video sm:col-span-4">
+    <div class="bg-muted sm:col-span-6">
+      <Image src={ilustratie} layout="constrained" width={800} alt="HCT" />
       <!-- <HomeCarousel /> -->
     </div>
   </div>
