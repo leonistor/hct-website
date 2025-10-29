@@ -52,15 +52,11 @@ const {
 
 const { materiale, categorie, partener } = expand
 
-const imgs = imagini.map(
-  (img) =>
-    // `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${id}/${img}?thumb=200x200f`,
-    `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${id}/${img}`,
-)
+const imgs = imagini.map((img) => `/pocket/api/files/produse/${id}/${img}`)
 const gallery_imgs = imgs.map((img) => ({ src: img }))
 
 const imagine_produs = imagini[index_imagine_principala]
-const src_prinicpala = `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${id}/${imagine_produs}`
+const src_prinicpala = `/pocket/api/files/produse/${id}/${imagine_produs}`
 ---
 
 <BaseLayout>
@@ -81,7 +77,8 @@ const src_prinicpala = `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/pro
     <!-- poza -->
     <div class="sm:col-span-5">
       <!-- TODO: view transition hero -->
-      <Image src={src_prinicpala} inferSize layout="constrained" alt={nume} />
+      <img src={src_prinicpala} alt={nume} />
+      <!-- <Image src={src_prinicpala} inferSize layout="constrained" alt={nume} /> -->
     </div>
   </div>
 

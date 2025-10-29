@@ -14,8 +14,7 @@ const promos = (
   })
 ).map((prod) => {
   const imagine_principala = prod.imagini[prod.index_imagine_principala]
-  const url_imagine =
-    `${process.env.PUBLIC_ASTRO_POCKETBASE_URL}/api/files/produse/${prod.id}/` + `${imagine_principala}`
+  const url_imagine = `/pocket/api/files/produse/${prod.id}/` + `${imagine_principala}`
   return { url_imagine, ...prod }
 })
 ---
