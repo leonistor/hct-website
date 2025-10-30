@@ -8,22 +8,13 @@
 
 ## dev
 
-[ ] deploy scripts
 [ ] bundle analyzer: https://sonda.dev/frameworks/astro.html
 [ ] playwright tests
-[ ] generators https://github.com/plopjs/plop
 [ ] minifier: https://github.com/advanced-astro/min
 
 ## layout
 
-navigation desktop https://lexingtonthemes.com/tutorials/how-to-create-an-animated-navigation-with-javascript
-
 [ ] logo, contract on scroll, animated https://github.com/MirrowApp/mirrow
-[ ] navigation mobile
-[ ] product card / grid / list
-[ ] markdown blog (noutati)
-[ ] partner card
-[ ] footer
 
 ## features
 
