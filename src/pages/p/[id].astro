@@ -91,12 +91,13 @@ const src_prinicpala = `/pocket/api/files/produse/${id}/${imagine_produs}`
     <section class="">
       {specificatii && specificatii != "" && <Specificatii text={specificatii} />}
     </section>
+
     <!-- <section><LightGallery layout={{ imgs: gallery_imgs }} /></section> -->
     <section>
       <div id="gallery" class="container mx-auto grid grid-cols-2 gap-2 px-2 pb-2 md:grid-cols-3">
         {
           gallery_imgs.map((imagine) => (
-            <a href={imagine.src} target="_blank" class="">
+            <a href={imagine.src} target="_blank" class="glightbox">
               <img
                 src={imagine.src}
                 alt={"altText"}
@@ -108,27 +109,42 @@ const src_prinicpala = `/pocket/api/files/produse/${id}/${imagine_produs}`
         }
       </div>
     </section>
+
     <section><PillURL url={url_producator ?? ""} /></section>
   </article>
 </BaseLayout>
 
 <script>
-  import PhotoSwipeLightbox from "photoswipe/lightbox"
-  import "photoswipe/style.css"
-
-  let lightbox: PhotoSwipeLightbox
+  import GLightbox from "glightbox"
+  import "glightbox/dist/css/glightbox.min.css"
 
   document.addEventListener("astro:page-load", () => {
-    lightbox = new PhotoSwipeLightbox({
-      gallery: "#gallery",
-      children: "a",
-      pswpModule: () => import("photoswipe"),
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      autoplayVideos: true,
+      loop: true,
+      draggable: true,
     })
-
-    lightbox.init()
   })
+</script>
 
-  document.addEventListener("astro:before-swap", () => {
-    lightbox.destroy()
-  })
+<script>
+  // import PhotoSwipeLightbox from "photoswipe/lightbox"
+  // import "photoswipe/style.css"
+
+  // let lightbox: PhotoSwipeLightbox
+
+  // document.addEventListener("astro:page-load", () => {
+  //   lightbox = new PhotoSwipeLightbox({
+  //     gallery: "#gallery",
+  //     children: "a",
+  //     pswpModule: () => import("photoswipe"),
+  //   })
+
+  //   lightbox.init()
+  // })
+
+  // document.addEventListener("astro:before-swap", () => {
+  //   lightbox.destroy()
+  // })
 </script>

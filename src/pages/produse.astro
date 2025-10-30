@@ -50,7 +50,7 @@ const allCategorii = await getCollection("categorii")
     <!-- filter -->
     <section class="mb-4 space-y-3">
       <!-- parteneri -->
-      <div class="flex flex-row items-center gap-x-3">
+      <div class="flex flex-wrap items-center gap-x-3">
         <button
           class="button is-checked font-medium hover:underline hover:decoration-pink-500 hover:decoration-2 hover:underline-offset-4"
           data-filter="*">Parteneri</button
@@ -67,6 +67,7 @@ const allCategorii = await getCollection("categorii")
         }
       </div>
       <!-- categorii -->
+      <!-- TODO: button is block on mobile! chage to a -->
       <div class="flex flex-wrap items-center gap-x-3">
         <button
           class="button is-checked font-medium hover:underline hover:decoration-pink-500 hover:decoration-2 hover:underline-offset-4"
