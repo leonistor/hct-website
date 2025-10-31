@@ -15,6 +15,9 @@
 
 ## layout
 
+[ ] mobile zoom/page width (`<meta name="viewport" content="initial-scale=1, viewport-fit=cover, width=device-width, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+`)
+[ ] mobile menu width
 [ ] logo, contract on scroll, animated https://github.com/MirrowApp/mirrow
 
 ## features
