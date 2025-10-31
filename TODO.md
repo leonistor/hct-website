@@ -8,6 +8,7 @@
 
 ## dev
 
+[ ] images from pocket w/ width, height etc
 [ ] bundle analyzer: https://sonda.dev/frameworks/astro.html
 [ ] playwright tests
 [ ] minifier: https://github.com/advanced-astro/min
@@ -20,7 +21,7 @@
 
 [ ] SEO
 [ ] contact backend
-[ ] search w/ pagefind: https://pagefind.app/docs/resources/
+[ ] search
 [ ] svelte admin w/ preview
 
 ## pages
