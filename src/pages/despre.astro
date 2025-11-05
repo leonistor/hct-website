@@ -1,18 +1,29 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro"
+import { Image } from "astro:assets"
+
+import illustratie_1 from "src/assets/illustratii/4_statii-de-transfer.jpg"
+import illustratie_2 from "src/assets/illustratii/6_linii-rdf.jpg"
+import illustratie_3 from "src/assets/illustratii/5_rsz_16_-_statie_de_sortare.jpg"
 
 const features = [
   {
-    title: "Identify Opportunities",
-    description: "Find untapped areas to explore effortlessly.",
+    title: "Misiunea noastră",
+    description:
+      "Misiunea Hațegan Consulting & Trading este de a oferi clienţilor produsele necesare afacerii, ţinând cont de buget, volumul de materiale prelucrate şi amplasament. Noi suntem partenerii industriei de reciclare, de salubritate şi a industriei de prelucrare a hârtiei.",
+    image: illustratie_1,
   },
   {
-    title: "Build Authority",
-    description: "Craft content that resonates and inspires trust.",
+    title: "Clienți",
+    description:
+      "Clienţii noştri sunt în aceeaşi măsură valorificatori, colectori si reciclatori finali. Pentru fiecare identificăm soluţia optimă necesară investiţiei şi le livrăm utilaje de calitate provenite de la furnizori interni sau externi.",
+    image: illustratie_2,
   },
   {
-    title: "Instant Insights",
-    description: "Get actionable insights instantly at a glance.",
+    title: "Management",
+    description:
+      "Managementul firmei se axează şi pe intermedierea cumpărării şi vânzării de deşeuri, urmărind tendinţele pieţei româneşti din domeniu, piaţă care se află în permanentă dezvoltare. Considerăm că reciclarea este una dintre cele mai simple metode de a proteja planeta de poluare.",
+    image: illustratie_3,
   },
 ]
 ---
@@ -20,12 +31,14 @@ const features = [
 <BaseLayout>
   <div class="flex min-h-screen items-center justify-center px-6 py-12">
     <div class="w-full grow sm:max-w-(--breakpoint-md) lg:max-w-(--breakpoint-lg)">
-      <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl">Ignite Your Imagination</h2>
+      <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl">Despre noi</h2>
       <div class="mt-10 grid w-full gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {
           features.map((feature) => (
             <div class="flex w-full flex-col text-start">
-              <div class="bg-muted mb-5 aspect-4/5 w-full rounded-xl sm:mb-6" />
+              <div class="bg-muted mb-5 sm:mb-6">
+                <Image src={feature.image} alt="" />
+              </div>
               <span class="text-2xl font-semibold tracking-tight">{feature.title}</span>
               <p class="text-muted-foreground mt-2 max-w-[25ch] text-[17px]">{feature.description}</p>
             </div>
