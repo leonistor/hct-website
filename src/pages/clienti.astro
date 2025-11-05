@@ -1,61 +1,64 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro"
 
-import { Avatar, AvatarFallback } from "@/components/starwind/avatar"
-import { Card, CardTitle } from "@/components/starwind/card"
+import { Image } from "astro:assets"
+
+// TODO: clienti in pocketbase collection
+const all_logos = import.meta.glob<{ default: ImageMetadata }>(
+  "src/assets/logos_clienti/*.{jpg,JPG,jpeg,png,PNG,webp,gif}",
+  { eager: true },
+)
+
+/**
+10_kls.png
+11_logo-rebu.jpg
+13_logo.png
+15_logo_hamburger_recycling.png
+16_logo_ipg.jpg
+17_logo-big.png
+18_recycle-int.jpg
+19_rondo.gif
+2_8230015.gif
+20_urban-logo.gif
+22_top-left.jpg
+24_Alco-Recycling.jpg
+4_avery-dennison-corpo-logo.jpg
+7_diren.jpg
+9_imagesCAA5BKIM.jpg
+ */
 
 const testimonials = [
+  /*
   {
     id: 1,
-    name: "John Doe",
-    designation: "Software Engineer",
-    company: "TechCorp",
-    testimonial:
-      "This product has completely transformed the way we work. The efficiency and ease of use are unmatched!",
-    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+    name: "",
+    designation: "",
+    company: "Klaussenburg Recycling GmbH",
+    testimonial: "",
+    avatar: all_logos["/src/assets/logos_clienti/10_kls.png"],
   },
   {
     id: 2,
-    name: "Sophia Lee",
-    designation: "Data Analyst",
-    company: "InsightTech",
-    testimonial: "This tool has saved me hours of work! The analytics and reporting features are incredibly powerful.",
-    avatar: "https://randomuser.me/api/portraits/women/6.jpg",
+    name: "",
+    designation: "",
+    company: "REBU",
+    testimonial: "",
+    avatar: all_logos["/src/assets/logos_clienti/11_logo-rebu.jpg"],
   },
-  {
-    id: 3,
-    name: "Michael Johnson",
-    designation: "UX Designer",
-    company: "DesignPro",
-    testimonial:
-      "An amazing tool that simplifies complex tasks. Highly recommended for professionals in the industry. " +
-      "The intuitive interface makes it easy to onboard new team members, and the automation features save us countless hours every week. ",
-    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
-  },
-  {
-    id: 4,
-    name: "Emily Davis",
-    designation: "Marketing Specialist",
-    company: "BrandBoost",
-    testimonial: "I've seen a significant improvement in our team's productivity since we started using this service.",
-    avatar: "https://randomuser.me/api/portraits/women/4.jpg",
-  },
-  {
-    id: 5,
-    name: "Daniel Martinez",
-    designation: "Full-Stack Developer",
-    company: "CodeCrafters",
-    testimonial: "The best investment we've made! The support team is also super responsive and helpful.",
-    avatar: "https://randomuser.me/api/portraits/men/5.jpg",
-  },
-  {
-    id: 6,
-    name: "Jane Smith",
-    designation: "Product Manager",
-    company: "InnovateX",
-    testimonial: "The user experience is top-notch! The interface is clean, intuitive, and easy to navigate.",
-    avatar: "https://randomuser.me/api/portraits/women/2.jpg",
-  },
+  */
+  { name: "", avatar: all_logos["/src/assets/logos_clienti/13_logo.png"] },
+  { name: "", avatar: all_logos["/src/assets/logos_clienti/15_logo_hamburger_recycling.png"] },
+  { name: "", avatar: all_logos["/src/assets/logos_clienti/16_logo_ipg.jpg"] },
+  { name: "", avatar: all_logos["/src/assets/logos_clienti/17_logo-big.png"] },
+  { name: "", avatar: all_logos["/src/assets/logos_clienti/18_recycle-int.jpg"] },
+  { name: "", avatar: all_logos["/src/assets/logos_clienti/19_rondo.gif"] },
+  { name: "", avatar: all_logos["/src/assets/logos_clienti/2_8230015.gif"] },
+  { name: "", avatar: all_logos["/src/assets/logos_clienti/20_urban-logo.gif"] },
+  { name: "", avatar: all_logos["/src/assets/logos_clienti/22_top-left.jpg"] },
+  { name: "", avatar: all_logos["/src/assets/logos_clienti/24_Alco-Recycling.jpg"] },
+  { name: "", avatar: all_logos["/src/assets/logos_clienti/4_avery-dennison-corpo-logo.jpg"] },
+  { name: "", avatar: all_logos["/src/assets/logos_clienti/7_diren.jpg"] },
+  { name: "", avatar: all_logos["/src/assets/logos_clienti/9_imagesCAA5BKIM.jpg"] },
 ]
 ---
 
@@ -66,18 +69,24 @@ const testimonials = [
       <div class="mx-auto max-w-(--breakpoint-xl) columns-1 gap-8 md:columns-2 lg:columns-3">
         {
           testimonials.map((testimonial) => (
-            <div class="bg-accent relative mb-8 break-inside-avoid rounded-xl p-6">
+            <div class="bg-accent relative mb-8 break-inside-avoid rounded-xl p-4">
               <div class="flex items-center justify-between">
-                <div class="flex items-center gap-4">
-                  <div>
-                    <p class="text-lg font-medium">
-                      {testimonial.name} <span class="font-bold">{testimonial.company}</span>
-                    </p>
-                    <p class="text-muted-foreground text-sm">{testimonial.designation}</p>
-                  </div>
+                <div class="flex items-center gap-2">
+                  <p class="space-y-2 text-lg font-medium">
+                    {
+                      <Image
+                        src={testimonial.avatar.default}
+                        class="max-h-28 rounded-sm object-cover"
+                        alt={testimonial.name}
+                      />
+                    }
+                    {testimonial.name ?? ""}
+                    <span class="font-bold">{testimonial.name}</span>
+                  </p>
+                  {/* <p class="text-muted-foreground text-sm">{testimonial.designation}</p> */}
                 </div>
               </div>
-              <p class="mt-5 text-[17px]">{testimonial.testimonial}</p>
+              {/* <p class="mt-5 text-[17px]">{testimonial.testimonial}</p> */}
             </div>
           ))
         }
