@@ -30,6 +30,7 @@ const teamMembers = [
     bio: "Former frontend dev for Linear, Coinbase, and Postscript.",
     imageUrl: "https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
+  /*
   {
     name: "David Lee",
     title: "Backend Developer",
@@ -54,22 +55,23 @@ const teamMembers = [
     bio: "Lead CX at Wealthsimple. Former PagerDuty and Sqreen.",
     imageUrl: "https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&w=600",
   },
+  */
 ]
 ---
 
 <BaseLayout>
   <div class="mx-auto flex max-w-(--breakpoint-xl) flex-col justify-center gap-16 px-6 py-8 sm:py-16 lg:px-8">
     <div class="mx-auto max-w-2xl text-center">
-      <b class="text-muted-foreground text-center text-sm font-semibold uppercase"> We&apos;re hiring! </b>
-      <h2 class="mt-3 text-4xl font-semibold tracking-tighter sm:text-5xl">Meet Our Team</h2>
+      <h2 class="mt-3 text-4xl font-semibold tracking-tighter sm:text-5xl">Echipa noastră</h2>
       <p class="text-muted-foreground mt-6 text-base sm:text-lg">
-        Our philosophy is simple — hire a team of diverse, passionate people and foster a culture that empowers you to
-        do you best work.
+        O echipă de oameni pasionați de a face cea mai bună muncă pentru cele mai bune rezultate.
       </p>
+      <!-- 
       <div class="mt-8 flex flex-col gap-3 sm:flex-row-reverse sm:justify-center">
         <Button size="lg">Open Positions</Button>
         <Button size="lg" variant="outline"> About Us </Button>
       </div>
+ -->
     </div>
 
     <div class="grid w-full grid-cols-1 gap-x-10 gap-y-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -86,7 +88,7 @@ const teamMembers = [
             <h3 class="mt-5 text-lg font-semibold">{member.name}</h3>
             <p class="text-muted-foreground text-sm">{member.title}</p>
             <p class="mt-2 mb-6 text-pretty">{member.bio}</p>
-            <div class="mt-auto flex items-center gap-4">icons</div>
+            {/* <div class="mt-auto flex items-center gap-4">icons</div> */}
           </div>
         ))
       }
