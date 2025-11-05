@@ -1,82 +1,64 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro"
+import { Image } from "astro:assets"
 
 import { Button } from "@/components/starwind/button"
 import IconArrowRight from "phosphor-astro/ArrowRight.astro"
+import IconChecks from "phosphor-astro/Checks.astro"
 
-const { href } = Astro.url
+const servicii = ["Montaj", "Service", "Reparații", "Garanție", "Post-garanție"]
+
+import img_inainte from "src/assets/illustratii/rszutilaj-before-d476f950.jpg"
+import img_dupa from "src/assets/illustratii/rszutilaj-after-c473e4b2.jpg"
 ---
 
 <BaseLayout>
   <div class="flex min-h-screen items-center justify-center">
     <div class="mx-auto w-full max-w-(--breakpoint-lg) px-6 py-12">
-      <h2 class="text-3xl leading-10 font-semibold tracking-tight sm:text-4xl md:text-[40px] md:leading-13">
-        Design and Engage: <br />
-        Build Smarter Spaces and Strategies
-      </h2>
-      <div class="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-5 lg:grid-cols-3">
-        {/* Card 1 */}
-        <div class="bg-muted col-span-1 rounded-xl p-6 md:col-span-2 lg:col-span-1">
-          {/* Media 1 Mobile */}
-          <div class="bg-background mb-6 aspect-video w-full rounded-xl md:hidden"></div>
-
-          <span class="text-xl font-semibold tracking-tight"> Plan Smarter </span>
-
-          <ul class="mt-6 space-y-4">
-            <li>
-              <div class="flex items-start gap-3">
-                <p class="-mt-0.5">
-                  Design your space with drag-and-drop simplicity—create grids, lists, or galleries in seconds.
-                </p>
+      <!-- intro -->
+      <div class="mb-8 space-y-4">
+        <h2 class="text-3xl leading-10 font-semibold tracking-tight sm:text-4xl md:text-[40px] md:leading-13">
+          Servicii
+        </h2>
+        <ul class="flex flex-wrap gap-4">
+          {
+            servicii.map((serv) => (
+              <div class="bg-info text-info-foreground px-2 py-1.5">
+                <IconChecks width={22} height={22} class="mr-0.5 inline-block" />
+                {serv}
               </div>
-            </li>
-            <li>
-              <div class="flex items-start gap-3">
-                <!-- <Blocks class="shrink-0" /> -->
-                <p class="-mt-0.5">Embed polls, quizzes, or forms to keep your audience engaged.</p>
-              </div>
-            </li>
-          </ul>
-
-          <Button class="mt-8 w-full">
-            Build your strategy <IconArrowRight />
-          </Button>
-        </div>
-        {/* Media 1 Desktop */}
-        <div class="bg-muted col-span-1 hidden rounded-xl md:col-span-3 md:block lg:col-span-2"></div>
-
-        {/* Media 2 Desktop */}
-        <div class="bg-muted col-span-1 hidden rounded-xl md:col-span-3 md:block lg:col-span-2"></div>
-
-        {/* Card 2 */}
-        <div class="bg-muted col-span-1 rounded-xl p-6 md:col-span-2 lg:col-span-1">
-          {/* Media 2 Mobile */}
-          <div class="bg-background mb-6 aspect-video w-full rounded-xl md:hidden"></div>
-
-          <span class="text-xl font-semibold tracking-tight"> Plan Smarter </span>
-
-          <ul class="mt-6 space-y-4">
-            <li>
-              <div class="flex items-start gap-3">
-                <!-- <Settings2 class="shrink-0" /> -->
-                <p class="-mt-0.5">
-                  Design your space with drag-and-drop simplicity—create grids, lists, or galleries in seconds.
-                </p>
-              </div>
-            </li>
-            <li>
-              <div class="flex items-start gap-3">
-                <!-- <Blocks class="shrink-0" /> -->
-                <p class="-mt-0.5">Embed polls, quizzes, or forms to keep your audience engaged.</p>
-              </div>
-            </li>
-          </ul>
-
-          <Button class="mt-8 w-full">
-            Build your strategy <IconArrowRight />
-          </Button>
-        </div>
+            ))
+          }
+        </ul>
+        <p class="">
+          Specialiștii noștri in automatizări, asigură montarea, instalarea și punerea in funcțiune a utilajelor
+          achiziționate, precum și reviziile tehnice atât în perioada de garanție cât și post-garanție. De asemenea,
+          inginerii și tehnicienii noștri asigură servicii tehnice de montaj, lucrări de reparație și întreținere,
+          recondiționare completă pentru instalații de prese si benzi transportoare, stații de sortare, precum și alte
+          tipuri de utilaje.
+        </p>
       </div>
+      <!-- inainte-dupa -->
+      <section class="pt-12 pb-12 lg:pt-16 lg:pb-16">
+        <div class="mx-auto grid max-w-7xl gap-y-8 px-4 sm:grid-cols-12 sm:gap-x-12 sm:gap-y-0 xl:px-0">
+          <!-- inainte -->
+          <div class="sm:col-span-1">
+            <h3 class="text-2xl font-semibold">Înainte</h3>
+          </div>
+          <div class="sm:col-span-5">
+            <Image src={img_inainte} alt="inainte" />
+          </div>
+          <!-- dupa -->
+          <div class="sm:col-span-1">
+            <h3 class="text-2xl font-semibold">După</h3>
+          </div>
+          <div class="sm:col-span-5">
+            <Image src={img_dupa} alt="dupa" />
+          </div>
+        </div>
+      </section>
+
+      <!-- // inainte-dupa -->
     </div>
   </div>
 </BaseLayout>
