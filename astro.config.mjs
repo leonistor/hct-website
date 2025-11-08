@@ -16,7 +16,7 @@ export default defineConfig({
   // image: {
   //   service: passthroughImageService(),
   // },
-
+  devToolbar: { enabled: false },
   adapter: bun(),
   output: "server",
   // devToolbar: { enabled: false },

@@ -3,6 +3,7 @@ import { conf } from "@/config/site"
 // import Logo from "@/assets/logo-hct.svg"
 import Logo from "@/assets/hct-logo-simple.svg"
 import IconWhatsapp from "phosphor-astro/WhatsappLogo.astro"
+import { Button } from "@/components/starwind/button"
 
 const year = new Date().getFullYear()
 ---
@@ -20,6 +21,14 @@ const year = new Date().getFullYear()
         <Logo class="size-8" />
       </figure>
       <div class="flex flex-wrap items-center gap-4 sm:justify-center lg:justify-self-end">
+        {
+          import.meta.env.DEV && (
+            <Button href="/dev" variant="error">
+              dev
+            </Button>
+          )
+        }
+
         <a href="/legale" class="text-muted-foreground text-sm font-light">Legale</a>
         <a href="/contact" class="text-muted-foreground text-sm font-light">Contact</a>
         <IconWhatsapp class="fill-muted-foreground size-6" />
