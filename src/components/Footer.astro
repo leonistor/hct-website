@@ -1,6 +1,7 @@
 ---
 import { conf } from "@/config/site"
-import Logo from "@/assets/logo-hct.svg"
+// import Logo from "@/assets/logo-hct.svg"
+import Logo from "@/assets/hct-logo-simple.svg"
 import IconWhatsapp from "phosphor-astro/WhatsappLogo.astro"
 
 const year = new Date().getFullYear()
@@ -16,9 +17,10 @@ const year = new Date().getFullYear()
         {conf.title}.
       </div>
       <figure class="sm:justify-self-center">
-        <Logo class="size-10 opacity-55" />
+        <Logo class="size-8" />
       </figure>
       <div class="flex flex-wrap items-center gap-4 sm:justify-center lg:justify-self-end">
+        <a href="/legale" class="text-muted-foreground text-sm font-light">Legale</a>
         <a href="/contact" class="text-muted-foreground text-sm font-light">Contact</a>
         <IconWhatsapp class="fill-muted-foreground size-6" />
       </div>
