@@ -9,7 +9,7 @@
     "dist": true,
     "node_modules": true,
     ".prettierignore": false,
-    ".gitignore": true,
+    ".gitignore": false,
     "tsconfig.json": true,
     ".prettierrc.json": true,
     "eslint.config.js": true,
