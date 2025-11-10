@@ -1,13 +1,4 @@
 ---
-import {
-  Item,
-  ItemContent,
-  ItemTitle,
-  ItemDescription,
-  ItemHeader,
-  ItemGroup,
-  ItemActions,
-} from "@/components/starwind/item"
 import PageHero from "@/components/ui/typography/PageHero.astro"
 
 import BaseLayout from "@/layouts/BaseLayout.astro"
@@ -20,7 +11,6 @@ const allMateriale = (await getCollection("materiale")).map((mater) => {
 ---
 
 <BaseLayout>
-  <!-- TODO: imagine si descriere -->
   <PageHero title="Materiale" />
 
   <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -31,7 +21,7 @@ const allMateriale = (await getCollection("materiale")).map((mater) => {
           <li class="bg-muted">
             <a href={`/m/${slug}`} class="group block overflow-hidden">
               <img
-                src={`${categ.imagine_url}`}
+                src={`${categ.imagine_url}?thumb=400x400f`}
                 alt=""
                 class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
               />
