@@ -1,6 +1,7 @@
 ---
 // import Logo from "@/assets/logo-hct.svg"
 import Logo from "@/assets/hct-logo-simple.svg"
+import LogoText from "@/assets/logo-text-hategan-ct.svg"
 import ChevronDown from "@tabler/icons/outline/chevron-down.svg"
 
 import { navigationLinks } from "@/config/menu"
@@ -23,7 +24,7 @@ import Hamburger from "./ui/blocks/Hamburger.astro"
   <div class="flex h-24 items-center gap-8 px-4 sm:px-6 lg:px-8">
     <a class="block" href="/">
       <Logo class="mr-1 inline-block size-10 sm:size-14" />
-      <div class="logo inline-block sm:text-xl">Hațegan <span class="font-thin">Consulting & Trading</span></div>
+      <LogoText class="mr-1 inline-block size-44 sm:size-60" />
     </a>
 
     <div class="flex flex-1 items-center justify-end md:justify-between">
@@ -77,10 +78,3 @@ import Hamburger from "./ui/blocks/Hamburger.astro"
     </div>
   </div>
 </nav>
-
-<style>
-  .logo,
-  .menu {
-    font-family: var(--font-headings);
-  }
-</style>
