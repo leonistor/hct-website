@@ -1,6 +1,8 @@
 import { test } from "@playwright/test"
 import { navigationLinks } from "@/config/menu"
 
+const SCREENSHOTS_PATH = "src/assets/screenshots"
+
 const targets = navigationLinks.flatMap((item) => (item.items ? item.items : item))
 targets.push({ label: "Home", href: "/" })
 
@@ -10,6 +12,6 @@ targets.forEach(({ href, label }) => {
 
   test(`screenshot dark ${href}`, async ({ page }) => {
     await page.goto(href!)
-    await page.screenshot({ path: `test-results/dark-${page_slug}.png`, fullPage: true })
+    await page.screenshot({ path: `${SCREENSHOTS_PATH}/dark-${page_slug}.png`, fullPage: true })
   })
 })

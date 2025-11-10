@@ -18,6 +18,11 @@
 - Astro component for Splide slider/carousel: https://pascal-brand38.github.io/astro-dev/packages/astro-splide/
 - search: https://github.com/shishkin/astro-pagefind
 
+## playwright
+
+- https://www.browsercat.com/post/ultimate-guide-visual-testing-playwright
+- https://css-tricks.com/automated-visual-regression-testing-with-playwright/
+
 ---
 
 - API test: `xh -A bearer -a "<TOKEN>" :8090/api/collections/v_categorii/records?fields=slug | fx '.items[].slug' | less`

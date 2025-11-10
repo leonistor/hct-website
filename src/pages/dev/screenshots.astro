@@ -1,0 +1,48 @@
+---
+import type { ImageMetadata } from "astro"
+import { Debug } from "astro:components"
+import { Image } from "astro:assets"
+import BaseLayout from "@/layouts/BaseLayout.astro"
+
+const images = import.meta.glob<{ default: ImageMetadata }>("src/assets/screenshots/**/*.png", {
+  //   import: "default",
+  //   eager: true,
+})
+
+const imagePath = "/src/assets/screenshots/dark-categorii.png"
+
+const srcs = Object.keys(images)
+---
+
+<BaseLayout>
+  <h1>screenshots</h1>
+  <!-- <Debug {srcs} /> -->
+  <div id="gallery" class="container mx-auto grid grid-cols-2 gap-2 px-2 pb-2 md:grid-cols-3">
+    {
+      srcs.map((imagePath) => (
+        <a href={imagePath} target="_blank" class="glightbox">
+          <Image
+            src={images[imagePath]()}
+            alt={"altText"}
+            height={350}
+            class={"aspect-[3/2] w-full object-cover transition duration-300 ease-in-out"}
+          />
+        </a>
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<script>
+  import GLightbox from "glightbox"
+  import "glightbox/dist/css/glightbox.min.css"
+
+  document.addEventListener("astro:page-load", () => {
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      autoplayVideos: true,
+      loop: true,
+      draggable: true,
+    })
+  })
+</script>
