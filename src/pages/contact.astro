@@ -4,45 +4,41 @@ import BaseLayout from "@/layouts/BaseLayout.astro"
 import IconMail from "phosphor-astro/Envelope.astro"
 import IconPin from "phosphor-astro/MapPin.astro"
 import IconPhone from "phosphor-astro/Phone.astro"
+import IconBriefcase from "phosphor-astro/Briefcase.astro"
 ---
 
 <BaseLayout>
   <PageHero title="Contact" />
   <div class="flex items-center justify-center">
     <div class="text-center">
-      <b class="text-muted-foreground text-sm font-semibold uppercase"> Contact Us </b>
-      <h2 class="mt-3 text-2xl font-semibold tracking-tight md:text-4xl">Get In Touch</h2>
-      <p class="text-muted-foreground mt-4 text-base sm:text-lg">Our friendly team is always here to chat.</p>
-      <div
-        class="mx-auto grid max-w-(--breakpoint-xl) gap-16 px-6 py-24 md:grid-cols-2 md:gap-10 md:px-0 lg:grid-cols-3"
-      >
+      <div class="mx-auto grid max-w-(--breakpoint-xl) gap-16 sm:px-6 sm:py-24 lg:grid-cols-3">
         <div class="flex flex-col items-center text-center">
           <div class="flex h-12 w-12 items-center justify-center rounded-full">
             <IconMail />
           </div>
           <h3 class="mt-6 text-xl font-semibold">Email</h3>
-          <p class="text-muted-foreground mt-2">Our friendly team is here to help.</p>
-          <a class="text-primary mt-4 font-medium" href="mailto:akashmoradiya3444@gmail.com">
-            akashmoradiya3444@gmail.com
-          </a>
+          <p class="mt-2">info@h-ct.ro</p>
         </div>
         <div class="flex flex-col items-center text-center">
           <div class="flex h-12 w-12 items-center justify-center rounded-full">
             <IconPin />
           </div>
           <h3 class="mt-6 text-xl font-semibold">Office</h3>
-          <p class="text-muted-foreground mt-2">Come say hello at our office HQ.</p>
-          <a class="text-primary mt-4 font-medium" href="https://map.google.com" target="_blank">
-            100 Smith Street Collingwood <br /> VIC 3066 AU
-          </a>
+          <p class="mt-2">Str. Zizinului 111, etaj 2, camera 28-29<br />500407 Braşov, România</p>
         </div>
         <div class="flex flex-col items-center text-center">
           <div class="flex h-12 w-12 items-center justify-center rounded-full">
             <IconPhone />
           </div>
-          <h3 class="mt-6 text-xl font-semibold">Phone</h3>
-          <p class="text-muted-foreground mt-2">Mon-Fri from 8am to 5pm.</p>
-          <a class="text-primary mt-4 font-medium" href="tel:akashmoradiya3444@gmail.com"> +1 (555) 000-0000 </a>
+          <h3 class="mt-6 text-xl font-semibold">Tel</h3>
+          <p class="mt-2">Tel/fax: +40-374-861.606<br />Mobil/Whatsapp: +40-743-100.883</p>
+        </div>
+        <div class="flex flex-col items-center text-center sm:col-span-3">
+          <div class="flex h-12 w-12 items-center justify-center rounded-full">
+            <IconBriefcase />
+          </div>
+          <h3 class="mt-6 text-xl font-semibold">S.C. Hategan Consulting & Trading S.R.L.</h3>
+          <p class="mt-2">RO37527965<br />J8/1102/2017<br />IBAN RON: RO91 RZBR 0000 0600 2262 8467</p>
         </div>
       </div>
     </div>

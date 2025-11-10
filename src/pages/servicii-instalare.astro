@@ -6,38 +6,24 @@ import PageHero from "@/components/ui/typography/PageHero.astro"
 
 const features = [
   {
-    category: "Marketing and Sales",
-    title: "Collect and enrich leads your way",
+    category: "Mattis pellentesque rutrum",
+    title: "Non torquent orci aenean sociosqu",
     details:
-      "Take control over how and when to follow up with your leads. Store and reference leads in multiple tables and, from there, automatically send them personalized emails.",
+      "Scelerisque felis posuere fermentum senectus magnis vitae ornare habitasse. Est ligula vehicula tincidunt justo diam fringilla facilisis convallis duis. Finibus eget integer phasellus nascetur inceptos class primis lectus scelerisque. Natoque in ridiculus gravida nullam magnis taciti. Dis natoque non efficitur litora vivamus ipsum dictum venenatis aptent leo. Urna mi pulvinar nostra habitant massa curabitur.",
     tutorialLink: "#",
   },
   {
-    category: "Project Management",
-    title: "Streamline your workflows effortlessly",
+    category: "Dis natoque",
+    title: "Commodo eleifend morbi arcu egestas",
     details:
-      "Organize tasks, deadlines, and team collaboration in one place. Use customizable boards to manage projects efficiently and automate routine updates.",
+      "Consectetuer tellus nunc auctor urna parturient velit scelerisque suscipit lacinia justo aliquam. Fermentum vel ex phasellus netus senectus potenti. Lobortis vel feugiat curabitur viverra mus. Suspendisse ipsum ad gravida donec nibh platea diam pede accumsan placerat sapien.",
     tutorialLink: "#",
   },
   {
-    category: "Customer Support",
-    title: "Deliver seamless customer experiences",
+    category: "Auctor faucibus",
+    title: "Suspendisse ipsum ad gravida",
     details:
-      "Track and resolve customer queries faster with an integrated ticketing system. Set priorities, automate follow-ups, and enhance satisfaction with personalized responses.",
-    tutorialLink: "#",
-  },
-  {
-    category: "Team Collaboration",
-    title: "Stay connected with your team",
-    details:
-      "Simplify communication and align team efforts with shared boards and real-time updates. Enable transparent goal tracking and instant feedback for better results.",
-    tutorialLink: "#",
-  },
-  {
-    category: "Product Development",
-    title: "Accelerate innovation with ease",
-    details:
-      "Bring your product ideas to life by managing prototypes, feedback, and iterations in one place. Collaborate with your team to refine features and release with confidence.",
+      "Scelerisque consectetur vel curae pulvinar maecenas pede imperdiet diam. Auctor blandit ligula integer penatibus fames ridiculus curabitur vitae quis cursus. Commodo eleifend morbi arcu egestas velit conubia netus nec et habitant fames.",
     tutorialLink: "#",
   },
 ]
@@ -48,7 +34,7 @@ const features = [
     title="Servicii instalare și montaj"
     text="Specialiștii noștri in automatizări asigură montarea, instalarea și punerea in funcțiune a utilajelor achiziționate, precum și reviziile tehnice atât în perioada de garanție cât și post-garanție."
   />
-  <div class="flex min-h-screen items-center justify-center">
+  <div class="flex items-center justify-center">
     <div class="w-full max-w-(--breakpoint-lg)">
       <div class="mx-auto mt-8 w-full space-y-20 md:mt-16">
         {
@@ -56,12 +42,10 @@ const features = [
             <div class="flex flex-col items-center gap-x-12 gap-y-6 md:flex-row md:even:flex-row-reverse">
               <div class="bg-muted border-border/50 aspect-[4/3] w-full basis-1/2 rounded-xl border" />
               <div class="shrink-0 basis-1/2">
-                <span class="text-muted-foreground text-sm font-medium uppercase">{feature.category}</span>
+                <span class="text-secondary text-sm font-medium uppercase">{feature.category}</span>
                 <h4 class="my-3 text-2xl font-semibold tracking-tight">{feature.title}</h4>
-                <p class="text-muted-foreground">{feature.details}</p>
-                <Button size="lg" class="mt-6 gap-3 rounded-full">
-                  Learn More <IconArrowRight />
-                </Button>
+                <p class="">{feature.details}</p>
+                {/* <Button size="lg" class="mt-6 gap-3 rounded-full"> Learn More <IconArrowRight /> </Button> */}
               </div>
             </div>
           ))
