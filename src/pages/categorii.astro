@@ -1,6 +1,7 @@
 ---
 import PageHero from "@/components/ui/typography/PageHero.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
+import { Image } from "astro:assets"
 import { getCollection } from "astro:content"
 
 const allCategorii = (await getCollection("categorii")).map((categ) => {
@@ -20,11 +21,18 @@ const allCategorii = (await getCollection("categorii")).map((categ) => {
         return (
           <li class="bg-muted">
             <a href={`/c/${slug}`} class="group block overflow-hidden">
-              <img
+              <Image
                 src={`${categ.imagine_url}`}
                 alt=""
+                height={300}
+                width={300}
                 class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
               />
+              {/* <img
+                src={`${categ.imagine_url}?thumb=400x400f`}
+                alt=""
+                class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
+              /> */}
 
               <div class="px-1 pt-2">
                 <h3 class="text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4">
