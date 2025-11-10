@@ -10,36 +10,6 @@ import PocketBase from "pocketbase"
 
 export const pb = new PocketBase(process.env.PUBLIC_ASTRO_POCKETBASE_URL)
 
-// const auth = await pb
-//   .collection("_superusers")
-//   .authWithPassword(
-//     process.env.POCKET_ADMIN_EMAIL!,
-//     process.env.POCKET_ADMIN_PASSWORD!,
-//   )
-
-/*
-function pbLoader(options: {
-  collection: string
-  expand?: string
-  schema?: any
-}): Loader {
-  // Return a loader object
-  return {
-    name: "pboader",
-    // Called when updating the collection.
-    load: async () => {
-      // Load data and update the store
-      const response = await pb
-        .collection(options.collection)
-        .getFullList({ expand: options.expand })
-      return response
-    },
-    // Define the schema of an entry.
-    schema: options.schema,
-  }
-}
-*/
-
 /** ----- */
 const pocketOptions: Omit<PocketBaseLoaderOptions, "collectionName"> = {
   url: import.meta.env.PUBLIC_ASTRO_POCKETBASE_URL,
@@ -51,16 +21,6 @@ const pocketOptions: Omit<PocketBaseLoaderOptions, "collectionName"> = {
 }
 
 /* pocketbase */
-
-/*
-const produse = defineCollection({
-  loader: pbLoader({
-    collection: "produse",
-    expand: "materiale,categorie,partener",
-    schema: ProduseResponseZodSchema,
-  }),
-})
-*/
 
 const produse = defineCollection({
   loader: pocketbaseLoader({
@@ -107,6 +67,14 @@ const lista_produse = defineCollection({
   }),
 })
 
+const clienti = defineCollection({
+  loader: pocketbaseLoader({
+    collectionName: "clienti",
+    ...pocketOptions,
+    improveTypes: true,
+  }),
+})
+
 /* mdx */
 
 const blog = defineCollection({
@@ -126,4 +94,5 @@ export const collections = {
   blog,
   materiale,
   lista_produse,
+  clienti,
 }

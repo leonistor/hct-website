@@ -2,6 +2,12 @@
 import PageHero from "@/components/ui/typography/PageHero.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 
+import { getCollection } from "astro:content"
+
+const allClienti = (await getCollection("clienti")).map((mater) => {
+  const logo_url = mater.data.logo?.replace("http://127.0.0.1:8090", "/pocket")
+  return { logo_url, ...mater }
+})
 import { Image } from "astro:assets"
 import type { ImageMetadata } from "astro"
 
@@ -10,8 +16,6 @@ const all_logos = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/logos_clienti/**/*.{jpg,jpeg,png}",
   // { eager: true },
 )
-console.log("")
-console.dir(all_logos)
 
 const testimonials = [
   { name: "", avatar: "/src/assets/logos_clienti/10_kls.png" },
@@ -34,6 +38,7 @@ const testimonials = [
 
 <BaseLayout>
   <PageHero title="Clienți și proiecte" />
+
   <div class="flex min-h-screen items-center justify-center px-6 py-12">
     <div>
       <div class="mx-auto max-w-(--breakpoint-xl) columns-1 gap-8 md:columns-2 lg:columns-3">

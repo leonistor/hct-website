@@ -73,3 +73,18 @@ export interface Partener {
   updated: string
   url: string
 }
+
+export interface Client {
+  _order: number
+  collectionId: string
+  collectionName: string
+  created: string
+  descriere: string
+  id: string
+  locatie: string
+  logo: string
+  nume: string
+  publicat: boolean
+  updated: string
+  url: string
+}
