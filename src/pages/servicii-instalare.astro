@@ -2,6 +2,7 @@
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { Button } from "@/components/starwind/button"
 import IconArrowRight from "phosphor-astro/ArrowRight.astro"
+import PageHero from "@/components/ui/typography/PageHero.astro"
 
 const features = [
   {
@@ -43,17 +44,12 @@ const features = [
 ---
 
 <BaseLayout>
+  <PageHero
+    title="Servicii instalare și montaj"
+    text="Specialiștii noștri in automatizări asigură montarea, instalarea și punerea in funcțiune a utilajelor achiziționate, precum și reviziile tehnice atât în perioada de garanție cât și post-garanție."
+  />
   <div class="flex min-h-screen items-center justify-center">
-    <div class="w-full max-w-(--breakpoint-lg) px-6 py-10">
-      <h2
-        class="text-4xl font-semibold tracking-[-0.03em] text-pretty sm:mx-auto sm:max-w-xl sm:text-center md:text-[2.75rem] md:leading-[1.2]"
-      >
-        Servicii instalare
-      </h2>
-      <p class="text-muted-foreground mt-2 text-lg sm:text-center sm:text-xl">
-        Specialiștii noștri in automatizări asigură montarea, instalarea și punerea in funcțiune a utilajelor
-        achiziționate, precum și reviziile tehnice atât în perioada de garanție cât și post-garanție.
-      </p>
+    <div class="w-full max-w-(--breakpoint-lg)">
       <div class="mx-auto mt-8 w-full space-y-20 md:mt-16">
         {
           features.map((feature) => (

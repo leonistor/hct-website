@@ -1,5 +1,6 @@
 ---
 import { Item, ItemContent, ItemGroup, ItemHeader } from "@/components/starwind/item"
+import PageHero from "@/components/ui/typography/PageHero.astro"
 
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { Image } from "astro:assets"
@@ -12,9 +13,10 @@ const allParteneri = (await getCollection("parteneri")).map((part) => {
 ---
 
 <BaseLayout>
-  <div class="prose dark:prose-invert prose-lg my-6">
-    <h1>Parteneri</h1>
-  </div>
+  <PageHero
+    title="Parteneri"
+    text="Asigurăm o paletă completă de produse și servicii pentru industria reciclării prin parteneriate cu cei mai importanți producători europeni."
+  />
 
   <div class="grid gap-2 sm:grid-cols-3 sm:gap-4">
     {

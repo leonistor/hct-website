@@ -1,0 +1,14 @@
+---
+interface Props {
+  title: string
+  text?: string
+  extraClass?: string
+}
+
+const { title, text, extraClass } = Astro.props
+---
+
+<div class={`prose dark:prose-invert prose-headings:font-bold md:prose-lg pt-4 pb-2 sm:p-8 ${extraClass}`}>
+  <h1 class="text-balance">{title}</h1>
+  {text && <p class="">{text}</p>}
+</div>

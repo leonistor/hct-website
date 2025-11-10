@@ -1,24 +1,23 @@
 ---
 import { getCollection } from "astro:content"
 import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHero from "@/components/ui/typography/PageHero.astro"
 
 const allPosts = await getCollection("blog")
 
 // TODO: display and filter tags
 ---
 
-<BaseLayout title="Noutati">
-  <div class="prose dark:prose-invert my-6">
-    <h1>Noutăți</h1>
+<BaseLayout>
+  <PageHero title="Noutăți" />
 
-    <ul>
-      {
-        allPosts.map((post) => (
-          <li>
-            <a href={`/n/${post.id}/`}>{post.data.title}</a>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+  <ul>
+    {
+      allPosts.map((post) => (
+        <li>
+          <a href={`/n/${post.id}/`}>{post.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
 </BaseLayout>

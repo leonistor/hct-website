@@ -1,9 +1,12 @@
 ---
+import PageHero from "@/components/ui/typography/PageHero.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 ---
 
 <BaseLayout>
-  <div class="flex min-h-screen items-center justify-center">
+  <PageHero title="Consumabile" />
+
+  <div class="flex items-center justify-center">
     <div class="mx-auto w-full max-w-(--breakpoint-xl) px-6 py-12 xl:px-0">
       <h2 class="text-4xl font-semibold tracking-tighter md:text-5xl">The perfect starting point for any project</h2>
       <p class="text-muted-foreground mt-4 max-w-2xl text-lg">

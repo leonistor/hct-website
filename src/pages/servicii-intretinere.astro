@@ -10,16 +10,23 @@ const servicii = ["Montaj", "Service", "Reparații", "Garanție", "Post-garanți
 
 import img_inainte from "src/assets/illustratii/rszutilaj-before-d476f950.jpg"
 import img_dupa from "src/assets/illustratii/rszutilaj-after-c473e4b2.jpg"
+import PageHero from "@/components/ui/typography/PageHero.astro"
 ---
 
 <BaseLayout>
-  <div class="flex min-h-screen items-center justify-center">
-    <div class="mx-auto w-full max-w-(--breakpoint-lg) px-6 py-12">
+  <PageHero
+    title="Servicii întreținere și recondiționare"
+    text=`Specialiștii noștri in automatizări, asigură montarea, instalarea și punerea in funcțiune a utilajelor
+          achiziționate, precum și reviziile tehnice atât în perioada de garanție cât și post-garanție. De asemenea,
+          inginerii și tehnicienii noștri asigură servicii tehnice de montaj, lucrări de reparație și întreținere,
+          recondiționare completă pentru instalații de prese si benzi transportoare, stații de sortare, precum și alte
+          tipuri de utilaje.`
+    extraClass="max-w-none"
+  />
+  <div class="flex items-center justify-center">
+    <div class="mx-auto w-full max-w-(--breakpoint-lg)">
       <!-- intro -->
       <div class="mb-8 space-y-4">
-        <h2 class="text-3xl leading-10 font-semibold tracking-tight sm:text-4xl md:text-[40px] md:leading-13">
-          Servicii
-        </h2>
         <ul class="flex flex-wrap gap-4">
           {
             servicii.map((serv) => (
@@ -30,13 +37,6 @@ import img_dupa from "src/assets/illustratii/rszutilaj-after-c473e4b2.jpg"
             ))
           }
         </ul>
-        <p class="">
-          Specialiștii noștri in automatizări, asigură montarea, instalarea și punerea in funcțiune a utilajelor
-          achiziționate, precum și reviziile tehnice atât în perioada de garanție cât și post-garanție. De asemenea,
-          inginerii și tehnicienii noștri asigură servicii tehnice de montaj, lucrări de reparație și întreținere,
-          recondiționare completă pentru instalații de prese si benzi transportoare, stații de sortare, precum și alte
-          tipuri de utilaje.
-        </p>
       </div>
       <!-- inainte-dupa -->
       <section class="pt-12 pb-12 lg:pt-16 lg:pb-16">

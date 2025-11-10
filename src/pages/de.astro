@@ -1,11 +1,10 @@
 ---
+import PageHero from "@/components/ui/typography/PageHero.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 
 const { href } = Astro.url
 ---
 
 <BaseLayout>
-  <div class="prose dark:prose-invert my-6">
-    <h1 class="">Unternehmensprofil</h1>
-  </div>
+  <PageHero title="Unternehmensprofil" />
 </BaseLayout>

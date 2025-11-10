@@ -8,6 +8,7 @@ import {
   ItemGroup,
   ItemActions,
 } from "@/components/starwind/item"
+import PageHero from "@/components/ui/typography/PageHero.astro"
 
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { getCollection } from "astro:content"
@@ -20,9 +21,7 @@ const allMateriale = (await getCollection("materiale")).map((mater) => {
 
 <BaseLayout>
   <!-- TODO: imagine si descriere -->
-  <div class="prose dark:prose-invert prose-lg my-6">
-    <h1>Materiale</h1>
-  </div>
+  <PageHero title="Materiale" />
 
   <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {

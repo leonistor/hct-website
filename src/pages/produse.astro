@@ -9,6 +9,7 @@ import { For } from "@forastro/flow"
 import GridProduse from "@/components/ui/produs/GridProduse.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import IconList from "phosphor-astro/List.astro"
+import PageHero from "@/components/ui/typography/PageHero.astro"
 
 interface Props {
   categorii?: string[]
@@ -46,6 +47,7 @@ const allCategorii = await getCollection("categorii")
 ---
 
 <BaseLayout title="Toate produsele">
+  <PageHero title="Produse" text="" />
   <article class="">
     <!-- filter -->
     <section class="mb-4 space-y-3">

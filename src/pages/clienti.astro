@@ -1,4 +1,5 @@
 ---
+import PageHero from "@/components/ui/typography/PageHero.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 
 import { Image } from "astro:assets"
@@ -8,24 +9,6 @@ const all_logos = import.meta.glob<{ default: ImageMetadata }>(
   "src/assets/logos_clienti/*.{jpg,JPG,jpeg,png,PNG,webp,gif}",
   { eager: true },
 )
-
-/**
-10_kls.png
-11_logo-rebu.jpg
-13_logo.png
-15_logo_hamburger_recycling.png
-16_logo_ipg.jpg
-17_logo-big.png
-18_recycle-int.jpg
-19_rondo.gif
-2_8230015.gif
-20_urban-logo.gif
-22_top-left.jpg
-24_Alco-Recycling.jpg
-4_avery-dennison-corpo-logo.jpg
-7_diren.jpg
-9_imagesCAA5BKIM.jpg
- */
 
 const testimonials = [
   /*
@@ -37,14 +20,7 @@ const testimonials = [
     testimonial: "",
     avatar: all_logos["/src/assets/logos_clienti/10_kls.png"],
   },
-  {
-    id: 2,
-    name: "",
-    designation: "",
-    company: "REBU",
-    testimonial: "",
-    avatar: all_logos["/src/assets/logos_clienti/11_logo-rebu.jpg"],
-  },
+  
   */
   { name: "", avatar: all_logos["/src/assets/logos_clienti/13_logo.png"] },
   { name: "", avatar: all_logos["/src/assets/logos_clienti/15_logo_hamburger_recycling.png"] },
@@ -63,9 +39,9 @@ const testimonials = [
 ---
 
 <BaseLayout>
+  <PageHero title="Clienți și proiecte" />
   <div class="flex min-h-screen items-center justify-center px-6 py-12">
     <div>
-      <h2 class="mb-16 text-center text-5xl font-semibold tracking-[-0.03em]">Clienți</h2>
       <div class="mx-auto max-w-(--breakpoint-xl) columns-1 gap-8 md:columns-2 lg:columns-3">
         {
           testimonials.map((testimonial) => (
