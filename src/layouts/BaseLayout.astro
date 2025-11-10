@@ -1,4 +1,8 @@
 ---
+import "@fontsource-variable/work-sans"
+import workSansWoff2Latin from "@fontsource-variable/work-sans/files/work-sans-latin-wght-normal.woff2?url"
+import workSansWoff2LatinExt from "@fontsource-variable/work-sans/files/work-sans-latin-ext-wght-normal.woff2?url"
+
 import "@/styles/starwind.css"
 
 import { ClientRouter } from "astro:transitions"
@@ -23,6 +27,8 @@ const { title = conf.title } = Astro.props
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" as="font" type="font/woff2" href={workSansWoff2Latin} crossorigin="anonymous" />
+    <link rel="preload" as="font" type="font/woff2" href={workSansWoff2LatinExt} crossorigin="anonymous" />
 
     <title>{title}</title>
     <meta name="description" content={conf.description} />
