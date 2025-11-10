@@ -3,38 +3,32 @@ import PageHero from "@/components/ui/typography/PageHero.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 
 import { Image } from "astro:assets"
+import type { ImageMetadata } from "astro"
 
 // TODO: clienti in pocketbase collection
 const all_logos = import.meta.glob<{ default: ImageMetadata }>(
-  "src/assets/logos_clienti/*.{jpg,JPG,jpeg,png,PNG,webp,gif}",
-  { eager: true },
+  "/src/assets/logos_clienti/**/*.{jpg,jpeg,png}",
+  // { eager: true },
 )
+console.log("")
+console.dir(all_logos)
 
 const testimonials = [
-  /*
-  {
-    id: 1,
-    name: "",
-    designation: "",
-    company: "Klaussenburg Recycling GmbH",
-    testimonial: "",
-    avatar: all_logos["/src/assets/logos_clienti/10_kls.png"],
-  },
-  
-  */
-  { name: "", avatar: all_logos["/src/assets/logos_clienti/13_logo.png"] },
-  { name: "", avatar: all_logos["/src/assets/logos_clienti/15_logo_hamburger_recycling.png"] },
-  { name: "", avatar: all_logos["/src/assets/logos_clienti/16_logo_ipg.jpg"] },
-  { name: "", avatar: all_logos["/src/assets/logos_clienti/17_logo-big.png"] },
-  { name: "", avatar: all_logos["/src/assets/logos_clienti/18_recycle-int.jpg"] },
-  { name: "", avatar: all_logos["/src/assets/logos_clienti/19_rondo.gif"] },
-  { name: "", avatar: all_logos["/src/assets/logos_clienti/2_8230015.gif"] },
-  { name: "", avatar: all_logos["/src/assets/logos_clienti/20_urban-logo.gif"] },
-  { name: "", avatar: all_logos["/src/assets/logos_clienti/22_top-left.jpg"] },
-  { name: "", avatar: all_logos["/src/assets/logos_clienti/24_Alco-Recycling.jpg"] },
-  { name: "", avatar: all_logos["/src/assets/logos_clienti/4_avery-dennison-corpo-logo.jpg"] },
-  { name: "", avatar: all_logos["/src/assets/logos_clienti/7_diren.jpg"] },
-  { name: "", avatar: all_logos["/src/assets/logos_clienti/9_imagesCAA5BKIM.jpg"] },
+  { name: "", avatar: "/src/assets/logos_clienti/10_kls.png" },
+  { name: "", avatar: "/src/assets/logos_clienti/11_logo-rebu.jpg" },
+  { name: "", avatar: "/src/assets/logos_clienti/13_logo.png" },
+  { name: "", avatar: "/src/assets/logos_clienti/15_logo_hamburger_recycling.png" },
+  { name: "", avatar: "/src/assets/logos_clienti/16_logo_ipg.jpg" },
+  { name: "", avatar: "/src/assets/logos_clienti/18_recycle-int.jpg" },
+  { name: "", avatar: "/src/assets/logos_clienti/22_top-left.jpg" },
+  { name: "", avatar: "/src/assets/logos_clienti/24_Alco-Recycling.jpg" },
+  { name: "", avatar: "/src/assets/logos_clienti/4_avery-dennison-corpo-logo.jpg" },
+  { name: "", avatar: "/src/assets/logos_clienti/7_diren.jpg" },
+  { name: "", avatar: "/src/assets/logos_clienti/9_imagesCAA5BKIM.jpg" },
+  { name: "", avatar: "/src/assets/logos_clienti/logo_muller.png" },
+  { name: "", avatar: "/src/assets/logos_clienti/logo_rondo.png" },
+  { name: "", avatar: "/src/assets/logos_clienti/logo_silnef.png" },
+  { name: "", avatar: "/src/assets/logos_clienti/logo_urban.png" },
 ]
 ---
 
@@ -47,12 +41,13 @@ const testimonials = [
           testimonials.map((testimonial) => (
             <div class="bg-accent relative mb-8 break-inside-avoid rounded-xl p-4">
               <div class="flex items-center justify-between">
-                <div class="flex items-center gap-2">
+                <div class="mx-auto flex items-center gap-2">
                   <p class="space-y-2 text-lg font-medium">
                     {
                       <Image
-                        src={testimonial.avatar.default}
-                        class="max-h-28 rounded-sm object-cover"
+                        src={all_logos[testimonial.avatar]()}
+                        class="rounded-sm"
+                        fit="none"
                         alt={testimonial.name}
                       />
                     }
