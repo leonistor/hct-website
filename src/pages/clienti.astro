@@ -3,14 +3,13 @@ import PageHero from "@/components/ui/typography/PageHero.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import IconLink from "phosphor-astro/ArrowSquareOut.astro"
 
+import { pb_to_proxy } from "@/lib/util"
 import { getCollection } from "astro:content"
 
 const allClienti = (await getCollection("clienti")).map((client) => {
-  const logo_url = client.data.logo?.replace("http://127.0.0.1:8090", "/pocket")
+  const logo_url = pb_to_proxy(client.data.logo!)
   return { logo_url, ...client }
 })
-import { Image } from "astro:assets"
-import type { ImageMetadata } from "astro"
 
 // class:list={["", "hover:underline hover:decoration-pink-500 hover:decoration-2 hover:underline-offset-4"]}
 ---
