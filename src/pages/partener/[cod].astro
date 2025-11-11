@@ -1,5 +1,6 @@
 ---
 import GridProduse from "@/components/ui/produs/GridProduse.astro"
+import PageHero from "@/components/ui/typography/PageHero.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import { Debug } from "astro:components"
 
@@ -18,6 +19,8 @@ const { id, nume, descriere, logo, url } = partener.data
 ---
 
 <BaseLayout title={nume}>
-  <h1 class="text-3xl">Partener: {nume}</h1>
+  <PageHero title={`Partener: ${nume}`} />
+  <p class="x">{descriere}</p>
+  <Debug {logo} />
   <GridProduse parteneri={[id]} />
 </BaseLayout>

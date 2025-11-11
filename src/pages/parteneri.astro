@@ -13,10 +13,12 @@ const allParteneri = (await getCollection("parteneri")).map((part) => {
 ---
 
 <BaseLayout>
-  <PageHero
-    title="Parteneri"
-    text="Asigurăm o paletă completă de produse și servicii pentru industria reciclării prin parteneriate cu cei mai importanți producători europeni."
-  />
+  <PageHero title="Parteneri">
+    <p class="sm:max-w-3xl">
+      Asigurăm o paletă completă de produse și servicii pentru industria reciclării prin parteneriate cu cei mai
+      importanți producători europeni.
+    </p>
+  </PageHero>
 
   <div class="grid gap-2 sm:grid-cols-3 sm:gap-4">
     {

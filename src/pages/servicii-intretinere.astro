@@ -11,18 +11,20 @@ const servicii = ["Montaj", "Service", "Reparații", "Garanție", "Post-garanți
 import img_inainte from "src/assets/illustratii/rszutilaj-before-d476f950.jpg"
 import img_dupa from "src/assets/illustratii/rszutilaj-after-c473e4b2.jpg"
 import PageHero from "@/components/ui/typography/PageHero.astro"
+// text=``
+// extraClass="max-w-none"
 ---
 
 <BaseLayout>
-  <PageHero
-    title="Servicii întreținere și recondiționare"
-    text=`Specialiștii noștri in automatizări, asigură montarea, instalarea și punerea in funcțiune a utilajelor
-          achiziționate, precum și reviziile tehnice atât în perioada de garanție cât și post-garanție. De asemenea,
-          inginerii și tehnicienii noștri asigură servicii tehnice de montaj, lucrări de reparație și întreținere,
-          recondiționare completă pentru instalații de prese si benzi transportoare, stații de sortare, precum și alte
-          tipuri de utilaje.`
-    extraClass="max-w-none"
-  />
+  <PageHero title="Servicii întreținere și recondiționare">
+    <p class="max-w-5xl">
+      Specialiștii noștri in automatizări, asigură montarea, instalarea și punerea in funcțiune a utilajelor
+      achiziționate, precum și reviziile tehnice atât în perioada de garanție cât și post-garanție. De asemenea,
+      inginerii și tehnicienii noștri asigură servicii tehnice de montaj, lucrări de reparație și întreținere,
+      recondiționare completă pentru instalații de prese si benzi transportoare, stații de sortare, precum și alte
+      tipuri de utilaje.
+    </p>
+  </PageHero>
   <div class="flex items-center justify-center">
     <div class="mx-auto w-full max-w-(--breakpoint-lg)">
       <!-- intro -->
