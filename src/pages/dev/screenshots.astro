@@ -3,6 +3,7 @@ import type { ImageMetadata } from "astro"
 import { Debug } from "astro:components"
 import { Image } from "astro:assets"
 import BaseLayout from "@/layouts/BaseLayout.astro"
+import PageHero from "@/components/ui/typography/PageHero.astro"
 
 const images = import.meta.glob<{ default: ImageMetadata }>("src/assets/screenshots/**/*.png", {
   //   import: "default",
@@ -13,20 +14,31 @@ const srcs = Object.keys(images)
 ---
 
 <BaseLayout>
-  <h1>screenshots</h1>
+  <PageHero title="Screenshots" />
+
   <!-- <Debug {srcs} /> -->
-  <div id="gallery" class="container mx-auto grid grid-cols-2 gap-2 px-2 pb-2 md:grid-cols-3">
+  <div id="gallery" class="container mx-auto grid gap-4 md:grid-cols-3">
     {
-      srcs.map((imagePath) => (
-        <a href={imagePath} target="_blank" class="glightbox">
-          <Image
-            src={images[imagePath]()}
-            alt={"altText"}
-            height={350}
-            class={"aspect-[3/2] w-full object-cover transition duration-300 ease-in-out"}
-          />
-        </a>
-      ))
+      srcs.map((imagePath) => {
+        const imageName = imagePath.split("/").pop()!.split(".")[0]
+        const mode = imageName.split("-")[0]
+        const page = imageName.substring(imageName.indexOf("-") + 1)
+        return (
+          <div class="bg-muted flex flex-col gap-2">
+            <p class="mx-auto pt-2 text-lg">
+              <a href={`/${page}`}>{page}</a> <span class="font-thin">{mode}</span>
+            </p>
+            <a href={imagePath} target="_blank" class="glightbox">
+              <Image
+                src={images[imagePath]()}
+                alt={"altText"}
+                height={350}
+                class={"aspect-[3/2] w-full object-none object-top transition duration-300 ease-in-out"}
+              />
+            </a>
+          </div>
+        )
+      })
     }
   </div>
 </BaseLayout>

@@ -1,11 +1,15 @@
 ---
+import PageHero from "@/components/ui/typography/PageHero.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
+import Button from "@/components/starwind/button"
+import IconArrowRight from "phosphor-astro/ArrowRight.astro"
 ---
 
 <BaseLayout>
-  dev page
-  <ul>
-    <li><a href="/dev/demo">Demo page</a></li>
-    <li><a href="/dev/screenshots">screenshots</a></li>
-  </ul>
+  <PageHero title="Dev Page" />
+
+  <!-- <li><a href="/dev/demo">Demo page</a></li> -->
+  <Button size="md" href="/dev/screenshots" class="rounded-none text-base">
+    Screenshots<IconArrowRight class="h-5! w-5!" />
+  </Button>
 </BaseLayout>

@@ -21,13 +21,7 @@ const year = new Date().getFullYear()
         <Logo class="size-8" />
       </figure>
       <div class="flex flex-wrap items-center gap-6 sm:justify-center lg:justify-self-end">
-        {
-          import.meta.env.DEV && (
-            <Button href="/dev" variant="outline">
-              dev
-            </Button>
-          )
-        }
+        <Button href="/dev" variant="outline"> dev </Button>
 
         <a href="/legale" class="text-muted-foreground text-sm font-light">Informații legale</a>
         <a href="/contact" class="text-muted-foreground text-sm font-light">Contact</a>
