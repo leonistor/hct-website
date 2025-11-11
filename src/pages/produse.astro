@@ -2,14 +2,10 @@
 export const prerender = false
 import { getCollection } from "astro:content"
 
-import { pb } from "@/content.config"
-import { Debug } from "astro/components"
-import type { Produs } from "@/lib/pbtypes"
-import { For } from "@forastro/flow"
-import GridProduse from "@/components/ui/produs/GridProduse.astro"
-import BaseLayout from "@/layouts/BaseLayout.astro"
-import IconList from "phosphor-astro/List.astro"
 import PageHero from "@/components/ui/typography/PageHero.astro"
+import { pb } from "@/content.config"
+import BaseLayout from "@/layouts/BaseLayout.astro"
+import type { Produs } from "@/lib/pbtypes"
 
 interface Props {
   categorii?: string[]
@@ -47,7 +43,7 @@ const allCategorii = await getCollection("categorii")
 ---
 
 <BaseLayout title="Toate produsele">
-  <PageHero title="Produse" text="" />
+  <PageHero title="Produse" />
   <article class="">
     <!-- filter -->
     <section class="mb-4 space-y-3">
@@ -70,7 +66,7 @@ const allCategorii = await getCollection("categorii")
       </div>
       <!-- categorii -->
       <!-- TODO: button is block on mobile! chage to a -->
-      <div class="flex flex-wrap items-center gap-x-3">
+      <div class="flex flex-wrap gap-x-3">
         <button
           class="button is-checked font-medium hover:underline hover:decoration-pink-500 hover:decoration-2 hover:underline-offset-4"
           data-filter="*">Categorii</button
@@ -87,12 +83,12 @@ const allCategorii = await getCollection("categorii")
         }
       </div>
 
-      <!--  -->
       <!-- sort -->
       <!-- <div class="button-group">
         <button class="button is-checked" data-sortby="order">original order</button>
         <button class="button" data-sortby="nume">nume</button>
       </div> -->
+      <!-- <div>count</div> -->
     </section>
     <!-- za grid -->
     <section class="">
