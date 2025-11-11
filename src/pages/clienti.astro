@@ -1,72 +1,53 @@
 ---
 import PageHero from "@/components/ui/typography/PageHero.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
+import IconLink from "phosphor-astro/ArrowSquareOut.astro"
 
 import { getCollection } from "astro:content"
 
-const allClienti = (await getCollection("clienti")).map((mater) => {
-  const logo_url = mater.data.logo?.replace("http://127.0.0.1:8090", "/pocket")
-  return { logo_url, ...mater }
+const allClienti = (await getCollection("clienti")).map((client) => {
+  const logo_url = client.data.logo?.replace("http://127.0.0.1:8090", "/pocket")
+  return { logo_url, ...client }
 })
 import { Image } from "astro:assets"
 import type { ImageMetadata } from "astro"
 
-// TODO: clienti in pocketbase collection
-const all_logos = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/logos_clienti/**/*.{jpg,jpeg,png}",
-  // { eager: true },
-)
-
-const testimonials = [
-  { name: "", avatar: "/src/assets/logos_clienti/10_kls.png" },
-  { name: "", avatar: "/src/assets/logos_clienti/11_logo-rebu.jpg" },
-  { name: "", avatar: "/src/assets/logos_clienti/13_logo.png" },
-  { name: "", avatar: "/src/assets/logos_clienti/15_logo_hamburger_recycling.png" },
-  { name: "", avatar: "/src/assets/logos_clienti/16_logo_ipg.jpg" },
-  { name: "", avatar: "/src/assets/logos_clienti/18_recycle-int.jpg" },
-  { name: "", avatar: "/src/assets/logos_clienti/22_top-left.jpg" },
-  { name: "", avatar: "/src/assets/logos_clienti/24_Alco-Recycling.jpg" },
-  { name: "", avatar: "/src/assets/logos_clienti/4_avery-dennison-corpo-logo.jpg" },
-  { name: "", avatar: "/src/assets/logos_clienti/7_diren.jpg" },
-  { name: "", avatar: "/src/assets/logos_clienti/9_imagesCAA5BKIM.jpg" },
-  { name: "", avatar: "/src/assets/logos_clienti/logo_muller.png" },
-  { name: "", avatar: "/src/assets/logos_clienti/logo_rondo.png" },
-  { name: "", avatar: "/src/assets/logos_clienti/logo_silnef.png" },
-  { name: "", avatar: "/src/assets/logos_clienti/logo_urban.png" },
-]
+// class:list={["", "hover:underline hover:decoration-pink-500 hover:decoration-2 hover:underline-offset-4"]}
 ---
 
 <BaseLayout>
   <PageHero title="Clienți și proiecte" />
 
-  <div class="flex min-h-screen items-center justify-center px-6 py-12">
-    <div>
-      <div class="mx-auto max-w-(--breakpoint-xl) columns-1 gap-8 md:columns-2 lg:columns-3">
-        {
-          testimonials.map((testimonial) => (
-            <div class="bg-accent relative mb-8 break-inside-avoid rounded-xl p-4">
-              <div class="flex items-center justify-between">
-                <div class="mx-auto flex items-center gap-2">
-                  <p class="space-y-2 text-lg font-medium">
-                    {
-                      <Image
-                        src={all_logos[testimonial.avatar]()}
-                        class="rounded-sm"
-                        fit="none"
-                        alt={testimonial.name}
-                      />
-                    }
-                    {testimonial.name ?? ""}
-                    <span class="font-bold">{testimonial.name}</span>
-                  </p>
-                  {/* <p class="text-muted-foreground text-sm">{testimonial.designation}</p> */}
-                </div>
+  <div class="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    {
+      allClienti.map((client) => {
+        const { nume, descriere, locatie, url } = client.data
+        return (
+          <div class="bg-accent group rounded-lg p-4">
+            <div class="flex h-full flex-col items-stretch gap-2">
+              <div class="self-center text-lg font-semibold">{nume}</div>
+              <div class="flex grow justify-center rounded-md bg-white p-2">
+                <img
+                  class="object-contain"
+                  width={150}
+                  height={150}
+                  src={`${client.logo_url}?thumb=150x150f`}
+                  alt={nume}
+                />
               </div>
-              {/* <p class="mt-5 text-[17px]">{testimonial.testimonial}</p> */}
+              <div class="">{descriere}</div>
+              <div class="flex flex-row items-center justify-between">
+                <div class="font-light">{locatie}</div>
+                {url && (
+                  <a href={url} target="_blank">
+                    <IconLink class="bg-ghost text-muted-foreground size-5" />
+                  </a>
+                )}
+              </div>
             </div>
-          ))
-        }
-      </div>
-    </div>
+          </div>
+        )
+      })
+    }
   </div>
 </BaseLayout>
