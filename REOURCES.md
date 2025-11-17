@@ -11,6 +11,7 @@
 
 - https://basis.zhengyishen.com/docs/components/carousel/
 - https://orbitui-docs.vercel.app/getting-started/installation/
+- https://tailkits.com/ui/
 
 ## dev
 

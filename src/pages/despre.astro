@@ -27,21 +27,66 @@ const features = [
     image: illustratie_3,
   },
 ]
+
+const timeline = [
+  {
+    title: "Infiintare",
+    description: "Infiintare firma",
+    date: "2015",
+  },
+  {
+    title: "Parteneriat Husmann",
+    description: "lorem ipsum",
+    date: "2019",
+  },
+  {
+    title: "Proiect major Urban",
+    description: "descriere milestione",
+    date: "2025",
+  },
+]
 ---
 
 <BaseLayout>
   <PageHero title="Despre noi" />
-  <div class="mt-10 grid w-full gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+  <!--  -->
+  <div class="my-10 grid w-full gap-x-6 gap-y-12 sm:grid-cols-3">
     {
       features.map((feature) => (
         <div class="flex w-full flex-col text-start">
           <div class="bg-muted mb-5 sm:mb-6">
             <Image src={feature.image} alt="" />
           </div>
-          <span class="text-2xl font-semibold tracking-tight">{feature.title}</span>
-          <p class="text-muted-foreground mt-2">{feature.description}</p>
+          <p class="text-2xl font-semibold tracking-tight sm:px-4">{feature.title}</p>
+          <p class="text-muted-foreground mt-2 sm:px-4">{feature.description}</p>
         </div>
       ))
     }
+  </div>
+
+  <!-- Istoric -->
+  <div class="mx-auto">
+    <h3 class="pb-4 text-2xl font-semibold sm:px-4">Istoric</h3>
+    <div class="relative">
+      {
+        timeline.map(({ title, description, date }) => (
+          <div class="group relative">
+            {/* Content */}
+            <div class="flex items-start">
+              <div class="mt-2 mr-5 flex w-[80px] shrink-0 flex-col gap-2 text-end sm:w-[120px]">
+                <h6 class="text-lg font-semibold">{date}</h6>
+              </div>
+              <div class="relative space-y-2 border-l-2 pb-10 pl-6 group-last:pb-4 sm:pl-8">
+                {/* Timeline Dot */}
+                <div class="bg-background absolute top-4 -left-px h-3 w-3 -translate-x-1/2 rounded-full border-2 border-gray-600" />
+
+                <h3 class="mt-2 text-lg font-semibold">{title}</h3>
+                <p class="text-muted-foreground text-sm sm:text-base">{description}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
   </div>
 </BaseLayout>
