@@ -38,6 +38,7 @@
     "astro-lightgallery": "^2.0.1",
     "astro-loader-pocketbase": "^2.9.0",
     "astro-theme-toggle": "^0.8.0",
+    "circle-flags": "https://github.com/HatScripts/circle-flags",
     "embla-carousel": "^8.6.0",
     "embla-carousel-autoplay": "^8.6.0",
     "es-toolkit": "^1.41.0",

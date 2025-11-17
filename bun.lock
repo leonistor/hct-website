@@ -28,6 +28,7 @@
         "embla-carousel-autoplay": "^8.6.0",
         "es-toolkit": "^1.41.0",
         "glightbox": "^3.3.1",
+        "circle-flags": "https://github.com/HatScripts/circle-flags",
         "phosphor-astro": "^2.1.0",
         "photoswipe": "^5.4.4",
         "pocketbase": "^0.26.3",
@@ -489,6 +490,8 @@
     "chownr": ["chownr@3.0.0", "", {}, "sha512-+IxzY9BZOQd/XuYPRmrvEVjF/nqj5kgT4kEq7VofrDoM1MxoRjEWkrCC3EtLi59TVawxTAn+orJwFQcrqEN1+g=="],
 
     "ci-info": ["ci-info@4.3.1", "", {}, "sha512-Wdy2Igu8OcBpI2pZePZ5oWjPC38tmDVx5WKUXKwlLYkA0ozo85sLsLvkBbBn/sZaSCMFOGZJ14fvW9t5/d7kdA=="],
+
+    "circle-flags": ["circle-flags@github:HatScripts/circle-flags#c888ec1", {}, "HatScripts-circle-flags-c888ec1"],
 
     "cli-boxes": ["cli-boxes@3.0.0", "", {}, "sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g=="],
 

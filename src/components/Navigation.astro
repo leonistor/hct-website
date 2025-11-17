@@ -1,26 +1,17 @@
 ---
-// import Logo from "@/assets/logo-hct.svg"
 import Logo from "@/assets/hct-logo-simple.svg"
 import LogoText from "@/assets/logo-text-hategan-ct.svg"
 import ChevronDown from "@tabler/icons/outline/chevron-down.svg"
 
+import { Dropdown, DropdownContent, DropdownItem, DropdownTrigger } from "@/components/starwind/dropdown"
 import { navigationLinks } from "@/config/menu"
 import Button from "./starwind/button"
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownContent,
-  DropdownItem,
-  DropdownLabel,
-  DropdownSeparator,
-} from "@/components/starwind/dropdown"
 
-import { Toggle } from "astro-theme-toggle"
-import LangSelect from "./ui/blocks/LangSelect.astro"
 import Hamburger from "./ui/blocks/Hamburger.astro"
+import LangSelect from "./ui/blocks/LangSelect.astro"
 ---
 
-<nav class="bg-muted/50 w-full">
+<nav class="w-full bg-gray-200">
   <div class="flex h-24 items-center gap-8 px-4 sm:px-6 lg:px-8">
     <a class="block" href="/">
       <Logo class="mr-1 inline-block size-10 sm:size-14" />
