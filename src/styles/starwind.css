@@ -152,15 +152,6 @@
     --outline: var(--color-neutral-500);
   }
 
-  @layer components {
-    .debug {
-      outline: 2px dotted var(--color-error);
-      :where(& > :not(:last-child)) {
-        outline: 2px dotted var(--color-error);
-      }
-    }
-  }
-
   * {
     @apply border-border;
   }
@@ -173,5 +164,14 @@
 
   button {
     @apply cursor-pointer;
+  }
+}
+
+@utility debug {
+  @layer components {
+    outline: 2px dotted var(--color-error);
+    :where(& > :not(:last-child)) {
+      outline: 2px dotted var(--color-error);
+    }
   }
 }
