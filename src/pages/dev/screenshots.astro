@@ -21,13 +21,15 @@ const srcs = Object.keys(images)
     {
       srcs.map((imagePath) => {
         const imageName = imagePath.split("/").pop()!.split(".")[0]
-        const mode = imageName.split("-")[0]
+        // const mode = imageName.split("-")[0]
         const page = imageName.substring(imageName.indexOf("-") + 1)
         return (
           <div class="bg-muted flex flex-col gap-2">
+            {/* 
             <p class="mx-auto pt-2 text-lg">
               <a href={`/${page}`}>{page}</a> <span class="font-thin">{mode}</span>
             </p>
+             */}
             <a href={imagePath} target="_blank" class="glightbox">
               <Image
                 src={images[imagePath]()}

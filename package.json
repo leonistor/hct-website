@@ -13,6 +13,7 @@
     "clean": "bun import_data/clean.ts",
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",
+    "screenshots": "rm src/assets/screenshots/*.png; playwright test tests/screenshots.spec.ts",
     "release": "changie",
     "updates:check": "ncu",
     "updates:upgrade": "ncu --interactive"
