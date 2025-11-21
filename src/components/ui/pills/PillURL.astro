@@ -11,7 +11,7 @@ const truncated_url = truncated === "on" ? url.slice(8, 60) + "..." : url
 ---
 
 <span class="bg-ghost text-ghost-foreground inline-flex items-center justify-center gap-1 rounded-full px-3 py-1">
-  <IconLink class="bg-ghost text-ghost-foreground size-4" /><a
+  <IconLink class="bg-ghost text-ghost-foreground size-4 hover:opacity-75" /><a
     class="text-sm whitespace-nowrap"
     href={`${url}`}
     target="_blank"><span class="opacity-50">{truncated_url}</span></a
