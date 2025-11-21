@@ -79,12 +79,14 @@ const clienti = defineCollection({
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/blog" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().nullish(),
-    pubDate: z.date().nullish(),
-    tags: z.array(z.string()),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string().nullish(),
+      cover: image(),
+      pubDate: z.date().nullish(),
+      tags: z.array(z.string()),
+    }),
 })
 
 export const collections = {
