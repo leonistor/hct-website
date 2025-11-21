@@ -31,11 +31,6 @@ export const navigationLinks: Partial<MenuItem>[] = [
     label: "Produse",
     items: [
       {
-        href: "/produse",
-        label: "Toate produsele",
-        description: "Selecție produse după partener, categorie, materiale.",
-      },
-      {
         href: "/categorii",
         label: "Categorii",
         description:
@@ -46,6 +41,11 @@ export const navigationLinks: Partial<MenuItem>[] = [
         label: "Materiale",
         description:
           "Reciclarea metalelor, aluminiului, cablurilor. Vehicule scoase din uz, Motoare, DEEE, Hidrapulper. Deșeuri solide urbane. Conserve. Metale mixte.",
+      },
+      {
+        href: "/produse",
+        label: "Toate produsele",
+        description: "Selecție produse după partener, categorie, materiale.",
       },
     ],
   },
