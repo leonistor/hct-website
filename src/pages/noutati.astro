@@ -4,6 +4,7 @@ import { getCollection } from "astro:content"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 import PageHero from "@/components/ui/typography/PageHero.astro"
 import { Image } from "astro:assets"
+import { Badge } from "@/components/starwind/badge"
 
 const allPosts = await getCollection("blog")
 
@@ -17,21 +18,29 @@ const allPosts = await getCollection("blog")
       allPosts.map((post) => {
         const { title, cover, pubDate, tags } = post.data
         return (
-          <li class="bg-muted">
-            <a href={`/m/${post.id}`} class="group block overflow-hidden">
-              <Image
-                src={cover}
-                alt={title}
-                height={300}
-                class="object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
-              />
+          <li class="bg-muted pb-2">
+            <a href={`/n/${post.id}`} class="group block overflow-hidden">
+              <div class="flex flex-col">
+                <Image
+                  src={cover}
+                  alt={title}
+                  class="object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
+                />
+                <div class="px-1 pt-2">
+                  <h3 class="mb-2 text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4">
+                    {title}
+                  </h3>
+                  <div class="">
+                    {tags &&
+                      tags.map((tag) => (
+                        <Badge variant="ghost" class="mr-2">
+                          {tag}
+                        </Badge>
+                      ))}
+                  </div>
 
-              <div class="px-1 pt-2">
-                <h3 class="text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4">
-                  {title}
-                </h3>
-                {tags}
-                {pubDate && <p>{pubDate}</p>}
+                  {/* {pubDate && <p>{pubDate}</p>} */}
+                </div>
               </div>
             </a>
           </li>
@@ -39,22 +48,4 @@ const allPosts = await getCollection("blog")
       })
     }
   </ul>
-
-  <div class="grid w-full grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-    {
-      allPosts.map((post) => (
-        <a
-          class:list={[
-            "debug",
-            "bg-accent min-h-20 rounded-lg px-4 py-6",
-            "hover:underline hover:decoration-pink-500 hover:decoration-2 hover:underline-offset-4",
-          ]}
-          href={`/n/${post.id}/`}
-        >
-          <Image src={post.data.cover} fit="cover" height={200} width={200} alt={post.data.title} />
-          {post.data.title}
-        </a>
-      ))
-    }
-  </div>
 </BaseLayout>
