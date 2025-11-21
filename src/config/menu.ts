@@ -53,7 +53,7 @@ export const navigationLinks: Partial<MenuItem>[] = [
     label: "Servicii",
     items: [
       { label: "Instalare și montaj", href: "/servicii-instalare" },
-      { label: "Întreținere și recondiționare", href: "/servicii-intretinere" },
+      { label: "Recondiționare", href: "/servicii-reconditionare" },
       { label: "Consumabile", href: "/consumabile" },
     ],
   },

@@ -16,7 +16,7 @@ import PageHero from "@/components/ui/typography/PageHero.astro"
 ---
 
 <BaseLayout>
-  <PageHero title="Servicii întreținere și recondiționare">
+  <PageHero title="Servicii de recondiționare">
     <p class="max-w-5xl">
       Specialiștii noștri in automatizări, asigură montarea, instalarea și punerea in funcțiune a utilajelor
       achiziționate, precum și reviziile tehnice atât în perioada de garanție cât și post-garanție. De asemenea,
@@ -27,19 +27,6 @@ import PageHero from "@/components/ui/typography/PageHero.astro"
   </PageHero>
   <div class="flex items-center justify-center">
     <div class="mx-auto w-full max-w-(--breakpoint-lg)">
-      <!-- intro -->
-      <div class="mb-8 space-y-4">
-        <ul class="flex flex-wrap gap-4">
-          {
-            servicii.map((serv) => (
-              <div class="bg-info text-info-foreground px-2 py-1.5">
-                {/* <IconChecks width={22} height={22} class="mr-0.5 inline-block" /> */}
-                {serv}
-              </div>
-            ))
-          }
-        </ul>
-      </div>
       <!-- inainte-dupa -->
       <section class="pt-12 pb-12 lg:pt-16 lg:pb-16">
         <div class="mx-auto grid max-w-7xl gap-y-8 px-4 sm:grid-cols-12 sm:gap-x-12 sm:gap-y-0 xl:px-0">
