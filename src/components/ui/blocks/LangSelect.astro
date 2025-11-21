@@ -2,6 +2,7 @@
 import { Button } from "@/components/starwind/button"
 
 import { Dropdown, DropdownTrigger, DropdownContent, DropdownItem } from "@/components/starwind/dropdown"
+import ChevronDown from "@tabler/icons/outline/chevron-down.svg"
 
 import FlagRO from "src/assets/flags/ro.svg"
 import FlagEN from "src/assets/flags/gb.svg"
@@ -17,7 +18,10 @@ const { isMobile = false } = Astro.props
 
 <Dropdown>
   <DropdownTrigger asChild>
-    <Button variant="ghost" class="rounded-none"><FlagRO />RO</Button>
+    <Button variant="ghost" class="rounded-none"
+      ><FlagRO />RO
+      <ChevronDown class="size-4 opacity-50" /></Button
+    >
   </DropdownTrigger>
   <DropdownContent align={isMobile ? "start" : "end"} class="min-w-[5rem]">
     <DropdownItem as="a" href="/en"><FlagEN />EN</DropdownItem>

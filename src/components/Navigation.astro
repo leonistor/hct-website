@@ -11,61 +11,62 @@ import Hamburger from "./ui/blocks/Hamburger.astro"
 import LangSelect from "./ui/blocks/LangSelect.astro"
 ---
 
-<nav class="w-full bg-gray-200">
-  <div class="flex h-24 items-center gap-8 px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-row items-center">
-      <LogoOriginal class="mr-1 size-14 md:size-16" />
-      <!-- <LogoText class="mr-1 hidden h-8 max-[500px]:inline-block" /> -->
-    </div>
+<nav class="w-full bg-gray-300">
+  <div class="container mx-auto">
+    <div class="flex h-24 items-center gap-8 px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-row items-center">
+        <a href="/"><LogoOriginal class="mr-1 size-14 md:size-16" /></a>
+        <!-- <LogoText class="mr-1 hidden h-8 max-[500px]:inline-block" /> -->
+      </div>
 
-    <div class="flex flex-1 items-center justify-end md:justify-between">
-      <nav aria-label="Global" class="hidden md:block">
-        <ul class="flex items-center text-sm">
-          {
-            navigationLinks.map((item) => (
-              <li>
-                {item.items ? (
-                  <Dropdown openOnHover>
-                    <DropdownTrigger asChild>
-                      <Button size="sm" variant="ghost">
-                        {item.label}
-                        <ChevronDown class="size-4 opacity-50" />
-                      </Button>
-                    </DropdownTrigger>
-                    <DropdownContent class="min-w-[300px]">
-                      {item.items.map((subitem) => (
-                        <DropdownItem as="a" href={subitem.href}>
-                          {subitem.label}
-                          {subitem.description ? "" : ""}
-                        </DropdownItem>
-                      ))}
-                    </DropdownContent>
-                  </Dropdown>
-                ) : (
-                  <Button variant="ghost" size="sm" href={item.href} title={item.description} class="">
-                    {item.label}
-                  </Button>
-                )}
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
+      <div class="flex flex-1 items-center justify-end md:justify-between">
+        <nav aria-label="Global" class="hidden md:block">
+          <ul class="flex items-center text-sm">
+            {
+              navigationLinks.map((item) => (
+                <li>
+                  {item.items ? (
+                    <Dropdown openOnHover>
+                      <DropdownTrigger asChild>
+                        <Button size="md" variant="ghost">
+                          {item.label}
+                          <ChevronDown class="size-4 opacity-50" />
+                        </Button>
+                      </DropdownTrigger>
+                      <DropdownContent class="min-w-[300px]">
+                        {item.items.map((subitem) => (
+                          <DropdownItem as="a" class="cursor-pointer text-base" href={subitem.href}>
+                            {subitem.label}
+                          </DropdownItem>
+                        ))}
+                      </DropdownContent>
+                    </Dropdown>
+                  ) : (
+                    <Button variant="ghost" size="md" href={item.href} title={item.description} class="">
+                      {item.label}
+                    </Button>
+                  )}
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
 
-      <div class="flex items-center gap-4">
-        <!-- TODO: align middle -->
-        <div class="hidden sm:gap-1 md:flex">
-          <!-- 
+        <div class="flex items-center gap-4">
+          <!-- TODO: align middle -->
+          <div class="hidden sm:gap-1 md:flex">
+            <!-- 
           <Button variant="ghost">
             <Toggle class="pt-1.5" />
           </Button>
            -->
-          <LangSelect />
-        </div>
+            <LangSelect />
+          </div>
 
-        <!-- TODO: hamburger, mobile nav -->
-        <div class="block md:hidden">
-          <Hamburger />
+          <!-- TODO: hamburger, mobile nav -->
+          <div class="block md:hidden">
+            <Hamburger />
+          </div>
         </div>
       </div>
     </div>
