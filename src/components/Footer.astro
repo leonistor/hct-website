@@ -1,8 +1,6 @@
 ---
 import { conf } from "@/config/site"
-// import Logo from "@/assets/logo-hct.svg"
-import Logo from "@/assets/hct-logo-simple.svg"
-import IconWhatsapp from "phosphor-astro/WhatsappLogo.astro"
+import LogoOriginal from "@/assets/logo-hct-original.svg"
 import { Button } from "@/components/starwind/button"
 
 const year = new Date().getFullYear()
@@ -18,7 +16,7 @@ const year = new Date().getFullYear()
         {conf.title}.
       </div>
       <figure class="justify-self-center">
-        <Logo class="size-8" />
+        <LogoOriginal class="size-8" />
       </figure>
       <div class="flex flex-wrap items-center gap-6 sm:justify-center lg:justify-self-end">
         <Button href="/dev" variant="outline"> dev </Button>

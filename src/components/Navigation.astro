@@ -1,5 +1,5 @@
 ---
-import Logo from "@/assets/hct-logo-simple.svg"
+import LogoOriginal from "@/assets/logo-hct-original.svg"
 import LogoText from "@/assets/logo-text-hategan-ct.svg"
 import ChevronDown from "@tabler/icons/outline/chevron-down.svg"
 
@@ -13,10 +13,10 @@ import LangSelect from "./ui/blocks/LangSelect.astro"
 
 <nav class="w-full bg-gray-200">
   <div class="flex h-24 items-center gap-8 px-4 sm:px-6 lg:px-8">
-    <a class="block" href="/">
-      <Logo class="mr-1 inline-block size-10 sm:size-14" />
-      <LogoText class="mr-1 inline-block size-44 sm:size-60" />
-    </a>
+    <div class="flex flex-row items-center">
+      <LogoOriginal class="mr-1 size-14 md:size-16" />
+      <!-- <LogoText class="mr-1 hidden h-8 max-[500px]:inline-block" /> -->
+    </div>
 
     <div class="flex flex-1 items-center justify-end md:justify-between">
       <nav aria-label="Global" class="hidden md:block">
@@ -54,7 +54,7 @@ import LangSelect from "./ui/blocks/LangSelect.astro"
 
       <div class="flex items-center gap-4">
         <!-- TODO: align middle -->
-        <div class="hidden sm:flex sm:gap-1">
+        <div class="hidden sm:gap-1 md:flex">
           <!-- 
           <Button variant="ghost">
             <Toggle class="pt-1.5" />
