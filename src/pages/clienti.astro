@@ -6,10 +6,12 @@ import IconLink from "phosphor-astro/ArrowSquareOut.astro"
 import { pb_to_proxy } from "@/lib/util"
 import { getCollection } from "astro:content"
 
-const allClienti = (await getCollection("clienti")).map((client) => {
-  const logo_url = pb_to_proxy(client.data.logo!)
-  return { logo_url, ...client }
-})
+const allClienti = (await getCollection("clienti"))
+  .map((client) => {
+    const logo_url = pb_to_proxy(client.data.logo!)
+    return { logo_url, ...client }
+  })
+  .sort((x, y) => x.data._order - y.data._order)
 
 // class:list={["", "hover:underline hover:decoration-pink-500 hover:decoration-2 hover:underline-offset-4"]}
 ---

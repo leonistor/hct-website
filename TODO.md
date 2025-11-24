@@ -8,7 +8,8 @@
 
 ## dev
 
-[ ] images from pocket w/ width, height etc
+[ ] upgrade bun
+[x] images from pocket w/ width, height etc
 [ ] bundle analyzer: https://sonda.dev/frameworks/astro.html
 [ ] playwright tests
 [ ] minifier: https://github.com/advanced-astro/min

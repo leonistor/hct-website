@@ -15,7 +15,7 @@
     "eslint.config.js": true,
     "src/env.d.ts": true,
     "import_data": true,
-    ".vscode": true
+    ".vscode": false
   },
   "explorerExclude.backup": {}
 }
