@@ -36,8 +36,11 @@ const produse = (
   const url_imagine = `/pocket/api/files/produse/${prod.id}/` + `${imagine_principala}`
   return { url_imagine, ...prod }
 })
+
+const count_produse = produse.length
 ---
 
+<p class="mb-2 text-lg"><span class="font-bold">{count_produse}</span> produs{count_produse == 1 ? "" : "e"}</p>
 <!-- <Debug {filters} /> -->
 <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
   {
