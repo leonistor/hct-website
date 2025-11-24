@@ -37,6 +37,7 @@
     "astro-layoutgrid": "^1.2.0",
     "astro-lightgallery": "^2.0.1",
     "astro-loader-pocketbase": "^2.10.0",
+    "astro-remote": "^0.3.4",
     "astro-theme-toggle": "^0.8.0",
     "circle-flags": "https://github.com/HatScripts/circle-flags",
     "embla-carousel": "^8.6.0",
