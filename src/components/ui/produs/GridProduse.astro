@@ -31,11 +31,14 @@ const produse = (
     expand: "partener,categorie,materiale",
     requestKey: null,
   })
-).map((prod) => {
-  const imagine_principala = prod.imagini[prod.index_imagine_principala]
-  const url_imagine = `/pocket/api/files/produse/${prod.id}/` + `${imagine_principala}`
-  return { url_imagine, ...prod }
-})
+)
+  .map((prod) => {
+    const imagine_principala = prod.imagini[prod.index_imagine_principala]
+    const url_imagine = `/pocket/api/files/produse/${prod.id}/` + `${imagine_principala}`
+    return { url_imagine, ...prod }
+  })
+  .filter((prod) => prod.publicat)
+produse.sort((px, py) => px.nume.toLocaleUpperCase().localeCompare(py.nume.toLocaleUpperCase()))
 
 const count_produse = produse.length
 ---
