@@ -14,7 +14,7 @@ const { lista, ...attrs } = Astro.props
 <div {...attrs}>
   {
     lista.map((m) => (
-      <span class="bg-info text-info-foreground inline-flex items-center justify-center gap-1 rounded-full px-3 py-1">
+      <span class="bg-info text-info-foreground inline-flex items-center justify-center gap-1 rounded-full px-3 py-1 hover:opacity-75">
         <a class="text-sm whitespace-nowrap" href={`/m/${m.slug}`}>
           {m.denumire}
         </a>
