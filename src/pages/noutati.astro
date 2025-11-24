@@ -13,12 +13,12 @@ const allPosts = await getCollection("blog")
 
 <BaseLayout>
   <PageHero title="Noutăți" />
-  <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  <ul class="grid gap-4 sm:grid-cols-2 sm:px-2 lg:grid-cols-3">
     {
       allPosts.map((post) => {
         const { title, cover, pubDate, tags } = post.data
         return (
-          <li class="bg-muted pb-2">
+          <li class="bg-muted px-1 pb-2">
             <a href={`/n/${post.id}`} class="group block overflow-hidden">
               <div class="flex flex-col">
                 <Image

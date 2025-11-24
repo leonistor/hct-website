@@ -16,7 +16,7 @@ const allMateriale = (await getCollection("materiale"))
 <BaseLayout>
   <PageHero title="Materiale" />
 
-  <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+  <ul class="grid gap-4 sm:grid-cols-2 sm:px-2 lg:grid-cols-3">
     {
       allMateriale.map((categ) => {
         const { denumire, icon, imagine, descriere, slug } = categ.data

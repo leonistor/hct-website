@@ -18,36 +18,30 @@ const allParteneri = await getCollection("parteneri", (p) => p.data.publicat)
 
 <BaseLayout>
   <HeroHome />
-  <HeroPromos />
   <!-- TODO: hero noutati -->
-  <HeroParteneri />
+  <!-- <HeroParteneri /> -->
 
-  <article class="my-6 space-y-4">
-    <p class="mt-8 text-lg">Categorii</p>
-    <section class="flex flex-wrap gap-2">
-      {allCategorii.map((categ) => <PillCategorie slug={categ.data.slug!} />)}
-    </section>
-    <p class="mt-8 text-lg">Materiale</p>
-    <section class="flex flex-wrap gap-2">
-      {allMateriale.map((mater) => <PillMaterial id={mater.data.slug!} />)}
-    </section>
-    <p class="mt-8 text-lg">Parteneri</p>
-    <section class="flex flex-wrap gap-2">
-      {allParteneri.map((part) => <PillPartener cod={part.data.cod!} />)}
-    </section>
-    <p class="mt-8 text-lg">Tipuri descrieri produs</p>
-    <section class="flex flex-wrap gap-2">
-      {
-        [
-          { href: "/p/92ouomaojl7kckj", descriere: "features" },
-          { href: "/p/9k5g59pjc1wqean", descriere: "bullets" },
-          { href: "/p/qquhd2l1xdgb9z0", descriere: "richtext" },
-        ].map((item) => (
-          <Button size="md" href={item.href} class="rounded-none text-base">
-            {item.descriere} <IconArrowRight class="h-5! w-5!" />
-          </Button>
-        ))
-      }
-    </section>
+  <!-- all pills -->
+  <article class="my-6 space-y-2 sm:px-2 lg:flex lg:flex-row">
+    <div>
+      <p class="mt-4 mb-1 text-lg font-medium">Categorii</p>
+      <section class="flex flex-wrap gap-2">
+        {allCategorii.map((categ) => <PillCategorie slug={categ.data.slug!} />)}
+      </section>
+    </div>
+    <div>
+      <p class="mt-4 mb-1 text-lg font-medium">Materiale</p>
+      <section class="flex flex-wrap gap-2">
+        {allMateriale.map((mater) => <PillMaterial id={mater.data.slug!} />)}
+      </section>
+    </div>
+    <div>
+      <p class="mt-4 mb-1 text-lg font-medium">Parteneri</p>
+      <section class="flex flex-wrap gap-2">
+        {allParteneri.map((part) => <PillPartener cod={part.data.cod!} />)}
+      </section>
+    </div>
   </article>
+
+  <HeroPromos />
 </BaseLayout>

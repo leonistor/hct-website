@@ -16,29 +16,30 @@ const produse_promo = (
 })
 ---
 
-<div class="prose prose-xl dark:prose-invert">
-  <h2>Produse promovate</h2>
-  <p></p>
+<div class="sm:px-2">
+  <div class="prose prose-xl dark:prose-invert">
+    <h2 class="mb-3">Produse noi</h2>
+  </div>
+
+  <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      produse_promo.map((prod) => (
+        <li class="bg-muted">
+          <a href={`/p/${prod.id}`} class="group block overflow-hidden">
+            <img
+              src={`${prod.url_imagine}`}
+              alt=""
+              class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
+            />
+
+            <div class="relative px-1 pt-2">
+              <h3 class="text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4">
+                {prod.nume}
+              </h3>
+            </div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </div>
-
-<ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-  {
-    produse_promo.map((prod) => (
-      <li class="bg-muted">
-        <a href={`/p/${prod.id}`} class="group block overflow-hidden">
-          <img
-            src={`${prod.url_imagine}`}
-            alt=""
-            class="h-[300px] w-full object-cover transition duration-500 group-hover:scale-105 sm:h-[350px]"
-          />
-
-          <div class="relative px-1 pt-2">
-            <h3 class="text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4">
-              {prod.nume}
-            </h3>
-          </div>
-        </a>
-      </li>
-    ))
-  }
-</ul>
