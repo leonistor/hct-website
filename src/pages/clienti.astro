@@ -11,7 +11,8 @@ const allClienti = (await getCollection("clienti"))
     const logo_url = pb_to_proxy(client.data.logo!)
     return { logo_url, ...client }
   })
-  .sort((x, y) => x.data._order - y.data._order)
+  // .sort((x, y) => x.data._order - y.data._order)
+  .sort((cx, cy) => cx.data.nume.toLocaleUpperCase().localeCompare(cy.data.nume.toLocaleUpperCase()))
 
 // class:list={["", "hover:underline hover:decoration-pink-500 hover:decoration-2 hover:underline-offset-4"]}
 ---
