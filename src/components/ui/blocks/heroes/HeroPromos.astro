@@ -2,18 +2,37 @@
 import { pb } from "@/content.config"
 import { Debug } from "astro/components"
 import type { Produs } from "@/lib/pbtypes"
-
 const produse_promo = (
   await pb.collection("produse").getFullList<Produs>({
-    filter: "promo=true",
-    fields: "id,nume,imagini,index_imagine_principala",
+    batch: 6,
+    fields: "id,nume,imagini,index_imagine_principala,promo",
     requestKey: null,
   })
-).map((prod) => {
-  const imagine_principala = prod.imagini[prod.index_imagine_principala]
-  const url_imagine = `/pocket/api/files/produse/${prod.id}/` + `${imagine_principala}`
-  return { url_imagine, ...prod }
+)
+  .map((prod) => {
+    const imagine_principala = prod.imagini[prod.index_imagine_principala]
+    const url_imagine = `/pocket/api/files/produse/${prod.id}/` + `${imagine_principala}`
+    return { url_imagine, ...prod }
+  })
+  .sort((px, py) => Number(py.promo) - Number(px.promo))
+  .slice(0, 6)
+
+/*
+const produse_promo = (
+  await pb.collection("produse").getList<Produs>(1, 6, { filter: "publicat=true", requestKey: null })
+).items
+  .map((prod) => {
+    const imagine_principala = prod.imagini[prod.index_imagine_principala]
+    const url_imagine = `/pocket/api/files/produse/${prod.id}/` + `${imagine_principala}`
+    return { url_imagine, ...prod }
+  })
+  .sort((px, py) => Number(py.promo) - Number(px.promo))
+
+produse_promo.map((p) => {
+  console.log(p.promo, p.nume)
 })
+
+*/
 ---
 
 <div class="sm:px-2">
