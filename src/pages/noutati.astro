@@ -6,7 +6,7 @@ import PageHero from "@/components/ui/typography/PageHero.astro"
 import { Image } from "astro:assets"
 import { Badge } from "@/components/starwind/badge"
 
-const allPosts = await getCollection("blog")
+const allPosts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 
 // TODO: display and filter tags
 ---
@@ -30,7 +30,11 @@ const allPosts = await getCollection("blog")
                   <h3 class="mb-2 text-xl group-hover:underline group-hover:decoration-pink-500 group-hover:decoration-2 group-hover:underline-offset-4">
                     {title}
                   </h3>
-                  <div class="">
+                  <div class="text-right">
+                    <Badge variant="outline">
+                      {new Date(post.data.pubDate).toLocaleString("ro", { dateStyle: "short" })}
+                    </Badge>
+
                     {tags &&
                       tags.map((tag) => (
                         <Badge variant="ghost" class="mr-2">
