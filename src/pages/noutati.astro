@@ -12,7 +12,7 @@ const allPosts = await getCollection("blog")
 ---
 
 <BaseLayout>
-  <PageHero title="Noutăți" />
+  <PageHero title="Blog" />
   <ul class="grid gap-4 sm:grid-cols-2 sm:px-2 lg:grid-cols-3">
     {
       allPosts.map((post) => {

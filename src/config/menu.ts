@@ -57,6 +57,6 @@ export const navigationLinks: Partial<MenuItem>[] = [
       { label: "Consumabile", href: "/consumabile" },
     ],
   },
-  { href: "/noutati", label: "Noutăți" },
+  { href: "/noutati", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ]
