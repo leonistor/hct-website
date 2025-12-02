@@ -41,7 +41,10 @@ const produse = (
 produse.sort((px, py) => px.nume.toLocaleUpperCase().localeCompare(py.nume.toLocaleUpperCase()))
 
 // https://www.usecue.com/blog/isotope-in-just-60-lines/
-const allParteneri = await getCollection("parteneri", (part) => part.data.publicat)
+const allParteneri = (await getCollection("parteneri", (part) => part.data.publicat)).sort(
+  (x, y) => x.data._order - y.data._order,
+)
+
 const allCategorii = await getCollection("categorii")
 
 allParteneri.sort((x, y) => x.data._order - y.data._order)

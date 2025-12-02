@@ -13,7 +13,9 @@ import IconArrowRight from "phosphor-astro/ArrowRight.astro"
 
 const allCategorii = await getCollection("categorii")
 const allMateriale = await getCollection("materiale")
-const allParteneri = await getCollection("parteneri", (p) => p.data.publicat)
+const allParteneri = (await getCollection("parteneri", (p) => p.data.publicat)).sort(
+  (x, y) => x.data._order - y.data._order,
+)
 ---
 
 <BaseLayout>
