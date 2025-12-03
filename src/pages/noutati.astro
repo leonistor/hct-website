@@ -32,7 +32,9 @@ const allPosts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.val
                   </h3>
                   <div class="text-right">
                     <Badge variant="outline">
-                      {new Date(post.data.pubDate).toLocaleString("ro", { dateStyle: "short" })}
+                      <span class="text-gray-500">
+                        {new Date(post.data.pubDate).toLocaleString("ro", { dateStyle: "short" })}
+                      </span>
                     </Badge>
 
                     {tags &&
