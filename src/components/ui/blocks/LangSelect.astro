@@ -16,7 +16,7 @@ interface Props {
 const { isMobile = false } = Astro.props
 ---
 
-<Dropdown>
+<Dropdown openOnHover>
   <DropdownTrigger asChild>
     <Button variant="ghost" class="rounded-none"
       ><FlagRO />RO
@@ -29,12 +29,3 @@ const { isMobile = false } = Astro.props
     <DropdownItem as="a" href="/it"><FlagIT />IT</DropdownItem>
   </DropdownContent>
 </Dropdown>
-
-<script is:inline>
-  //   document.addEventListener("astro:after-swap", () => {
-  //     const langSelect = document.getElementById("selectLang")
-  //     langSelect.addEventListener("starwind-select:change", (event) => {
-  //       console.log("Selected value:", event.detail.value)
-  //     })
-  //   })
-</script>

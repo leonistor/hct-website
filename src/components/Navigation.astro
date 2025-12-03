@@ -9,6 +9,7 @@ import Button from "./starwind/button"
 
 import Hamburger from "./ui/blocks/Hamburger.astro"
 import LangSelect from "./ui/blocks/LangSelect.astro"
+import Search from "./ui/blocks/Search.astro"
 ---
 
 <nav class="w-full bg-gradient-to-t from-slate-300 to-gray-200">
@@ -28,7 +29,7 @@ import LangSelect from "./ui/blocks/LangSelect.astro"
                   {item.items ? (
                     <Dropdown openOnHover>
                       <DropdownTrigger asChild>
-                        <Button size="md" variant="ghost">
+                        <Button size="md" variant="ghost" class="px-2 lg:px-4">
                           {item.label}
                           <ChevronDown class="size-4 opacity-50" />
                         </Button>
@@ -42,7 +43,7 @@ import LangSelect from "./ui/blocks/LangSelect.astro"
                       </DropdownContent>
                     </Dropdown>
                   ) : (
-                    <Button variant="ghost" size="md" href={item.href} title={item.description} class="">
+                    <Button variant="ghost" size="md" href={item.href} title={item.description} class="px-2 lg:px-4">
                       {item.label}
                     </Button>
                   )}
@@ -52,21 +53,16 @@ import LangSelect from "./ui/blocks/LangSelect.astro"
           </ul>
         </nav>
 
-        <div class="flex items-center gap-4">
-          <!-- TODO: align middle -->
-          <div class="hidden sm:gap-1 md:flex">
-            <!-- 
-          <Button variant="ghost">
-            <Toggle class="pt-1.5" />
-          </Button>
-           -->
+        <div class="flex gap-2">
+          <div class="hidden md:flex md:items-center">
+            <Search />
             <LangSelect />
           </div>
 
-          <!-- TODO: hamburger, mobile nav -->
           <div class="block md:hidden">
             <Hamburger />
           </div>
+          <!--  -->
         </div>
       </div>
     </div>
