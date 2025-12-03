@@ -1,6 +1,18 @@
 ---
 import PageHero from "@/components/ui/typography/PageHero.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
+import { For } from "@forastro/flow"
+
+import { Image } from "astro:assets"
+
+import ps1 from "src/assets/oldsite/photo1__role_sarma_Recuit01.jpg"
+import ps2 from "src/assets/oldsite/photo2__role_sarma_Recuit02.jpg"
+import ps3 from "src/assets/oldsite/photo3__rola_mare_recuit.png"
+import ps4 from "src/assets/oldsite/photo4__1.jpg"
+import ps5 from "src/assets/oldsite/photo5__2.jpg"
+import ps6 from "src/assets/oldsite/photo6__3.jpg"
+import ps7 from "src/assets/oldsite/photo7__4.jpg"
+import ps8 from "src/assets/oldsite/photo8__5.jpg"
 ---
 
 <BaseLayout>
@@ -81,4 +93,39 @@ import BaseLayout from "@/layouts/BaseLayout.astro"
       </table>
     </div>
   </div>
+
+  <!-- [ -->
+  <section>
+    <div id="gallery" class="grid grid-cols-2 gap-2 px-2 pb-2 md:grid-cols-3">
+      <For of={[ps1, ps2, ps3, ps4, ps5, ps6, ps7, ps8]}>
+        {
+          (ps) => (
+            <a href={ps1.src} target="_blank" class="glightbox">
+              <img
+                src={ps.src}
+                alt=""
+                height="300"
+                class="aspect-[3/2] w-full object-cover transition duration-300 ease-in-out"
+              />
+            </a>
+          )
+        }
+      </For>
+    </div>
+  </section>
+  <!-- ] -->
 </BaseLayout>
+
+<script>
+  import GLightbox from "glightbox"
+  import "glightbox/dist/css/glightbox.min.css"
+
+  document.addEventListener("astro:page-load", () => {
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      autoplayVideos: true,
+      loop: true,
+      draggable: true,
+    })
+  })
+</script>
