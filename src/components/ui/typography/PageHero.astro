@@ -8,6 +8,33 @@ const { title, extraClass } = Astro.props
 ---
 
 <div class={`prose max-w-none dark:prose-invert prose-headings:font-bold md:prose-lg pt-4 pb-6 sm:p-8 ${extraClass}`}>
-  <h1 class="text-balance">{title}</h1>
+  <h1 class="bleed text-balance">{title}</h1>
   <div class=""><slot /></div>
 </div>
+
+<style>
+  @reference "src/styles/starwind.css";
+
+  .bleed {
+    text-decoration: underline;
+    text-decoration-thickness: 6px;
+    text-decoration-color: #cbd5e1;
+    text-underline-offset: 4px;
+  }
+
+  /*   
+  @media (width >= 64rem) {
+    .bleed:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      height: 60px;
+      margin-top: -8px;
+
+      width: calc((100vw - 64rem) / 2);
+      background-color: #e5e7eb;
+      @apply bg-gradient-to-b from-slate-300 to-gray-200;
+    }
+  }
+  */
+</style>
