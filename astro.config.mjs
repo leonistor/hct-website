@@ -10,8 +10,10 @@ import alpinejs from "@astrojs/alpinejs"
 
 import mdx from "@astrojs/mdx"
 
+import sitemap from "@astrojs/sitemap"
+
 export default defineConfig({
-  // site: "https://h-ct.ro",
+  site: "https://hct.vitrina.promo",
 
   // image: {
   //   service: passthroughImageService(),
@@ -25,6 +27,7 @@ export default defineConfig({
   },
 
   vite: {
+    // @ts-ignore
     plugins: [tailwindcss()],
     clearScreen: false,
     server: {
@@ -41,5 +44,5 @@ export default defineConfig({
     },
   },
 
-  integrations: [alpinejs({ entrypoint: "./src/alpine.ts" }), mdx()],
+  integrations: [alpinejs({ entrypoint: "./src/alpine.ts" }), mdx(), sitemap()],
 })
