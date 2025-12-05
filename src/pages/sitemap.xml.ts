@@ -1,5 +1,7 @@
 // https://colinmcnamara.com/blog/fixing-astro-sitemap-ssr-mode
 
+export const prerender = true
+
 import type { APIContext } from "astro"
 import { getCollection } from "astro:content"
 import { navigationLinks } from "@/config/menu"
