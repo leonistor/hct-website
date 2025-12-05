@@ -1,7 +1,7 @@
 // @ts-check
 
 import tailwindcss from "@tailwindcss/vite"
-import { defineConfig, passthroughImageService } from "astro/config"
+import { defineConfig } from "astro/config"
 
 // https://github.com/Zastinian/astro-bun
 import bun from "@hedystia/astro-bun"
@@ -10,14 +10,10 @@ import alpinejs from "@astrojs/alpinejs"
 
 import mdx from "@astrojs/mdx"
 
-import sitemap from "@astrojs/sitemap"
-
 export default defineConfig({
+  // TODO: change in production!
   site: "https://hct.vitrina.promo",
 
-  // image: {
-  //   service: passthroughImageService(),
-  // },
   devToolbar: { enabled: false },
   adapter: bun(),
   output: "server",
@@ -44,5 +40,5 @@ export default defineConfig({
     },
   },
 
-  integrations: [alpinejs({ entrypoint: "./src/alpine.ts" }), mdx(), sitemap()],
+  integrations: [alpinejs({ entrypoint: "./src/alpine.ts" }), mdx()],
 })
