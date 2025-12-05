@@ -31,7 +31,7 @@ const { title = conf.title } = Astro.props
     <link rel="preload" as="font" type="font/woff2" href={workSansWoff2LatinExt} crossorigin="anonymous" />
 
     <title>{title}</title>
-    <meta name="description" content={conf.description} />
+    <meta name="description" content={conf.title + ": " + conf.description} />
 
     <link rel="sitemap" href="/sitemap.xml" />
 
