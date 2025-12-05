@@ -18,6 +18,7 @@
 - lightbox alt: https://github.com/biati-digital/glightbox, https://github.com/feimosi/baguetteBox.js, https://photoswipe.com/getting-started/
 - Astro component for Splide slider/carousel: https://pascal-brand38.github.io/astro-dev/packages/astro-splide/
 - search: https://github.com/shishkin/astro-pagefind
+- SEO!: https://developers.google.com/search/docs/crawling-indexing/special-tags
 
 ## playwright
 
