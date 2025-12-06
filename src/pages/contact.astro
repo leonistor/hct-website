@@ -5,6 +5,7 @@ import IconMail from "phosphor-astro/Envelope.astro"
 import IconPin from "phosphor-astro/MapPin.astro"
 import IconPhone from "phosphor-astro/Phone.astro"
 import IconBriefcase from "phosphor-astro/Briefcase.astro"
+import { Button } from "@/components/starwind/button"
 ---
 
 <BaseLayout>
@@ -52,5 +53,31 @@ import IconBriefcase from "phosphor-astro/Briefcase.astro"
         </div>
       </div>
     </div>
+  </div>
+  <!-- contact form -->
+  <div class="mx-auto mt-8 flex w-full items-center justify-center sm:mt-0 sm:w-2/3">
+    <form action="/actions/send-email" method="post" class="min-w-full space-y-4">
+      <div>
+        <input
+          type="text"
+          name="contact"
+          required
+          min="3"
+          class="w-full border border-gray-300 p-2.5 placeholder-gray-500"
+          placeholder="Telefon sau e-mail"
+          required
+        />
+      </div>
+      <div class="sm:col-span-2">
+        <textarea
+          name="mesaj"
+          required
+          minlength="3"
+          rows="6"
+          class="block w-full border border-gray-300 p-2.5 placeholder-gray-500"
+          placeholder="Mesajul Dumneavoastră"></textarea>
+      </div>
+      <Button type="submit" variant="outline" class="rounded-none">Trimite</Button>
+    </form>
   </div>
 </BaseLayout>
