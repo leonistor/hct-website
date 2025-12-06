@@ -1,3 +1,4 @@
+export const prerender = false
 // https://developers.netlify.com/guides/send-emails-with-astro-and-resend/
 
 import type { APIRoute } from "astro"
@@ -5,10 +6,7 @@ import { sendEmail } from "@/lib/email"
 
 import { pb } from "@/content.config"
 
-export const prerender = false
-
-export const POST: APIRoute = async ({ request, redirect }) => {
-  // Get the form data submitted by the user on the home page
+export const ALL: APIRoute = async ({ request, redirect }) => {
   const formData = await request.formData()
   const contact = formData.get("contact") as string | null
   const mesaj = formData.get("mesaj") as string | null
