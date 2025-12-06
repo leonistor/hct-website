@@ -6,7 +6,7 @@ import { sendEmail } from "@/lib/email"
 
 import { pb } from "@/content.config"
 
-export const ALL: APIRoute = async ({ request, redirect }) => {
+export const POST: APIRoute = async ({ request, redirect }) => {
   const formData = await request.formData()
   const contact = formData.get("contact") as string | null
   const mesaj = formData.get("mesaj") as string | null
