@@ -10,6 +10,8 @@ import alpinejs from "@astrojs/alpinejs"
 
 import mdx from "@astrojs/mdx"
 
+import yeskunallumami from "@yeskunall/astro-umami"
+
 export default defineConfig({
   // TODO: change in production!
   site: "https://hct.vitrina.promo",
@@ -40,5 +42,12 @@ export default defineConfig({
     },
   },
 
-  integrations: [alpinejs({ entrypoint: "./src/alpine.ts" }), mdx()],
+  integrations: [
+    alpinejs({ entrypoint: "./src/alpine.ts" }),
+    mdx(),
+    yeskunallumami({
+      id: "cb1313f9-edd0-46c8-92c5-e8687ab26fe0",
+      hostUrl: "https://analytics.vitrina.promo",
+    }),
+  ],
 })
