@@ -1,4 +1,4 @@
-export const prerender = false
+// export const prerender = false
 // https://developers.netlify.com/guides/send-emails-with-astro-and-resend/
 
 import type { APIRoute } from "astro"
