@@ -29,13 +29,16 @@ interface SitemapURL {
   const hct_pages = []
 
   for (const item of sitemap) {
-    const pageURL = item.loc
+    const pageURL = item.loc.replace("https://hct.vitrina.promo/", "http://localhost:4321/")
+
     const page = await fetch(pageURL).then((response) => {
       if (!response.ok) throw new Error(`Error fetching ${pageURL}`)
       return response.text()
     })
 
     const $ = cheerio.load(page)
+    console.debug(item.loc)
+    console.dir($("title").text())
     hct_pages.push({
       id: item.loc.substring(25).replaceAll("/", "_"),
       loc: item.loc,
@@ -45,6 +48,7 @@ interface SitemapURL {
   }
 
   const index = client.index("hctpages")
+  await index.deleteAllDocuments()
   let response = await index.addDocuments(hct_pages)
 
   console.log(response) // => { "uid": 0 }
