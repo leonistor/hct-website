@@ -18,6 +18,9 @@ export default defineConfig({
 
   devToolbar: { enabled: false },
   adapter: bun(),
+  security: {
+    checkOrigin: false,
+  },
   output: "server",
   // devToolbar: { enabled: false },
   server: {
