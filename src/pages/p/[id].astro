@@ -2,9 +2,7 @@
 // export const prerender = false
 
 import BaseLayout from "@/layouts/BaseLayout.astro"
-import { Image } from "astro:assets"
 
-import Checkbox from "@/components/starwind/checkbox"
 import Separator from "@/components/starwind/separator"
 import PillCategorie from "@/components/ui/pills/PillCategorie.astro"
 import PillPartener from "@/components/ui/pills/PillPartener.astro"
@@ -13,11 +11,8 @@ import DescriereExtra from "@/components/ui/produs/DescriereExtra.astro"
 import Specificatii from "@/components/ui/produs/Specificatii.astro"
 
 import ListaMateriale from "@/components/ui/pills/ListaMateriale.astro"
-import { LightGallery } from "astro-lightgallery"
 import { pb } from "@/content.config"
-import { Debug } from "astro/components"
 import type { Produs } from "@/lib/pbtypes"
-import { For } from "@forastro/flow"
 
 interface Props {
   id: string
@@ -59,7 +54,7 @@ const imagine_produs = imagini[index_imagine_principala]
 const src_prinicpala = `/pocket/api/files/produse/${id}/${imagine_produs}`
 ---
 
-<BaseLayout>
+<BaseLayout title={nume}>
   <div class="grid gap-2 sm:grid-cols-12 sm:gap-4 sm:px-2">
     <!-- nume+ -->
     <div class="space-y-4 sm:col-span-7">
@@ -126,25 +121,4 @@ const src_prinicpala = `/pocket/api/files/produse/${id}/${imagine_produs}`
       draggable: true,
     })
   })
-</script>
-
-<script>
-  // import PhotoSwipeLightbox from "photoswipe/lightbox"
-  // import "photoswipe/style.css"
-
-  // let lightbox: PhotoSwipeLightbox
-
-  // document.addEventListener("astro:page-load", () => {
-  //   lightbox = new PhotoSwipeLightbox({
-  //     gallery: "#gallery",
-  //     children: "a",
-  //     pswpModule: () => import("photoswipe"),
-  //   })
-
-  //   lightbox.init()
-  // })
-
-  // document.addEventListener("astro:before-swap", () => {
-  //   lightbox.destroy()
-  // })
 </script>

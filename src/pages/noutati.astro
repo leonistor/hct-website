@@ -11,7 +11,7 @@ const allPosts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.val
 // TODO: display and filter tags
 ---
 
-<BaseLayout>
+<BaseLayout title="Blog">
   <PageHero title="Blog" />
   <ul class="grid gap-4 sm:grid-cols-2 sm:px-2 lg:grid-cols-3">
     {
