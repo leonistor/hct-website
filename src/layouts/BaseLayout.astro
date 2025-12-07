@@ -6,8 +6,6 @@ import workSansWoff2LatinExt from "@fontsource-variable/work-sans/files/work-san
 import "@/styles/starwind.css"
 
 import { ClientRouter } from "astro:transitions"
-import LayoutGrid from "astro-layoutgrid"
-import { ThemeScript } from "astro-theme-toggle"
 
 import Navigation from "@/components/Navigation.astro"
 import Footer from "@/components/Footer.astro"
@@ -36,16 +34,13 @@ const { title = conf.title } = Astro.props
     <link rel="sitemap" href="/sitemap.xml" />
 
     <ClientRouter />
-    <!-- <ThemeScript /> -->
   </head>
 
   <body>
-    <!-- <div class="container mx-auto flex min-h-dvh flex-col bg-gray-50"> -->
     <div class="flex min-h-dvh flex-col bg-gray-50">
       <Navigation />
       <main class="container mx-auto grow px-3 pb-4 sm:px-0"><slot /></main>
       <Footer />
     </div>
-    <!-- <LayoutGrid gridColor="#fca5a5" /> -->
   </body>
 </html>
