@@ -9,9 +9,11 @@ interface SitemapURL {
 }
 //
 ;(async () => {
+  // https://www.meilisearch.com/docs/learn/security/basic_security#obtaining-api-keys-in-a-self-hosted-instance
+  // openssl rand -base64 16
   const client = new Meilisearch({
     host: "http://127.0.0.1:7700",
-    apiKey: "aSampleMasterKey",
+    apiKey: "nqh4/olngWgSzF62vVjcdw==",
   })
 
   console.dir(await client.getVersion())
@@ -24,6 +26,8 @@ interface SitemapURL {
   const parser = new XMLParser()
   const sitemap = parser.parse(sitemapXml).urlset.url as Array<SitemapURL>
 
+  const hct_pages = []
+
   for (const item of sitemap) {
     const pageURL = item.loc
     const page = await fetch(pageURL).then((response) => {
@@ -32,24 +36,16 @@ interface SitemapURL {
     })
 
     const $ = cheerio.load(page)
-    console.dir($("title").text())
-    //   console.dir($("main").text())
+    hct_pages.push({
+      id: item.loc.substring(25).replaceAll("/", "_"),
+      loc: item.loc,
+      title: $("title").text(),
+      text: $("main").text(),
+    })
   }
 
-  /*
-  const index = client.index("movies")
-
-  const documents = [
-    { id: 1, title: "Carol", genres: ["Romance", "Drama"] },
-    { id: 2, title: "Wonder Woman", genres: ["Action", "Adventure"] },
-    { id: 3, title: "Life of Pi", genres: ["Adventure", "Drama"] },
-    { id: 4, title: "Mad Max: Fury Road", genres: ["Adventure", "Science Fiction"] },
-    { id: 5, title: "Moana", genres: ["Fantasy", "Action"] },
-    { id: 6, title: "Philadelphia", genres: ["Drama"] },
-  ]
-
-  let response = await index.addDocuments(documents)
+  const index = client.index("hctpages")
+  let response = await index.addDocuments(hct_pages)
 
   console.log(response) // => { "uid": 0 }
-*/
 })()
