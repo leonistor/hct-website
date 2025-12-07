@@ -1,6 +1,9 @@
 ---
 import PageHero from "@/components/ui/typography/PageHero.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
+
+import Button from "@/components/starwind/button"
+import IconArrowLeft from "phosphor-astro/ArrowLeft.astro"
 ---
 
 <BaseLayout>
@@ -8,5 +11,8 @@ import BaseLayout from "@/layouts/BaseLayout.astro"
   <div class="space-y-4 sm:px-6">
     <p class="text-2xl font-semibold">Vă mulțumim!</p>
     <p class="text-lg">Vă vom contacta în cel mai scurt timp.</p>
+    <Button size="md" href="/" class="rounded-none bg-slate-500 text-base hover:opacity-75">
+      <IconArrowLeft class="mr-3 h-5! w-5!" /> Înapoi la site
+    </Button>
   </div>
 </BaseLayout>
