@@ -1,0 +1,16 @@
+---
+import PageHero from "@/components/ui/typography/PageHero.astro"
+import BaseLayout from "@/layouts/BaseLayout.astro"
+
+const { q } = Astro.params
+if (q === undefined) {
+  return Astro.redirect("/")
+}
+
+const title = `Rezultate căutare ${q}`
+---
+
+<BaseLayout title={title}>
+  <PageHero title={title} />
+  <div class="sm:px-6">X docs found.</div>
+</BaseLayout>

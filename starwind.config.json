@@ -126,6 +126,10 @@
     {
       "name": "sheet",
       "version": "1.1.1"
+    },
+    {
+      "name": "button-group",
+      "version": "1.0.0"
     }
   ]
 }

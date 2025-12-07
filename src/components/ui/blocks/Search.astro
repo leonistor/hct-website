@@ -1,8 +1,7 @@
 ---
 import { Button } from "@/components/starwind/button"
-
+import { ButtonGroup } from "@/components/starwind/button-group"
 import { Dropdown, DropdownContent, DropdownTrigger } from "@/components/starwind/dropdown"
-import { Item, ItemContent, ItemTitle, ItemDescription, ItemActions, ItemMedia } from "@/components/starwind/item"
 import { Input } from "@/components/starwind/input"
 import IconSearch from "@tabler/icons/outline/search.svg"
 
@@ -17,79 +16,28 @@ const { isMobile = false } = Astro.props
   <DropdownTrigger asChild>
     <Button variant="ghost" class="rounded-none"><IconSearch /></Button>
   </DropdownTrigger>
-  <DropdownContent align={isMobile ? "center" : "end"} class="min-w-44 font-normal">
-    <Input name="search" class="w-full" placeholder="Caută în site..." />
+  <DropdownContent align={isMobile ? "center" : "end"} class="min-w-44 border-none font-normal">
+    <form action="/s/" method="get" id="search">
+      <ButtonGroup>
+        <Input name="q" class="w-full min-w-24" placeholder="Caută..." />
+        <Button variant="outline" aria-label="Search" type="submit">
+          <IconSearch />
+        </Button>
+      </ButtonGroup>
+    </form>
   </DropdownContent>
 </Dropdown>
-<!-- 
-https://codepen.io/optimisticweb/pen/LYvVjpm
- --><!-- 
 
-<div class="search-bar">
-  <input type="search" class="search-input" placeholder="Search here..." tabindex="0" />
-  <button class="search-submit" tabindex="0">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-</div>
- -->
-<style>
-  .search-bar {
-    --size: 70px;
-    --padding: 8px;
-    --expanded-width: 600px;
+<script is:inline>
+  document.addEventListener("astro:page-load", () => {
+    const formSearch = document.querySelector("#search")
+    formSearch?.addEventListener("submit", async (event) => {
+      event.preventDefault()
+      const formData = new FormData(formSearch)
+      const q = formData.get("q")
 
-    display: flex;
-    justify-content: flex-end;
-    background-color: #fff;
-    box-shadow: 0 10px 10px 0 #d6d9e2;
-    border-radius: 100px;
-    outline: 1px solid transparent;
-    overflow: hidden;
-
-    padding: var(--padding);
-    margin-inline: auto;
-    width: var(--size);
-    height: var(--size);
-    max-width: 100%;
-    transition:
-      width 0.5s,
-      outline 0.5s;
-  }
-
-  .search-bar:focus-within {
-    width: var(--expanded-width);
-    outline: 1px solid #2e2e2e;
-  }
-
-  .search-input {
-    font-size: 18px;
-    color: #3a3a3a;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    margin-inline: 1rem;
-    flex: auto;
-
-    opacity: 0;
-    transition: opacity 0.5s;
-  }
-
-  .search-bar:focus-within .search-input {
-    opacity: 1;
-  }
-
-  .search-submit {
-    flex: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    color: #fff;
-    background-color: #3a3a3a;
-    border-radius: 50%;
-    border: none;
-    width: calc(var(--size) - var(--padding) - var(--padding));
-    aspect-ratio: 1;
-    cursor: pointer;
-  }
-</style>
+      if (!q || q === "") return
+      navigation.navigate(`/s/${q}`)
+    })
+  })
+</script>

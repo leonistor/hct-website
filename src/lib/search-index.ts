@@ -38,7 +38,6 @@ interface SitemapURL {
 
     const $ = cheerio.load(page)
     console.debug(item.loc)
-    console.dir($("title").text())
     hct_pages.push({
       id: item.loc.substring(25).replaceAll("/", "_"),
       loc: item.loc,
