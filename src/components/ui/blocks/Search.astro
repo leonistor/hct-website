@@ -29,6 +29,9 @@ const { isMobile = false } = Astro.props
 </Dropdown>
 
 <script is:inline>
+  // import { navigate } from "astro:transitions/client"
+  // nein: safari no work
+
   document.addEventListener("astro:page-load", () => {
     const formSearch = document.querySelector("#search")
     formSearch?.addEventListener("submit", async (event) => {
@@ -37,7 +40,9 @@ const { isMobile = false } = Astro.props
       const q = formData.get("q")
 
       if (!q || q === "") return
-      navigation.navigate(`/s/${q}`)
+
+      // navigate(`/s/${q}`)
+      window.location.href = `/s/${q}`
     })
   })
 </script>
