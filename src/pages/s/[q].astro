@@ -1,6 +1,8 @@
 ---
-import PageHero from "@/components/ui/typography/PageHero.astro"
+export const prerender = false
+
 import BaseLayout from "@/layouts/BaseLayout.astro"
+import { Meilisearch } from "meilisearch"
 
 const { q } = Astro.params
 if (q === undefined) {
@@ -8,9 +10,48 @@ if (q === undefined) {
 }
 
 const title = `Rezultate căutare ${q}`
+
+const client = new Meilisearch({
+  host: import.meta.env.MEILI_HOST,
+  apiKey: import.meta.env.MEILI_ADMIN_KEY,
+})
+const index = client.index("hctpages")
+const meili_results = await index.search(q, {
+  attributesToHighlight: ["text"],
+  highlightPreTag: "<strong>",
+  highlightPostTag: "</strong>",
+})
+const { hits, estimatedTotalHits } = meili_results
+
+const results = hits.map((hit) => ({
+  url: hit.loc,
+  title: hit.title,
+  text: (hit._formatted!.text as string).substring(0, 400),
+}))
 ---
 
 <BaseLayout title={title}>
-  <PageHero title={title} />
-  <div class="sm:px-6">X docs found.</div>
+  <div class="prose md:prose-lg max-w-none pt-6 pb-3 sm:px-6">
+    <p class="text-lg"><strong>{estimatedTotalHits}</strong> rezultate la căutarea <strong>{q}</strong>:</p>
+  </div>
+  <div class="sm:px-6">
+    <!-- <pre>{JSON.stringify(results, null, 2)}</pre> -->
+    <table class="border-separate border-spacing-y-2">
+      <tbody class="divide-y divide-gray-700">
+        {
+          results.map((res) => (
+            <tr class="border-y-gray-500 hover:cursor-pointer hover:bg-gray-200">
+              <td class="p-2">
+                <a href={res.url}>
+                  <span class="text-lg font-semibold">{res.title}</span>
+                  <br />
+                  <span set:html={res.text} />
+                </a>
+              </td>
+            </tr>
+          ))
+        }
+      </tbody>
+    </table>
+  </div>
 </BaseLayout>
