@@ -27,22 +27,30 @@ interface SitemapURL {
   const hct_pages = []
 
   for (const item of sitemap) {
-    const pageURL = item.loc.replace("https://hct.vitrina.promo/", "http://localhost:4321/")
+    const base_prod = "https://hct.vitrina.promo/"
+    const base_dev = "http://localhost:4321/"
+    const fetchURL = item.loc.replace(base_prod, base_dev)
 
-    const page = await fetch(pageURL).then((response) => {
-      if (!response.ok) throw new Error(`Error fetching ${pageURL}`)
+    const page = await fetch(fetchURL).then((response) => {
+      if (!response.ok) throw new Error(`Error fetching ${fetchURL}`)
       return response.text()
     })
 
     const $ = cheerio.load(page)
     console.debug(item.loc)
+
+    const href = item.loc.substring(base_prod.length - 1)
+    const id = href.replaceAll("/", "_")
     hct_pages.push({
-      id: item.loc.substring(25).replaceAll("/", "_"),
-      loc: item.loc,
+      id,
+      loc: href,
       title: $("title").text(),
       text: $("main").text(),
     })
   }
+  console.log("------")
+  console.dir(hct_pages[7])
+  console.log("------")
 
   const index = client.index("hctpages")
   await index.deleteAllDocuments()
