@@ -20,6 +20,12 @@
 - search: https://github.com/shishkin/astro-pagefind
 - SEO!: https://developers.google.com/search/docs/crawling-indexing/special-tags
 
+## meilisearch
+
+- https://www.meilisearch.com/docs/learn/security/basic_security#obtaining-api-keys-in-a-self-hosted-instance
+- gen admin key `openssl rand -base64 16`
+- get api key: `xh :7700/keys 'Authorization:Bearer <ADMIN_KEY>'`
+
 ## playwright
 
 - https://www.browsercat.com/post/ultimate-guide-visual-testing-playwright

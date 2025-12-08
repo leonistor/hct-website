@@ -9,11 +9,9 @@ interface SitemapURL {
 }
 //
 ;(async () => {
-  // https://www.meilisearch.com/docs/learn/security/basic_security#obtaining-api-keys-in-a-self-hosted-instance
-  // openssl rand -base64 16
   const client = new Meilisearch({
-    host: "http://127.0.0.1:7700",
-    apiKey: "nqh4/olngWgSzF62vVjcdw==",
+    host: import.meta.env.MEILI_HOST,
+    apiKey: import.meta.env.MEILI_ADMIN_KEY,
   })
 
   console.dir(await client.getVersion())
