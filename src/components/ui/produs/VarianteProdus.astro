@@ -1,0 +1,29 @@
+---
+import { pb } from "@/content.config"
+import type { Variante_produs } from "@/lib/pbtypes"
+import { For } from "@forastro/flow"
+
+interface Props {
+  produs_id: string
+}
+const { produs_id } = Astro.props
+
+const variante = await pb.collection("variante_produs").getFullList<Variante_produs>({
+  filter: `produs='${produs_id}'`,
+  sort: "_ord",
+  requestKey: null,
+})
+---
+
+<div class="divide-accent divide-y">
+  <For of={variante}>
+    {
+      (varianta) => (
+        <div class="grid grid-cols-1 gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+          <dt class="font-semibold">{varianta.nume}</dt>
+          <dd class="font-light sm:col-span-2">{varianta.descriere}</dd>
+        </div>
+      )
+    }
+  </For>
+</div>

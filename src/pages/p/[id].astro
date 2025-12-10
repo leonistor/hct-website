@@ -9,10 +9,12 @@ import PillPartener from "@/components/ui/pills/PillPartener.astro"
 import PillURL from "@/components/ui/pills/PillURL.astro"
 import DescriereExtra from "@/components/ui/produs/DescriereExtra.astro"
 import Specificatii from "@/components/ui/produs/Specificatii.astro"
-
 import ListaMateriale from "@/components/ui/pills/ListaMateriale.astro"
+import VarianteProdus from "@/components/ui/produs/VarianteProdus.astro"
+
 import { pb } from "@/content.config"
 import type { Produs } from "@/lib/pbtypes"
+import { CACHE_DIR } from "node_modules/astro/dist/assets/fonts/constants"
 
 interface Props {
   id: string
@@ -39,12 +41,11 @@ const {
   url_producator,
   imagini,
   index_imagine_principala,
-  variante,
-  videos,
-  promo,
+  variante_scurt,
   expand,
 } = produs_record
 
+console.dir(variante_scurt)
 const { materiale, categorie, partener } = expand
 
 const imgs = imagini.map((img) => `/pocket/api/files/produse/${id}/${img}`)
@@ -71,13 +72,20 @@ const src_prinicpala = `/pocket/api/files/produse/${id}/${imagine_produs}`
     </div>
     <!-- poza -->
     <div class="p-2 sm:col-span-5">
-      <!-- TODO: view transition hero -->
       <img src={src_prinicpala} alt={nume} />
-      <!-- <Image src={src_prinicpala} inferSize layout="constrained" alt={nume} /> -->
     </div>
   </div>
 
   <Separator />
+
+  {
+    variante_scurt.length > 0 && (
+      <>
+        <VarianteProdus produs_id={id} />
+        <Separator />
+      </>
+    )
+  }
 
   <article class="mt-4 flex flex-col gap-2 sm:px-2">
     <section>

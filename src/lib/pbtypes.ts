@@ -21,6 +21,7 @@ export interface Produs {
   updated: string
   url_producator: string
   variante: any[]
+  variante_scurt: any[]
   videos: any[]
 }
 
@@ -28,6 +29,7 @@ export interface Expand {
   categorie: Categorie
   materiale: Materiale[]
   partener: Partener
+  variante_scurt: Variante_produs[]
 }
 
 export interface Categorie {
@@ -87,4 +89,18 @@ export interface Client {
   publicat: boolean
   updated: string
   url: string
+}
+
+export interface Variante_produs {
+  _ord: number
+  collectionId: string
+  collectionName: string
+  created: string
+  descriere: string
+  id: string
+  imagine: string
+  nume: string
+  produs: string
+  updated: string
+  url_producator: string
 }
