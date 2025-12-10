@@ -2,9 +2,12 @@
 import PageHero from "@/components/ui/typography/PageHero.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
 
-const { href } = Astro.url
+import { Content as MarkdownText } from "src/markdown/profil_companie_DE.md"
 ---
 
 <BaseLayout>
-  <PageHero title="Unternehmensprofil" />
+  <PageHero title="Firmenprofil" />
+  <div class="prose max-w-5xl sm:mb-6 sm:px-4">
+    <MarkdownText />
+  </div>
 </BaseLayout>
