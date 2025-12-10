@@ -8,9 +8,7 @@ const year = new Date().getFullYear()
 
 <footer class="bg-gradient-to-b from-slate-300 to-gray-200 py-8">
   <div class="container mx-auto px-4 xl:px-0">
-    <div
-      class="grid justify-center gap-y-3 sm:text-center md:px-4 lg:grid-cols-[1fr_auto_1fr] lg:items-center lg:gap-x-12 lg:gap-y-0 lg:px-8 lg:text-left"
-    >
+    <div class="flex flex-col items-center gap-2 sm:w-full sm:flex-row sm:place-content-between">
       <div class="text-sm font-light">
         <time>&copy;{year}</time>
         {conf.title}.
@@ -20,7 +18,7 @@ const year = new Date().getFullYear()
           <LogoOriginal class="size-8" />
         </figure>
       </a>
-      <div class="flex flex-wrap items-center gap-6 sm:justify-center lg:justify-self-end">
+      <div class="flex flex-wrap items-center gap-4 sm:justify-self-end">
         <!-- <Button href="/dev" variant="outline"> dev </Button> -->
 
         <a href="/legale" class="text-sm font-light">Informații legale</a>
