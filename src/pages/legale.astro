@@ -1,16 +1,24 @@
 ---
 import PageHero from "@/components/ui/typography/PageHero.astro"
 import BaseLayout from "@/layouts/BaseLayout.astro"
+import { Content as GDPRText } from "src/markdown/gdpr.md"
 ---
 
-<BaseLayout title="Legale">
-  <PageHero title="Legale" />
-  <div class="sm:px-6">
-    <ul>
-      <li>credite imagini si info de la parteneri</li>
-      <li>credite imagini ilustratii</li>
-      <li>termeni si conditii</li>
-      <li>politica cookies - gdpr</li>
-    </ul>
+<BaseLayout title="Informații Legale">
+  <PageHero title="Informații Legale" />
+  <div class="sm:px-6"></div>
+  <div class="prose max-w-5xl sm:mb-6 sm:px-4">
+    <h3>Termeni și condiții de utilizare a site-ul</h3>
+    <p>
+      Descrierile și specificațiile tehnice furnizate în site au caracter informativ și nu determină constrângeri
+      contractuale.
+    </p>
+    <h3>Imagini și informații produse</h3>
+    <p>
+      Informațiile despre produsele partenerilor sunt preluate de pe site-urile acestora, și le aparțin. Ne cerem scuze
+      pentru eventualele greșeli, vă rugăm să ne <a href="/contact">contactați</a> și le vom remedia imediat.
+    </p>
+    <hr />
+    <GDPRText />
   </div>
 </BaseLayout>
