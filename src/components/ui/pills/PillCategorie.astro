@@ -9,7 +9,7 @@ const { slug } = Astro.props
 
 const categorie = await getEntry("categorii", slug)
 if (categorie === undefined) {
-  return Astro.redirect("/404")
+  return
 }
 const { nume, descriere, icon } = categorie.data
 ---
