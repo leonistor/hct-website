@@ -41,6 +41,7 @@ const {
   imagini,
   index_imagine_principala,
   variante_scurt,
+  variante_json,
   expand,
 } = produs_record
 
@@ -78,9 +79,9 @@ const src_prinicpala = `/pocket/api/files/produse/${id}/${imagine_produs}`
   <Separator />
 
   {
-    variante_scurt.length > 0 && (
+    variante_json && (
       <div class="sm:px-2">
-        <VarianteProdus produs_id={id} />
+        <VarianteProdus variante={variante_json} />
         <Separator />
       </div>
     )

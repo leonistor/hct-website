@@ -22,6 +22,7 @@ export interface Produs {
   url_producator: string
   variante: any[]
   variante_scurt: any[]
+  variante_json?: Varianta[]
   videos: any[]
 }
 
@@ -103,4 +104,13 @@ export interface Variante_produs {
   produs: string
   updated: string
   url_producator: string
+}
+
+export interface Varianta {
+  _ord: number
+  descriere: string
+  imagine?: string
+  nume: string
+  produs?: string
+  url_producator?: string
 }

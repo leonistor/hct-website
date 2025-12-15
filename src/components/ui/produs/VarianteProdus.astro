@@ -1,18 +1,12 @@
 ---
 import { pb } from "@/content.config"
-import type { Variante_produs } from "@/lib/pbtypes"
+import type { Varianta } from "@/lib/pbtypes"
 import { For } from "@forastro/flow"
 
 interface Props {
-  produs_id: string
+  variante: Varianta[]
 }
-const { produs_id } = Astro.props
-
-const variante = await pb.collection("variante_produs").getFullList<Variante_produs>({
-  filter: `produs='${produs_id}'`,
-  sort: "_ord",
-  requestKey: null,
-})
+const { variante } = Astro.props
 ---
 
 <h3 class="pt-2 text-2xl font-medium text-slate-500">Variante</h3>
