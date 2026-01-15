@@ -1,5 +1,16 @@
 # resources
 
+## migrate to directus+nuxt:
+
+- Content - Nuxt UI: https://ui.nuxt.com/docs/getting-started/integrations/content
+  Installation - Nuxt Content: https://content.nuxt.com/docs/getting-started/installation
+- Nuxt Studio - Edit your Nuxt Content website in production - Nuxt Studio Documentation: https://nuxt.studio/
+- Directus MCP - AI-Powered Collaborative CMS: https://directus.io/mcp
+- Installation | Directus Docs: https://directus.io/docs/guides/ai/mcp/installation
+- Local Mcp | Directus Docs: https://directus.io/docs/guides/ai/mcp/local-mcp
+- Working with AI: Nuxt MCP Server v4: https://nuxt.com/docs/4.x/guide/ai/mcp
+- Installation | Directus Sync: https://tractr.github.io/directus-sync/docs/getting-started/installation
+
 ## insp
 
 - https://www.shadcnui-blocks.com/blocks
