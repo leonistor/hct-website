@@ -6,8 +6,6 @@
 
 import PocketBase from "pocketbase"
 
-
-
 import fs from "node:fs"
 import { parseArgs } from "node:util"
 
