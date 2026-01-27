@@ -1,9 +1,12 @@
-import {
-  type ParteneriRecord,
-  type ProduseRecord,
-  type TypedPocketBase,
-} from "pocket/_pocketbase-types"
+// import {
+//   type ParteneriRecord,
+//   type ProduseRecord,
+//   type TypedPocketBase,
+// } from "pocket/_pocketbase-types"
+
 import PocketBase from "pocketbase"
+
+
 
 import fs from "node:fs"
 import { parseArgs } from "node:util"
@@ -14,6 +17,7 @@ import src_parteneri from "import_data/catalog/partners.json"
 import src_prods from "import_data/catalog/prods.json"
 import src_prodsall from "import_data/catalog/prodsall.json"
 import { upperFirst } from "es-toolkit"
+import type { Produs } from "@/lib/pbtypes"
 
 // no args for seed, exit
 if (process.argv.length === 2) {
@@ -37,7 +41,7 @@ const { values } = parseArgs({
 })
 
 // init pocketbase
-const pb = new PocketBase(process.env.PB_TYPEGEN_URL!) as TypedPocketBase
+const pb = new PocketBase(process.env.PB_TYPEGEN_URL!) as PocketBase
 const auth = await pb
   .collection("_superusers")
   .authWithPassword(
@@ -142,7 +146,7 @@ if (values.prods) {
     })
     const partener_id = parteneri_ids[prod.partner]
 
-    const data: Omit<ProduseRecord, "id"> = {
+    const data: Omit<Produs, "id"> = {
       nume: nume_produs,
       descriere_extra: prod.content_ro,
       url_producator: prod.url,
@@ -185,7 +189,7 @@ if (values.prodsall) {
     const partener_id = parteneri_ids[prod.partner]
     const descriere_extra = `<p>${prod.partner}: ${prod.categ}</p>`
 
-    const data: Omit<ProduseRecord, "id"> = {
+    const data: Omit<Produs, "id"> = {
       nume: nume_produs,
       descriere_extra,
       url_producator: prod.url,

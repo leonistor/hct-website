@@ -14,7 +14,7 @@
     ".prettierrc.json": true,
     "eslint.config.js": true,
     "src/env.d.ts": true,
-    "import_data": true,
+    "import_data": false,
     ".vscode": false
   },
   "explorerExclude.backup": {}
